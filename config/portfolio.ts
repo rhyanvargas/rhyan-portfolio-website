@@ -66,20 +66,21 @@ export const portfolioConfig: PortfolioConfig = {
 		firstName: "Rhyan",
 		lastName: "Vargas",
 		email: "hello@rhyan.dev",
-		phone: "+1 (555) 123-4567",
-		location: "San Francisco, CA",
-		tagline: "I build things for the web.",
+		phone: "Contact me for more information",
+		location: "Sacramento, CA",
+		tagline:
+			"AI-First Full Stack Engineer • AI Integration & Cloud Systems • Next.js • TypeScript • AWS",
 		description:
-			"I'm a software engineer specializing in building exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products with modern technologies.",
+			"AI-First Full Stack Engineer with 3–5 years of experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.",
 	},
 
 	// Social Links
 	social: {
 		github: "https://github.com/rhyanvargas",
 		linkedin: "https://linkedin.com/in/rhyanvargas",
-		twitter: "https://twitter.com/rhyanvargas",
+		twitter: "https://x.com/rhyguydigital",
 		website: "https://rhyan.dev",
-		resume: "/resume.pdf",
+		resume: "Contact me for more information",
 	},
 
 	// Navigation
