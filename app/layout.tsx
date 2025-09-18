@@ -12,6 +12,11 @@ export const metadata: Metadata = {
 	description:
 		"Rhyan Vargas is an AI-First Full Stack Engineer specializing in Integrating APIs, LLMs, and cloud systems into production apps with real user impact.",
 	generator: "Next.js",
+	icons: {
+		icon: "/favicon.svg",
+		shortcut: "/favicon.svg",
+		apple: "/favicon.svg",
+	},
 };
 
 export default function RootLayout({
