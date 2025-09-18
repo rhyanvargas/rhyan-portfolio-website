@@ -2,7 +2,7 @@
 
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import { getPortfolioConfig } from "@/lib/config"
 
 export function ProjectsSection() {
@@ -53,23 +53,23 @@ export function ProjectsSection() {
                     ))}
                   </div>
 
-                  <div className={`flex space-x-4 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="text-muted-foreground hover:text-accent"
-                      onClick={() => window.open(project.github, "_blank")}
+                  <div className={`flex flex-wrap gap-4 text-sm ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-accent underline transition-colors"
                     >
-                      <Github className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="text-muted-foreground hover:text-accent"
-                      onClick={() => window.open(project.external, "_blank")}
+                      Code
+                    </a>
+                    <a
+                      href={project.external}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-accent underline transition-colors"
                     >
-                      <ExternalLink className="h-5 w-5" />
-                    </Button>
+                      Live Demo
+                    </a>
                   </div>
                 </div>
               </div>
@@ -92,26 +92,26 @@ export function ProjectsSection() {
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <div className="flex space-x-2">
+                  <div className="flex flex-wrap gap-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                     {project.github && (
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-muted-foreground hover:text-accent opacity-0 group-hover:opacity-100 transition-opacity"
-                        onClick={() => window.open(project.github, "_blank")}
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-accent underline transition-colors"
                       >
-                        <Github className="h-4 w-4" />
-                      </Button>
+                        Code
+                      </a>
                     )}
                     {project.external && (
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-muted-foreground hover:text-accent opacity-0 group-hover:opacity-100 transition-opacity"
-                        onClick={() => window.open(project.external, "_blank")}
+                      <a
+                        href={project.external}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-accent underline transition-colors"
                       >
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
+                        Live Demo
+                      </a>
                     )}
                   </div>
                 </div>
