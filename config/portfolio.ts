@@ -71,7 +71,7 @@ export const portfolioConfig: PortfolioConfig = {
 		tagline:
 			"AI-First Full Stack Engineer • AI Integration & Cloud Systems • Next.js • TypeScript • AWS",
 		description:
-			"AI-First Full Stack Engineer with 3–5 years of experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.",
+			"AI-First Full Stack Engineer with mid-level experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.",
 	},
 
 	// Social Links
