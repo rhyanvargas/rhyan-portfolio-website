@@ -69,7 +69,7 @@ export const portfolioConfig: PortfolioConfig = {
 		phone: "Contact me for more information",
 		location: "Sacramento, CA",
 		tagline:
-			"AI-First Full Stack Engineer • AI Integration & Cloud Systems • Next.js • TypeScript • AWS",
+			"🚀 From idea to MVP — I build high-impact web and AI applications with Next.js, React, AWS, and modern cloud stacks.",
 		description:
 			"AI-First Full Stack Engineer with mid-level experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.",
 	},
