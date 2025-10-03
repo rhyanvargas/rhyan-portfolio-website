@@ -71,7 +71,7 @@ export const portfolioConfig: PortfolioConfig = {
 		tagline:
 			"🚀 From idea to MVP — I build high-impact web and AI applications with Next.js, React, AWS, and modern cloud stacks.",
 		description:
-			"AI-First Full Stack Engineer with mid-level experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.",
+			"A Full Stack Software Engineer specializing in Next.js, React, and AWS. I excel at going from idea to MVP quickly, building secure and scalable applications that bridge enterprise reliability with innovative features in AI and XR.",
 	},
 
 	// Social Links
