@@ -3,7 +3,7 @@
 > AI-First Full Stack Engineer with mid-level experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.
 
 **🚀 See here:**
-[![Live Site](https://img.shields.io/badge/Live%20Site-rhyan.dev-blue?style=for-the-badge&logo=vercel)](https://www.rhyan.dev) [![Preview](https://img.shields.io/badge/Preview-Vercel-black?style=for-the-badge&logo=vercel)](https://v0-rhyan-s-portfolio-website.vercel.app)
+[![Live Site](https://img.shields.io/badge/Live%20Site-rhyan.dev-blue?style=for-the-badge&logo=vercel)](https://www.rhyan.dev)
 
 ## 📋 Overview
 
