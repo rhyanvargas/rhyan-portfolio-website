@@ -175,7 +175,7 @@ export function ComingSoon() {
 								👷🏽‍♂️ Building in Progress
 							</h3>
 							<p className="text-xs text-muted-foreground">
-								Expected launch: Q3 2025
+								Expected launch: Q4 2025
 							</p>
 						</div>
 						<div className="py-2">
