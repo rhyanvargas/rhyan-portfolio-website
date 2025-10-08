@@ -6,7 +6,7 @@
   - Create global type definitions in `types/index.ts`
   - _Requirements: 1.1, 1.2, 2.1_
 
-- [ ] 2. Implement data validation with Zod schemas
+- [x] 2. Implement data validation with Zod schemas
   - Create Zod schemas in `schemas/portfolio.ts` that match the TypeScript interfaces
   - Implement runtime validation for portfolio configuration
   - Add schema validation to configuration loading process
