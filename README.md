@@ -9,7 +9,7 @@
 
 </div>
 
-> A modern, responsive portfolio website showcasing work as a Full Stack Software Engineer. Built with Next.js, TypeScript, and Tailwind CSS — from idea to MVP with modern development practices.
+> Modern, responsive portfolio website for a Full Stack Software Engineer. Built with Next.js, TypeScript, and Tailwind CSS — showcasing rapid development from idea to MVP.
 
 ## 🚀 Quick Start
 
@@ -26,12 +26,12 @@ pnpm dev
 
 ## ✨ Features
 
-- **🎨 Modern Design** — Clean, professional interface with dark theme
-- **📱 Fully Responsive** — Mobile-first design for all devices  
+- **🎨 Modern Design** — Professional dark theme with animations
+- **📱 Fully Responsive** — Mobile-first design for all devices
 - **🎯 Type-Safe** — Full TypeScript with runtime validation
 - **⚡ Performance** — Optimized with Next.js 15 and Vercel
-- **🚧 Coming Soon Page** — Animated development progress visualization
-- **🔧 Configuration-Driven** — Single-file content management system
+- **🚧 Coming Soon Page** — Animated development progress
+- **🔧 Configuration-Driven** — Single-file content management
 
 ## 🛠️ Tech Stack
 
@@ -41,64 +41,17 @@ pnpm dev
 - **Validation:** Zod schemas
 - **Deployment:** Vercel
 
-## 📁 Project Structure
+## 🚧 Current Status
 
-```
-├── app/                 # Next.js App Router
-├── components/          # React components
-│   ├── ui/             # shadcn/ui components
-│   └── *-section.tsx   # Page sections
-├── config/             # Portfolio configuration
-├── schemas/            # Zod validation schemas
-└── types/              # TypeScript definitions
-```
+**Live:** Coming soon page with animated development progress  
+**Ready:** Full portfolio sections implemented and ready to activate
 
-## ⚙️ Configuration
+## 📖 Documentation
 
-Portfolio content is managed through `config/portfolio.ts` with type-safe validation:
-
-```typescript
-export const portfolioConfig: PortfolioConfig = {
-  personal: {
-    firstName: "Rhyan",
-    lastName: "Vargas",
-    email: "hello@rhyan.dev",
-    // ...
-  },
-  // ... more configuration
-}
-```
-
-## 🚧 Development Status
-
-**Current:** Coming soon page with animated progress  
-**Ready:** All portfolio sections implemented and ready to activate
-
-To activate full portfolio, edit `app/page.tsx` and uncomment the portfolio sections.
-
-## 🔧 Development
-
-### Activating Full Portfolio
-
-To switch from the coming soon page to the full portfolio:
-
-1. Edit `app/page.tsx`
-2. Uncomment the portfolio sections:
-   ```typescript
-   // <AboutSection />
-   // <ExperienceSection />
-   // <ProjectsSection />
-   // <ContactSection />
-   // <Footer />
-   ```
-3. Optionally comment out `<ComingSoon />`
-
-### Key Files
-
-- `config/portfolio.ts` - All portfolio content and configuration
-- `schemas/portfolio.ts` - Zod validation schemas
-- `components/` - All React components (ready to use)
-- `app/page.tsx` - Main page layout
+- [Setup Guide](docs/setup.md) - Detailed installation and configuration
+- [Configuration Reference](docs/configuration.md) - Complete config options
+- [Architecture Overview](docs/architecture.md) - System design and component structure
+- [Contributing Guidelines](CONTRIBUTING.md) - How to contribute
 
 ## 📋 Available Scripts
 
@@ -111,17 +64,14 @@ To switch from the coming soon page to the full portfolio:
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues).
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 🙏 Acknowledgments
 
-## 📞 Contact
-
-**Rhyan Vargas** - Sacramento, CA
+- [Next.js](https://nextjs.org/) - The React framework for production
+- [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [Vercel](https://vercel.com/) - Platform for frontend frameworks and static sites
 
 <div align="center">
 
@@ -133,18 +83,11 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 </div>
 
-## 📄 License
+<div align="center">
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) - The React framework for production
-- [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- [Vercel](https://vercel.com/) - Platform for frontend frameworks and static sites
-
----
+⭐ Star this repo if you find it helpful!
 
 <div align="center">
 

@@ -6,80 +6,111 @@ inclusion: always
 
 ## README Guidelines
 
-Follow GitHub's best practices for project documentation to keep READMEs concise and maintainable.
+Follow GitHub's official best practices for project documentation to keep READMEs concise and maintainable.
 
-### Core Principles
-- **Keep it slim**: README should be scannable and focused on essentials
+**References:**
+- [About READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
+- [About Wikis](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis)
+- [Adding or editing wiki pages locally](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages#adding-or-editing-wiki-pages-locally)
+
+## Core Principles
+
+### README Purpose (GitHub Official Guidelines)
+- **First impression**: Often the first thing visitors see
+- **Project overview**: What the project does and why it's useful
+- **Getting started**: How to install, configure, and use
+- **Contribution guide**: How others can help
+- **Contact info**: How to reach maintainers
+
+### Keep It Slim Strategy
 - **Essential only**: Include what users need to get started quickly
 - **Link to details**: Use wikis, docs folders, or separate files for extensive documentation
 - **User-focused**: Prioritize what newcomers need most
+- **Scannable**: Use headers, bullets, and visual breaks
 
-### README Structure (Required Sections)
+## Required README Structure
 
-1. **Project Title & Badges**
-   - Essential badges only (live site, main tech, license)
-   - Avoid badge clutter - max 6-8 badges total
+### 1. Project Title & Description
+```markdown
+# Project Name
+Brief, clear description of what the project does and its value proposition.
+```
 
-2. **Brief Description**
-   - One-line project summary
-   - Key value proposition
+### 2. Badges (Maximum 6-8)
+- Build status
+- Version
+- License
+- Main technology
+- Live demo link
+- Coverage (if applicable)
 
-3. **Quick Start**
-   - Installation commands
-   - Basic usage
-   - Prerequisites
+### 3. Quick Start Section
+```markdown
+## Quick Start
+# Essential installation and basic usage only
+# Link to detailed setup guides
+```
 
-4. **Key Features**
-   - 4-6 bullet points maximum
-   - Focus on unique selling points
+### 4. Key Features (4-6 bullets max)
+- Focus on unique selling points
+- What makes this project special
+- Core functionality overview
 
-5. **Tech Stack**
-   - Core technologies only
-   - Avoid detailed version tables
+### 5. Basic Usage
+- Minimal working example
+- Most common use case
+- Link to comprehensive documentation
 
-6. **Basic Configuration**
-   - Essential setup information
-   - Link to detailed docs for complex config
+### 6. Contributing
+- Link to CONTRIBUTING.md or wiki
+- Basic contribution workflow
+- Code of conduct reference
 
-7. **Contributing**
-   - Standard GitHub contributing guidelines
+### 7. License & Contact
+- License type and link
+- Author/maintainer contact
+- Support channels
 
-8. **Contact & License**
-   - Author contact information
-   - License reference
+## What NOT to Include in README
 
-### What NOT to Include in README
-
-❌ **Avoid These in Main README:**
+❌ **Move These to Wiki/Docs:**
 - Extensive API documentation
 - Detailed architecture explanations
 - Complete configuration schemas
-- Long code examples
-- Comprehensive troubleshooting guides
-- Detailed deployment instructions
+- Long troubleshooting guides
+- Comprehensive feature lists
 - Performance benchmarks
-- Complete feature lists
+- Detailed deployment instructions
+- Change logs (use CHANGELOG.md)
+- Extensive code examples
 
-### Where to Put Detailed Documentation
+## GitHub Wiki Integration
 
-✅ **Use These Alternatives:**
-- **Wiki pages** - For extensive guides and documentation
-- **`docs/` folder** - For structured documentation
-- **Inline code comments** - For implementation details
-- **Separate markdown files** - For specific topics
-- **GitHub Issues** - For known issues and troubleshooting
+### When to Use Wikis vs Docs Folder
 
-### GitHub Wiki Management
+**Use Wiki for:**
+- Community-editable documentation
+- Extensive guides and tutorials
+- Architecture deep-dives
+- Troubleshooting knowledge base
+- FAQ sections
+- User-contributed content
 
-For detailed documentation, use GitHub wikis following the official guidelines:
-**Reference:** [Adding or editing wiki pages locally](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages#adding-or-editing-wiki-pages-locally)
+**Use Docs Folder for:**
+- API reference documentation
+- Technical specifications
+- Contributor guidelines
+- Code-adjacent documentation
+- Version-controlled docs
 
-#### Setting Up Local Wiki Editing
+### Wiki Setup and Management
+
+#### Local Wiki Editing
 ```bash
-# Clone the wiki repository (separate from main repo)
+# Clone wiki repository (separate from main repo)
 git clone https://github.com/username/repository.wiki.git
 
-# Create and edit wiki pages locally
+# Create wiki pages locally
 cd repository.wiki
 echo "# Architecture Guide" > Architecture.md
 git add Architecture.md
@@ -87,189 +118,171 @@ git commit -m "Add architecture documentation"
 git push origin master
 ```
 
-#### Wiki Best Practices
-- **File naming**: Use PascalCase for wiki page names (e.g., `Architecture.md`, `Configuration.md`)
-- **Home page**: Create a comprehensive `Home.md` as the wiki landing page
-- **Navigation**: Link between wiki pages using `[[Page Name]]` syntax
-- **Structure**: Organize with clear hierarchy and cross-references
-- **Maintenance**: Keep wiki content current and remove outdated pages
+#### Wiki Page Organization
+```
+Home.md                    # Wiki landing page with navigation
+├── Architecture.md        # System design and structure
+├── Configuration.md       # Detailed setup and config
+├── Deployment.md         # Production deployment guide
+├── Development.md        # Developer workflow and setup
+├── API-Reference.md      # Complete API documentation
+├── Troubleshooting.md    # Common issues and solutions
+└── FAQ.md               # Frequently asked questions
+```
 
-### Documentation Hierarchy
+### Wiki Best Practices
+
+#### File Naming
+- Use PascalCase: `Architecture.md`, `Configuration.md`
+- Descriptive names: `API-Reference.md` not `API.md`
+- Consistent naming pattern across all pages
+
+#### Content Structure
+- Start with overview/table of contents
+- Use clear headings and subheadings
+- Include cross-references with `[[Page Name]]`
+- Add "Last updated" dates for maintenance
+
+#### Navigation
+- Create comprehensive Home.md with links to all pages
+- Use sidebar navigation in wiki settings
+- Cross-link related pages
+- Include "Back to README" links
+
+## Documentation Hierarchy
 
 ```
-README.md              # Essential info only (< 200 lines)
-├── docs/
-│   ├── architecture.md    # Detailed system design
-│   ├── configuration.md   # Complete config guide
-│   ├── deployment.md      # Production setup
-│   └── development.md     # Dev workflow
-└── wiki/              # GitHub wiki for extensive docs
+README.md                  # Essential info only (< 150 lines)
+├── CONTRIBUTING.md        # Contribution guidelines
+├── CHANGELOG.md          # Version history
+├── LICENSE               # License file
+├── docs/                 # Technical documentation
+│   ├── api.md           # API reference
+│   ├── setup.md         # Detailed setup
+│   └── examples/        # Code examples
+└── wiki/                 # GitHub wiki (cloned separately)
+    ├── Home.md          # Wiki navigation
+    ├── Architecture.md   # System design
+    ├── Configuration.md  # Advanced config
+    └── Deployment.md    # Production guide
 ```
 
 ## Content Guidelines
 
 ### Writing Style
 - **Concise**: Use bullet points and short paragraphs
-- **Scannable**: Use headers, tables, and visual breaks
+- **Scannable**: Headers, tables, and visual breaks
 - **Actionable**: Focus on what users can do
 - **Current**: Keep information up-to-date
+- **Accessible**: Clear language, avoid jargon
 
-### Code Examples
+### Code Examples in README
 - **Minimal**: Show only essential code
 - **Working**: Ensure all examples actually work
-- **Commented**: Explain non-obvious parts
 - **Complete**: Include necessary imports/setup
+- **Commented**: Explain non-obvious parts
 
 ### Visual Elements
 - **Screenshots**: Use sparingly, keep current
-- **Diagrams**: Simple architecture overviews only
-- **Tables**: For comparing options or listing commands
+- **Diagrams**: Simple overviews only
+- **Tables**: For commands or quick comparisons
 - **Badges**: Essential status indicators only
-
-## Maintenance Rules
-
-### Regular Updates
-- Remove outdated information immediately
-- Update badges and links when they change
-- Keep installation instructions current
-- Verify all code examples work
-
-### Link Management
-- Avoid linking to non-existent pages
-- Use relative links for internal documentation
-- Check external links periodically
-- Provide fallbacks for broken links
-
-### Version Control
-- Update README with major feature changes
-- Document breaking changes prominently
-- Keep changelog separate from README
-- Use semantic versioning for releases
 
 ## Doc Sync Hook Guidelines
 
-When the Doc Sync hook runs, follow these practices:
+### Automated Quality Checks
+- **Length check**: Ensure README stays under 150 lines
+- **Link validation**: Verify all links work
+- **Code validation**: Test code examples
+- **Badge accuracy**: Check status badges are current
+- **Markdown formatting**: Validate syntax
 
-### Automated Checks
-- Verify all links are working
-- Ensure code examples are current
-- Check badge accuracy
-- Validate markdown formatting
+### Content Review Process
+1. **Identify bloat**: Find sections exceeding guidelines
+2. **Extract details**: Move extensive content to wiki/docs
+3. **Create links**: Replace detailed sections with links
+4. **Update navigation**: Ensure wiki/docs are discoverable
+5. **Verify flow**: Test user journey from README to details
 
-### Content Review
-- Remove redundant information
-- Consolidate duplicate sections
-- Move detailed content to appropriate locations
-- Update outdated screenshots or examples
-
-### Quality Assurance
-- Ensure README is under 200 lines
-- Verify quick start instructions work
-- Check that essential information is present
-- Confirm links point to existing resources
-
-## Examples of Good vs Bad README Sections
-
-### ❌ Bad: Overly Detailed Tech Stack
+### Migration Strategy
 ```markdown
-## Tech Stack
-| Category | Technology | Version | Purpose | Documentation |
-|----------|------------|---------|---------|---------------|
-| Framework | Next.js | 15.0.1 | Full-stack React framework | https://nextjs.org/docs |
-| Language | TypeScript | 5.2.2 | Type-safe development | https://typescriptlang.org |
-[... 20 more rows]
-```
-
-### ✅ Good: Concise Tech Stack
-```markdown
-## Tech Stack
-- **Framework:** Next.js 15 with App Router
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS + shadcn/ui
-- **Deployment:** Vercel
-```
-
-### ❌ Bad: Extensive Configuration
-```markdown
+# Before (Bloated README)
 ## Configuration
-[500 lines of detailed configuration examples and schemas]
-```
+[200 lines of detailed config examples]
 
-### ✅ Good: Basic Configuration
-```markdown
+# After (Slim README)
 ## Configuration
-Edit `config/portfolio.ts` to customize content:
+Basic setup in `config/portfolio.ts`:
 ```typescript
-export const portfolioConfig = {
-  personal: { name: "Your Name", email: "you@example.com" }
-}
+export const config = { name: "Your Name" }
 ```
-See [Configuration Guide](docs/configuration.md) for complete options.
+See [Configuration Guide](../../wiki/Configuration) for all options.
 ```
 
-## Wiki Integration Workflow
+## Quality Assurance Checklist
 
-### When to Create Wiki Pages
-- Documentation exceeds 50 lines
-- Complex configuration requires examples
-- Architecture needs detailed explanation
-- Troubleshooting guides become extensive
-- API documentation is needed
+### README Review
+- [ ] Under 150 lines total
+- [ ] Quick start works in < 5 minutes
+- [ ] Essential information only
+- [ ] All links point to existing resources
+- [ ] Code examples are tested and work
+- [ ] Badges are current and relevant
+- [ ] Contact information is up-to-date
 
-### Wiki Page Templates
-
-#### Architecture.md Template
-```markdown
-# Architecture Guide
-
-## Overview
-Brief system overview
-
-## Components
-Detailed component breakdown
-
-## Data Flow
-How data moves through the system
-
-## Configuration
-Advanced configuration options
-
-## Troubleshooting
-Common issues and solutions
-```
-
-#### Configuration.md Template
-```markdown
-# Configuration Guide
-
-## Quick Start
-Basic configuration for getting started
-
-## Advanced Options
-Detailed configuration parameters
-
-## Environment Variables
-All available environment settings
+### Wiki/Docs Review
+- [ ] Detailed information has proper home
+- [ ] Navigation between pages works
+- [ ] Content is organized logically
+- [ ] Cross-references are accurate
+- [ ] Last updated dates are current
 
 ## Examples
-Real-world configuration examples
 
-## Validation
-Schema validation and error handling
+### ✅ Good README Structure
+```markdown
+# Project Name
+Brief description and value proposition.
+
+## Quick Start
+```bash
+npm install && npm start
 ```
 
-### Linking Strategy
-- **README to Wiki**: Use `[Architecture Guide](../../wiki/Architecture)` format
-- **Wiki to Wiki**: Use `[[Configuration]]` internal linking
-- **Wiki to Code**: Link to specific files with line numbers when helpful
+## Features
+- Key feature 1
+- Key feature 2
+- Key feature 3
+
+## Documentation
+- [Architecture Guide](../../wiki/Architecture)
+- [API Reference](docs/api.md)
+- [Contributing](CONTRIBUTING.md)
+
+## License
+MIT - see [LICENSE](LICENSE)
+```
+
+### ❌ Bad README (Too Detailed)
+```markdown
+# Project Name
+[Long project history and background]
+
+## Complete API Documentation
+[500 lines of API details]
+
+## Every Configuration Option
+[300 lines of config examples]
+
+## Troubleshooting Everything
+[200 lines of troubleshooting]
+```
 
 ## Implementation Notes
 
 - Apply these guidelines to all project documentation
-- Use this as a checklist when reviewing README changes
+- Use as checklist when reviewing README changes
 - Prioritize user experience over comprehensive documentation
-- Remember: README is marketing, docs are reference
-- Create wiki pages locally using the GitHub CLI or git commands
+- Remember: README is marketing, wiki/docs are reference
 - Maintain wiki content alongside code changes
-</text>
-</invoke>
+- Regular audits to prevent README bloat

@@ -18,6 +18,6 @@
   },
   "then": {
     "type": "askAgent",
-    "prompt": "Source files have been modified and staged for commit  in this Next.js TypeScript portfolio project. Please review the changes and update the README.md file to reflect any new features, components, configuration changes, or architectural updates. Focus on keeping the documentation accurate and helpful for developers who might work on this project. Include any new dependencies, component usage examples, or setup instructions if relevant. Only run this when changes are staged for commit"
+    "prompt": "Source files have been modified and staged for commit  in this Next.js TypeScript portfolio project. Please review the changes and update the README.md file to reflect any new features, components, configuration changes, or architectural updates. Use the documentation steering doc to make the changes. Only run this when changes are staged for commit. "
   }
 }
