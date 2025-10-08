@@ -66,9 +66,12 @@ pnpm dev
 
 Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## 📞 Contact
+## 🙏 Acknowledgments
 
-**Rhyan Vargas** - Sacramento, CA
+- [Next.js](https://nextjs.org/) - The React framework for production
+- [shadcn/ui](https://ui.shadcn.com/) - Beautifully designed components
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [Vercel](https://vercel.com/) - Platform for frontend frameworks and static sites
 
 <div align="center">
 
@@ -80,11 +83,11 @@ Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 </div>
 
-## 📄 License
+<div align="center">
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+⭐ Star this repo if you find it helpful!
 
 <div align="center">
 
