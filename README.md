@@ -1,248 +1,95 @@
 # Rhyan Vargas - Portfolio Website
 
-> AI-First Full Stack Engineer with mid-level experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.
+<div align="center">
 
-**🚀 See here:**
-[![Live Site](https://img.shields.io/badge/Live%20Site-rhyan.dev-blue?style=for-the-badge&logo=vercel)](https://www.rhyan.dev) [![Preview](https://img.shields.io/badge/Preview-Vercel-black?style=for-the-badge&logo=vercel)](https://v0-rhyan-s-portfolio-website.vercel.app)
+[![Live Site](https://img.shields.io/badge/Live%20Site-rhyan.dev-blue?style=for-the-badge&logo=vercel)](https://www.rhyan.dev)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-## 📋 Overview
+</div>
 
-A modern, responsive portfolio website showcasing my work as an AI-First Full Stack Engineer based in Sacramento, CA. Built with cutting-edge technologies and featuring an animated development pipeline visualization, this portfolio demonstrates both technical expertise and design sensibility.
+> Modern, responsive portfolio website for a Full Stack Software Engineer. Built with Next.js, TypeScript, and Tailwind CSS — showcasing rapid development from idea to MVP.
+
+## 🚀 Quick Start
+
+```bash
+# Clone and install
+git clone https://github.com/rhyanvargas/rhyan-portfolio-website.git
+cd rhyan-portfolio-website
+pnpm install
+
+# Start development
+pnpm dev
+# Open http://localhost:3000
+```
 
 ## ✨ Features
 
-- **🎨 Modern Design**: Clean, professional interface with dark theme
-- **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile devices
-- **⚡ Performance Optimized**: Built with Next.js 14 and optimized for speed
-- **🌊 Animated Visualizations**: Custom AnimatedBeam components showing development progress
-- **🎯 Type-Safe**: Full TypeScript implementation with strict type checking
-- **🔧 CMS-Style Configuration**: Single-file content management system
-- **🚀 SEO Optimized**: Proper meta tags and structured data
-- **📊 Analytics Ready**: Vercel Analytics integration
+- **🎨 Modern Design** — Professional dark theme with animations
+- **📱 Fully Responsive** — Mobile-first design for all devices
+- **🎯 Type-Safe** — Full TypeScript with runtime validation
+- **⚡ Performance** — Optimized with Next.js 15 and Vercel
+- **🚧 Coming Soon Page** — Animated development progress
+- **🔧 Configuration-Driven** — Single-file content management
 
 ## 🛠️ Tech Stack
 
-### Frontend
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS 4 + shadcn/ui
+- **Validation:** Zod schemas
+- **Deployment:** Vercel
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Components**: Radix UI primitives
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
+## 🚧 Current Status
 
-### Core Technologies (from portfolio config)
+**Live:** Coming soon page with animated development progress  
+**Ready:** Full portfolio sections implemented and ready to activate
 
-- **JavaScript (ES6+)**
-- **TypeScript**
-- **React**
-- **Node.js**
-- **Next.js**
-- **Python**
+## 📖 Documentation
 
-### Development & Deployment
+- [Setup Guide](docs/setup.md) - Detailed installation and configuration
+- [Configuration Reference](docs/configuration.md) - Complete config options
+- [Architecture Overview](docs/architecture.md) - System design and component structure
+- [Contributing Guidelines](CONTRIBUTING.md) - How to contribute
 
-- **Package Manager**: npm
-- **Deployment**: Vercel
-- **Analytics**: Vercel Analytics
-- **Version Control**: Git
+## 📋 Available Scripts
 
-### Architecture
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm start` | Start production server |
+| `pnpm lint` | Run ESLint |
 
-- **Design Pattern**: Component-based architecture
-- **State Management**: React hooks
-- **Configuration**: Type-safe config system
-- **Responsive Design**: Mobile-first approach
+## 🤝 Contributing
 
-## 🏗️ Project Structure
-
-```
-├── app/                    # Next.js app directory
-│   ├── layout.tsx         # Root layout with metadata
-│   ├── page.tsx           # Main page component
-│   └── globals.css        # Global styles
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
-│   │   └── animated-beam/ # Custom animation component
-│   ├── coming-soon.tsx   # Coming soon page
-│   ├── hero-section.tsx  # Hero section
-│   └── projects-section.tsx # Projects showcase
-├── config/               # Configuration files
-│   └── portfolio.ts      # Main portfolio configuration
-├── lib/                  # Utility functions
-│   └── utils.ts         # Helper utilities
-└── public/              # Static assets
-    └── favicon.svg      # Custom RV favicon
-```
-
-## 🎯 Key Components
-
-### AnimatedBeam Visualization
-
-Custom-built component that creates flowing animated connections between development stages:
-
-- Sequential animation flow
-- Responsive curvature adjustments
-- Configurable timing and easing
-- Mobile-optimized performance
-
-### Configuration-Driven Content
-
-All portfolio content is managed through a single TypeScript configuration file:
-
-- Type-safe content management
-- Easy updates without code changes
-- Consistent data structure
-- Version-controlled content
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/rhyanvargas/rhyan-portfolio-website.git
-   cd rhyan-portfolio-website
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Run development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   ```
-   http://localhost:3000
-   ```
-
-### Available Scripts
-
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run start    # Start production server
-npm run lint     # Run ESLint
-```
-
-## ⚙️ Configuration
-
-### Content Management
-
-All portfolio content is managed through `config/portfolio.ts`:
-
-```typescript
-export const portfolioConfig: PortfolioConfig = {
-	personal: {
-		firstName: "Rhyan",
-		lastName: "Vargas",
-		email: "hello@rhyan.dev",
-		phone: "Contact me for more information",
-		location: "Sacramento, CA",
-		tagline:
-			"AI-First Full Stack Engineer • AI Integration & Cloud Systems • Next.js • TypeScript • AWS",
-		description:
-			"AI-First Full Stack Engineer with 3–5 years of experience building production-ready web applications. Specializing in frontend engineering with clean, responsive design and seamless user experiences.",
-	},
-	social: {
-		github: "https://github.com/rhyanvargas",
-		linkedin: "https://linkedin.com/in/rhyanvargas",
-		twitter: "https://x.com/rhyguydigital",
-		website: "https://rhyan.dev",
-		resume: "Contact me for more information",
-	},
-	// ... projects, experience, and more configuration
-};
-```
-
-### Customization
-
-<<<<<<< Updated upstream
-1. **Update Personal Info**: Edit `config/portfolio.ts`
-2. **Modify Styling**: Customize Tailwind classes
-3. **Add Components**: Create new components in `components/`
-4. **Update Metadata**: Modify `app/layout.tsx`
-
-## 🎨 Design Features
-
-- **Dark Theme**: Professional dark color scheme
-- **Responsive Layout**: Mobile-first responsive design
-- **Smooth Animations**: Framer Motion powered animations
-- **Modern Typography**: Geist font family
-- **Visual Hierarchy**: Clear information architecture
-- **Interactive Elements**: Hover states and micro-interactions
-
-## 📈 Performance
-
-- **Lighthouse Score**: 100/100 Performance
-- **Core Web Vitals**: Optimized for all metrics
-- **Bundle Size**: Minimized with Next.js optimization
-- **Image Optimization**: Next.js Image component
-- **Font Loading**: Optimized font loading strategy
-=======
-**Current:** Coming soon page with animated development progress  
-**Ready:** All portfolio sections implemented and ready to activate
-
-The site currently displays an animated "coming soon" page while the full portfolio is under development.
->>>>>>> Stashed changes
-
-## 🔧 Development
-
-### Code Quality
-
-- **TypeScript**: Strict type checking
-- **ESLint**: Code linting and formatting
-- **Component Architecture**: Reusable, modular components
-- **Best Practices**: Following React and Next.js conventions
-
-<<<<<<< Updated upstream
-### Deployment
-=======
-1. Edit `app/page.tsx`
-2. Uncomment all portfolio sections:
-   ```typescript
-   <HeroSection />
-   <AboutSection />
-   <ExperienceSection />
-   <ProjectsSection />
-   <ContactSection />
-   <Footer />
-   ```
-3. Comment out `<ComingSoon />` component
-4. Remove unused imports to clean up TypeScript warnings
->>>>>>> Stashed changes
-
-- **Platform**: Vercel
-- **Auto-Deploy**: Connected to GitHub for automatic deployments
-- **Environment**: Production and preview environments
-- **Analytics**: Real-time performance monitoring
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📞 Contact
 
 **Rhyan Vargas** - Sacramento, CA
 
-- Website: [rhyan.dev](https://rhyan.dev)
-- Email: [hello@rhyan.dev](mailto:hello@rhyan.dev)
-- LinkedIn: [linkedin.com/in/rhyanvargas](https://linkedin.com/in/rhyanvargas)
-- GitHub: [github.com/rhyanvargas](https://github.com/rhyanvargas)
-- Twitter: [x.com/rhyguydigital](https://x.com/rhyguydigital)
+<div align="center">
+
+[![Website](https://img.shields.io/badge/Website-rhyan.dev-blue?style=flat-square&logo=google-chrome)](https://rhyan.dev)
+[![Email](https://img.shields.io/badge/Email-hello@rhyan.dev-red?style=flat-square&logo=gmail)](mailto:hello@rhyan.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-rhyanvargas-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/rhyanvargas)
+[![GitHub](https://img.shields.io/badge/GitHub-rhyanvargas-black?style=flat-square&logo=github)](https://github.com/rhyanvargas)
+[![Twitter](https://img.shields.io/badge/Twitter-@rhyguydigital-blue?style=flat-square&logo=twitter)](https://x.com/rhyguydigital)
+
+</div>
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
+<div align="center">
+
 **Built with ❤️ by Rhyan Vargas** | **Powered by Next.js & Vercel**
+
+⭐ Star this repo if you find it helpful!
+
+</div>
