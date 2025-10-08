@@ -169,6 +169,7 @@ export const portfolioConfig: PortfolioConfig = {
 
 ### Customization
 
+<<<<<<< Updated upstream
 1. **Update Personal Info**: Edit `config/portfolio.ts`
 2. **Modify Styling**: Customize Tailwind classes
 3. **Add Components**: Create new components in `components/`
@@ -190,6 +191,12 @@ export const portfolioConfig: PortfolioConfig = {
 - **Bundle Size**: Minimized with Next.js optimization
 - **Image Optimization**: Next.js Image component
 - **Font Loading**: Optimized font loading strategy
+=======
+**Current:** Coming soon page with animated development progress  
+**Ready:** All portfolio sections implemented and ready to activate
+
+The site currently displays an animated "coming soon" page while the full portfolio is under development.
+>>>>>>> Stashed changes
 
 ## 🔧 Development
 
@@ -200,7 +207,22 @@ export const portfolioConfig: PortfolioConfig = {
 - **Component Architecture**: Reusable, modular components
 - **Best Practices**: Following React and Next.js conventions
 
+<<<<<<< Updated upstream
 ### Deployment
+=======
+1. Edit `app/page.tsx`
+2. Uncomment all portfolio sections:
+   ```typescript
+   <HeroSection />
+   <AboutSection />
+   <ExperienceSection />
+   <ProjectsSection />
+   <ContactSection />
+   <Footer />
+   ```
+3. Comment out `<ComingSoon />` component
+4. Remove unused imports to clean up TypeScript warnings
+>>>>>>> Stashed changes
 
 - **Platform**: Vercel
 - **Auto-Deploy**: Connected to GitHub for automatic deployments
