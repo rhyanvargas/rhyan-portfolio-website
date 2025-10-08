@@ -2,7 +2,6 @@
 
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
 import { getPortfolioConfig } from "@/lib/config"
 
 export function ProjectsSection() {

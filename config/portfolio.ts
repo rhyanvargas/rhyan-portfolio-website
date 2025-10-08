@@ -1,64 +1,6 @@
-export interface PortfolioConfig {
-	personal: {
-		firstName: string;
-		lastName: string;
-		email: string;
-		phone: string;
-		location: string;
-		tagline: string;
-		description: string;
-	};
-	social: {
-		github: string;
-		linkedin: string;
-		twitter: string;
-		website: string;
-		resume: string;
-	};
-	navigation: Array<{
-		name: string;
-		href: string;
-	}>;
-	about: {
-		title: string;
-		content: string;
-		technologies: string[];
-	};
-	experience: Array<{
-		company: string;
-		position: string;
-		duration: string;
-		location: string;
-		description: string[];
-	}>;
-	projects: {
-		featured: Array<{
-			title: string;
-			description: string;
-			image: string;
-			technologies: string[];
-			github: string;
-			external: string;
-		}>;
-		other: Array<{
-			title: string;
-			description: string;
-			technologies: string[];
-			github?: string;
-			external?: string;
-		}>;
-	};
-	contact: {
-		title: string;
-		subtitle: string;
-		description: string;
-		cta: string;
-	};
-	footer: {
-		text: string;
-		year: number;
-	};
-}
+import type { PortfolioConfig } from '@/schemas/portfolio'
+
+export type { PortfolioConfig }
 
 export const portfolioConfig: PortfolioConfig = {
 	// Personal Information
