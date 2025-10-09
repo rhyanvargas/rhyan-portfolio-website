@@ -28,17 +28,17 @@ pnpm dev
 
 - **🎨 Modern Design** — Professional dark theme with animations
 - **📱 Fully Responsive** — Mobile-first design for all devices
-- **🎯 Type-Safe** — Full TypeScript with runtime validation
+- **🎯 Type-Safe** — Full TypeScript with Zod schema validation
 - **⚡ Performance** — Optimized with Next.js 15 and Vercel
 - **🚧 Coming Soon Page** — Animated development progress
-- **🔧 Configuration-Driven** — Single-file content management
+- **🔧 Configuration-Driven** — Enhanced project schema with metrics and evidence
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15 with App Router
 - **Language:** TypeScript 5
 - **Styling:** Tailwind CSS 4 + shadcn/ui
-- **Validation:** Zod schemas
+- **Validation:** Zod schemas with enhanced project metadata
 - **Deployment:** Vercel
 
 ## 🚧 Current Status
@@ -49,7 +49,7 @@ pnpm dev
 ## 📖 Documentation
 
 - [Setup Guide](docs/setup.md) - Detailed installation and configuration
-- [Configuration Reference](docs/configuration.md) - Complete config options
+- [Configuration Reference](docs/configuration.md) - Portfolio config and new project schema
 - [Architecture Overview](docs/architecture.md) - System design and component structure
 - [Contributing Guidelines](CONTRIBUTING.md) - How to contribute
 

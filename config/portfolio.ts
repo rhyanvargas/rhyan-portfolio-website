@@ -88,8 +88,125 @@ Here are a few technologies I've been working with recently:`,
 		},
 	],
 
-	// Featured Projects
+	// Projects
 	projects: {
+		items: [
+			{
+				slug: "rhyglot-ai-translator",
+				title: "RhyGlot AI Translator",
+				role: "AI",
+				summary: "LLM-powered translation app with prompt controls, semantic reranking, and evaluation dashboard for multilingual content.",
+				highlights: [
+					"Prompt orchestration with retries and semantic reranking",
+					"Streaming translation UI with real-time feedback",
+					"4.8/5 user CSAT and 25% faster translation latency"
+				],
+				tech: ["Next.js", "TypeScript", "OpenAI", "Supabase", "Vercel"],
+				links: {
+					demo: "https://rhyglot-demo-url",
+					repo: "https://github.com/rhyanvargas/rhyglot-ai-translator",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Requests", value: "5k+" },
+					{ label: "User CSAT", value: "4.8/5" },
+					{ label: "Latency (p95)", value: "320ms" }
+				],
+				thumbnail: "/projects/rhyglot-ai-translator/cover.png"
+			},
+			{
+				slug: "ai-portfolio-generator",
+				title: "AI Portfolio Generator",
+				role: "AI",
+				summary: "Automated portfolio builder that syncs and generates project case studies from GitHub metadata and evidence packs.",
+				highlights: [
+					"GitHub Action for auto-sync and PR creation",
+					"Kiro-style specs and evidence packs auto-generation",
+					"Configurable data model and full Next.js integration"
+				],
+				tech: ["Next.js", "TypeScript", "Supabase", "GitHub Actions", "Vercel"],
+				links: {
+					demo: "https://ai-portfolio-demo-url",
+					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Projects Synced", value: "10+" },
+					{ label: "PRs Opened", value: "5+" }
+				],
+				thumbnail: "/projects/ai-portfolio-generator/cover.png"
+			},
+			{
+				slug: "8p3p-lms-nextjs",
+				title: "8p3p LMS Next.js",
+				role: "Frontend",
+				summary: "Modern Learning Management System with real-time progress tracking, course authoring, and Stripe-powered payments.",
+				highlights: [
+					"App Router architecture with nested layouts",
+					"Supabase integration for auth, storage, and data",
+					"Stripe payments and Mapbox-powered location features"
+				],
+				tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Mapbox GL", "TailwindCSS"],
+				links: {
+					demo: "https://8p3p-lms-demo-url",
+					repo: "https://github.com/rhyanvargas/8p3p-lms-nextjs",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Users", value: "100+" },
+					{ label: "Courses Created", value: "20+" },
+					{ label: "Uptime", value: "99.9%" }
+				],
+				thumbnail: "/projects/8p3p-lms-nextjs/cover.png"
+			},
+			{
+				slug: "pomoburn-app",
+				title: "Pomoburn Productivity App",
+				role: "Frontend",
+				summary: "Focus timer app combining Pomodoro technique with analytics and habit tracking, built with Next.js and modern state management.",
+				highlights: [
+					"Zustand and TanStack Query for state and data management",
+					"Detailed session analytics and progress tracking",
+					"Accessible, mobile-friendly UI"
+				],
+				tech: ["Next.js", "TypeScript", "Zustand", "TanStack Query", "TailwindCSS"],
+				links: {
+					demo: "https://pomoburn-demo-url",
+					repo: "https://github.com/rhyanvargas/pomoburn-app",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Sessions Tracked", value: "2k+" },
+					{ label: "Retention", value: "68%" }
+				],
+				thumbnail: "/projects/pomoburn-app/cover.png"
+			},
+			{
+				slug: "shadcn-interactive-transcript",
+				title: "shadcn Interactive Transcript",
+				role: "AI",
+				summary: "AI-powered transcript search and playback UI with accessibility-first design and real-time highlighting.",
+				highlights: [
+					"OpenAI embeddings for semantic transcript search",
+					"shadcn/ui and Tailwind for accessible UI",
+					"Supabase vector store for fast retrieval"
+				],
+				tech: ["Next.js", "TypeScript", "OpenAI", "Supabase", "shadcn/ui", "TailwindCSS"],
+				links: {
+					demo: "https://interactive-transcript-demo-url",
+					repo: "https://github.com/rhyanvargas/shadcn-interactive-transcript",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Latency (p95)", value: "180ms" },
+					{ label: "First-response accuracy", value: "94%" },
+					{ label: "CSAT", value: "4.8/5" }
+				],
+				thumbnail: "/projects/shadcn-interactive-transcript/cover.png"
+			}
+		],
+
+		// Legacy format - keeping for backward compatibility
 		featured: [
 			{
 				title: "Spotify Profile",
