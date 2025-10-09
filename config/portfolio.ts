@@ -112,7 +112,9 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "User CSAT", value: "4.8/5" },
 					{ label: "Latency (p95)", value: "320ms" }
 				],
-				thumbnail: "/projects/rhyglot-ai-translator/cover.png"
+				thumbnail: "/projects/rhyglot-ai-translator/cover.png",
+				isFeatured: false,
+
 			},
 			{
 				slug: "ai-portfolio-generator",
@@ -134,7 +136,8 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "Projects Synced", value: "10+" },
 					{ label: "PRs Opened", value: "5+" }
 				],
-				thumbnail: "/projects/ai-portfolio-generator/cover.png"
+				thumbnail: "/projects/ai-portfolio-generator/cover.png",
+				isFeatured: true,
 			},
 			{
 				slug: "8p3p-lms-nextjs",
@@ -157,7 +160,8 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "Courses Created", value: "20+" },
 					{ label: "Uptime", value: "99.9%" }
 				],
-				thumbnail: "/projects/8p3p-lms-nextjs/cover.png"
+				thumbnail: "/projects/8p3p-lms-nextjs/cover.png",
+				isFeatured: true,
 			},
 			{
 				slug: "pomoburn-app",
@@ -179,7 +183,8 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "Sessions Tracked", value: "2k+" },
 					{ label: "Retention", value: "68%" }
 				],
-				thumbnail: "/projects/pomoburn-app/cover.png"
+				thumbnail: "/projects/pomoburn-app/cover.png",
+				isFeatured: false,
 			},
 			{
 				slug: "shadcn-interactive-transcript",
@@ -202,66 +207,11 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "First-response accuracy", value: "94%" },
 					{ label: "CSAT", value: "4.8/5" }
 				],
-				thumbnail: "/projects/shadcn-interactive-transcript/cover.png"
+				thumbnail: "/projects/shadcn-interactive-transcript/cover.png",
+				isFeatured: true,
 			}
 		],
 
-		// Legacy format - keeping for backward compatibility
-		featured: [
-			{
-				title: "Spotify Profile",
-				description:
-					"A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.",
-				image: "/spotify-music-app-dashboard.jpg",
-				technologies: ["React", "Express", "Spotify API", "Styled Components"],
-				github: "https://github.com/rhyanvargas/spotify-profile",
-				external: "https://spotify-profile.rhyanvargas.dev",
-			},
-			{
-				title: "Halcyon Theme",
-				description:
-					"A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.",
-				image: "/dark-code-editor.png",
-				technologies: ["VS Code", "Sublime Text", "Atom", "iTerm2"],
-				github: "https://github.com/rhyanvargas/halcyon-theme",
-				external:
-					"https://marketplace.visualstudio.com/items?itemName=rhyanvargas.halcyon-vscode",
-			},
-			{
-				title: "Build a Spotify Connected App",
-				description:
-					"Having struggled with understanding how the Spotify Web API works, I decided to create a comprehensive course that covers everything you need to know to get started with the Spotify Web API and build your own connected app.",
-				image: "/online-course-platform.jpg",
-				technologies: ["Node.js", "Express", "React", "Spotify API"],
-				github: "https://github.com/rhyanvargas/spotify-course",
-				external: "https://course.rhyanvargas.dev",
-			},
-		],
-
-		// Other Notable Projects
-		other: [
-			{
-				title: "Integrating Algolia Search with WordPress Multisite",
-				description:
-					"Building a custom multisite compatible WordPress plugin to build global search with Algolia",
-				technologies: ["Algolia", "WordPress", "PHP"],
-				github: "https://github.com/rhyanvargas/wp-algolia",
-			},
-			{
-				title: "Google Keep Clone",
-				description:
-					"A simple Google Keep clone built with React and Firebase for learning purposes",
-				technologies: ["React", "Firebase", "CSS Grid"],
-				github: "https://github.com/rhyanvargas/google-keep-clone",
-			},
-			{
-				title: "Airbnb Clone",
-				description:
-					"A full-stack Airbnb clone with user authentication, property listings, and booking functionality",
-				technologies: ["React", "Node.js", "MongoDB", "Express"],
-				github: "https://github.com/rhyanvargas/airbnb-clone",
-			},
-		],
 	},
 
 	// Contact

@@ -66,34 +66,14 @@ export const projectSchema = z.object({
     links: projectLinksSchema,
     metrics: z.array(projectMetricSchema).optional(),
     thumbnail: z.string().min(1, 'Thumbnail path is required'),
+    isFeatured: z.boolean().optional(),
+
 })
 
-// Legacy featured project schema (for backward compatibility)
-export const featuredProjectSchema = z.object({
-    title: z.string().min(1, 'Project title is required'),
-    description: z.string().min(1, 'Project description is required'),
-    image: z.string().min(1, 'Project image is required'),
-    technologies: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
-    github: z.string().url('Invalid GitHub URL'),
-    external: z.string().url('Invalid external URL'),
-})
 
-// Legacy other project schema (for backward compatibility)
-export const otherProjectSchema = z.object({
-    title: z.string().min(1, 'Project title is required'),
-    description: z.string().min(1, 'Project description is required'),
-    technologies: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
-    github: z.string().url('Invalid GitHub URL').optional(),
-    external: z.string().url('Invalid external URL').optional(),
-})
-
-// Projects schema - updated to support both new and legacy formats
+// Projects schema 
 export const projectsSchema = z.object({
-    // New format - array of projects with enhanced metadata
     items: z.array(projectSchema).optional(),
-    // Legacy format - for backward compatibility
-    featured: z.array(featuredProjectSchema).optional(),
-    other: z.array(otherProjectSchema).optional(),
 })
 
 // Contact section schema
@@ -132,8 +112,6 @@ export type ExperienceItem = z.infer<typeof experienceItemSchema>
 export type Project = z.infer<typeof projectSchema>
 export type ProjectMetric = z.infer<typeof projectMetricSchema>
 export type ProjectLinks = z.infer<typeof projectLinksSchema>
-export type FeaturedProject = z.infer<typeof featuredProjectSchema>
-export type OtherProject = z.infer<typeof otherProjectSchema>
 export type Projects = z.infer<typeof projectsSchema>
 export type Contact = z.infer<typeof contactSchema>
 export type Footer = z.infer<typeof footerSchema>
