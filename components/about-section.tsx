@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { getPortfolioConfig } from "@/lib/config"
+import Image from "next/image"
 
 export function AboutSection() {
   const config = getPortfolioConfig()
@@ -38,8 +39,15 @@ export function AboutSection() {
           <div className="lg:col-span-1">
             <Card className="p-6 bg-card border-border">
               <div className="relative group">
-                <div className="w-full aspect-square bg-accent/10 rounded-lg flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+                <div className="w-full aspect-square bg-accent/10 rounded-lg overflow-hidden">
+                  <Image
+                    src={config.personal.avatar}
+                    alt={`${config.personal.firstName} ${config.personal.lastName}`}
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
                 </div>
                 <div className="absolute inset-0 bg-accent/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
