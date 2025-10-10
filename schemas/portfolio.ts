@@ -9,6 +9,7 @@ export const personalInfoSchema = z.object({
     location: z.string().min(1, 'Location is required'),
     tagline: z.string().min(1, 'Tagline is required'),
     description: z.string().min(1, 'Description is required'),
+    avatar: z.string().min(1, 'Avatar is required'),
 })
 
 // Social links schema
@@ -57,6 +58,7 @@ export const projectLinksSchema = z.object({
 
 // Main project schema
 export const projectSchema = z.object({
+    id: z.number().int().min(1, 'Project ID must be a positive integer'),
     slug: z.string().min(1, 'Project slug is required'),
     title: z.string().min(1, 'Project title is required'),
     role: z.string().min(1, 'Project role is required'),
@@ -67,7 +69,6 @@ export const projectSchema = z.object({
     metrics: z.array(projectMetricSchema).optional(),
     thumbnail: z.string().min(1, 'Thumbnail path is required'),
     isFeatured: z.boolean().optional(),
-
 })
 
 

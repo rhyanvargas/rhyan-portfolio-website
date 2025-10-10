@@ -11,9 +11,10 @@ export const portfolioConfig: PortfolioConfig = {
 		phone: "Contact me for more information",
 		location: "Sacramento, CA",
 		tagline:
-			"🚀 From idea to MVP — I build high-impact web and AI applications with Next.js, React, AWS, and modern cloud stacks.",
+			"AI Engineer who loves bringing ideas to life using well-architected systems and tools.",
 		description:
 			"A Full Stack Software Engineer specializing in Next.js, React, and AWS. I excel at going from idea to MVP quickly, building secure and scalable applications that bridge enterprise reliability with innovative features in AI and XR.",
+		avatar: "/rhyan_portfolio_nextjs_frontend_engineer_propic_pastel.jpg"
 	},
 
 	// Social Links
@@ -92,6 +93,7 @@ Here are a few technologies I've been working with recently:`,
 	projects: {
 		items: [
 			{
+				id: 5,
 				slug: "rhyglot-ai-translator",
 				title: "RhyGlot AI Translator",
 				role: "AI",
@@ -112,11 +114,11 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "User CSAT", value: "4.8/5" },
 					{ label: "Latency (p95)", value: "320ms" }
 				],
-				thumbnail: "/projects/rhyglot-ai-translator/cover.png",
+				thumbnail: "/rhyan_vargas_portfolio_ai_captions_generator.png",
 				isFeatured: false,
-
 			},
 			{
+				id: 2,
 				slug: "ai-portfolio-generator",
 				title: "AI Portfolio Generator",
 				role: "AI",
@@ -136,10 +138,11 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "Projects Synced", value: "10+" },
 					{ label: "PRs Opened", value: "5+" }
 				],
-				thumbnail: "/projects/ai-portfolio-generator/cover.png",
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_ai_portfolio_generator.png",
 				isFeatured: true,
 			},
 			{
+				id: 4,
 				slug: "8p3p-lms-nextjs",
 				title: "8p3p LMS Next.js",
 				role: "Frontend",
@@ -160,10 +163,11 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "Courses Created", value: "20+" },
 					{ label: "Uptime", value: "99.9%" }
 				],
-				thumbnail: "/projects/8p3p-lms-nextjs/cover.png",
+				thumbnail: "/rhyan_portfolio_nextjs_fullstack_lms_app.png",
 				isFeatured: true,
 			},
 			{
+				id: 6,
 				slug: "pomoburn-app",
 				title: "Pomoburn Productivity App",
 				role: "Frontend",
@@ -175,7 +179,7 @@ Here are a few technologies I've been working with recently:`,
 				],
 				tech: ["Next.js", "TypeScript", "Zustand", "TanStack Query", "TailwindCSS"],
 				links: {
-					demo: "https://pomoburn-demo-url",
+					demo: "https://pomoburn.com",
 					repo: "https://github.com/rhyanvargas/pomoburn-app",
 					evidence: "docs/evidence-pack.md"
 				},
@@ -183,10 +187,37 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "Sessions Tracked", value: "2k+" },
 					{ label: "Retention", value: "68%" }
 				],
-				thumbnail: "/projects/pomoburn-app/cover.png",
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_pomoburn.png",
 				isFeatured: false,
 			},
 			{
+				id: 1,
+				slug: "ai-generated-captions",
+				title: "AI Generated Captions",
+				role: "AI",
+				summary: "Next.js application that automatically generates video captions in TXT and WebVTT formats using AI transcription with multi-language support.",
+				highlights: [
+					"Drag & drop video upload with smooth progress UI",
+					"OpenAI GPT-4 powered transcription and caption cleanup",
+					"Dual format output: plain text (.txt) and WebVTT (.vtt)",
+					"Planned multi-language translation to 50+ languages"
+				],
+				tech: ["Next.js", "TypeScript", "OpenAI", "AI SDK", "shadcn/ui", "TailwindCSS"],
+				links: {
+					demo: "https://ai-generated-captions-demo-url",
+					repo: "https://github.com/rhyanvargas/ai-generated-captions",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Format Support", value: "2" },
+					{ label: "Planned Languages", value: "50+" },
+					{ label: "Processing Speed", value: "Fast" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_ai_captions_generator.png",
+				isFeatured: true,
+			},
+			{
+				id: 3,
 				slug: "shadcn-interactive-transcript",
 				title: "shadcn Interactive Transcript",
 				role: "AI",
@@ -207,8 +238,112 @@ Here are a few technologies I've been working with recently:`,
 					{ label: "First-response accuracy", value: "94%" },
 					{ label: "CSAT", value: "4.8/5" }
 				],
-				thumbnail: "/projects/shadcn-interactive-transcript/cover.png",
+				thumbnail: "/rhyan_portfolio_nextjs_react_ui_interactive_transcript.png",
 				isFeatured: true,
+			},
+			{
+				id: 7,
+				slug: "ai-utility-bill-analyzer",
+				title: "AI Utility Bill Analyzer",
+				role: "AI",
+				summary: "M.I.A. - Your utility bill AI assistant that analyzes electric bills to identify savings opportunities and provides personalized recommendations.",
+				highlights: [
+					"AI-powered utility bill analysis and cost optimization",
+					"Interactive chat assistant with PickAxe.co integration",
+					"Personalized savings recommendations and program enrollment",
+					"Mobile-responsive design with shadcn/ui components"
+				],
+				tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "PickAxe.co", "Vercel"],
+				links: {
+					demo: "https://v0-ai-utility-bill-analyzer.vercel.app/",
+					repo: "https://github.com/rhyanvargas/ai-utility-bill-analyzer",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Bill Analysis", value: "AI-Powered" },
+					{ label: "Savings Tracking", value: "Real-time" },
+					{ label: "User Experience", value: "Mobile-first" }
+				],
+				thumbnail: "/projects/ai-utility-bill-analyzer/cover.png",
+				isFeatured: false,
+			},
+			{
+				id: 8,
+				slug: "fluix-ui",
+				title: "Fluix UI",
+				role: "Frontend",
+				summary: "Advanced AI-first component registry built on shadcn/ui, providing unique AI interaction patterns, transparency features, and enterprise governance components.",
+				highlights: [
+					"10+ unique AI-specific components (ConfidenceScore, ReasoningSteps, SourceAttribution)",
+					"Enterprise-ready with audit trails, cost tracking, and compliance features",
+					"Copy-paste friendly components with full TypeScript support",
+					"Fills ecosystem gaps missing from AI SDK UI and other libraries"
+				],
+				tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "React", "WCAG 2.1"],
+				links: {
+					demo: "https://fluix-ui-demo-url",
+					repo: "https://github.com/rhyanvargas/fluix-ui",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Components", value: "10+" },
+					{ label: "Accessibility", value: "WCAG 2.1 AA" },
+					{ label: "Type Safety", value: "100%" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_ui_components_fluix.png",
+				isFeatured: true,
+			},
+			{
+				id: 9,
+				slug: "upload-git-issues",
+				title: "Upload Git Issues",
+				role: "DevTools",
+				summary: "Zero-config CLI tool to bulk upload CSV data to GitHub Issues. Perfect for platform migrations and creating GitHub Issues from CSV exports.",
+				highlights: [
+					"One-command CSV to GitHub Issues conversion with intelligent parsing",
+					"Interactive prompts for GitHub authentication and repo selection",
+					"Beautiful progress indicators with real-time status updates",
+					"Built-in security audits and compliance for enterprise use"
+				],
+				tech: ["TypeScript", "Node.js", "GitHub API", "CLI", "CSV Parser", "npm"],
+				links: {
+					demo: "https://www.npmjs.com/package/upload-git-issues",
+					repo: "https://github.com/rhyanvargas/upload-git-issues",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "npm Package", value: "Published" },
+					{ label: "CSV Support", value: "Universal" },
+					{ label: "Setup Time", value: "2 minutes" }
+				],
+				thumbnail: "/projects/upload-git-issues/cover.png",
+				isFeatured: false,
+			},
+			{
+				id: 10,
+				slug: "techsaints-website",
+				title: "TechSaints Website",
+				role: "Frontend",
+				summary: "Awareness page with Brevo integration built using v0.app. Automatically synced deployment pipeline with Vercel integration.",
+				highlights: [
+					"Built with v0.app for rapid prototyping and deployment",
+					"Automatic sync between v0.app and GitHub repository",
+					"Brevo email marketing integration for lead capture",
+					"Seamless Vercel deployment with continuous integration"
+				],
+				tech: ["Next.js", "TypeScript", "v0.app", "Brevo", "Vercel", "shadcn/ui"],
+				links: {
+					demo: "https://vercel.com/rhyanvargas1s-projects/v0-awareness-page-with-brevo",
+					repo: "https://github.com/rhyanvargas/techsaints-website",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Build Tool", value: "v0.app" },
+					{ label: "Deployment", value: "Auto-sync" },
+					{ label: "Integration", value: "Brevo" }
+				],
+				thumbnail: "/projects/techsaints-website/cover.png",
+				isFeatured: false,
 			}
 		],
 

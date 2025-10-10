@@ -1,11 +1,15 @@
 "use client"
 
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { getPortfolioConfig } from "@/lib/config"
+import { getFeaturedProjects, getOtherProjects } from "@/lib/project-utils"
 
 export function ProjectsSection() {
   const config = getPortfolioConfig()
+  const featuredProjects = config.projects.items ? getFeaturedProjects(config.projects.items) : []
+  const otherProjects = config.projects.items ? getOtherProjects(config.projects.items) : []
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -18,19 +22,22 @@ export function ProjectsSection() {
         </div>
 
         {/* Featured Projects */}
-        {config.projects.items && config.projects.items.filter(p => p.isFeatured).length > 0 && (
+        {featuredProjects.length > 0 && (
           <div className="space-y-20 mb-20">
-            {config.projects.items.filter(p => p.isFeatured).map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <div
                 key={project.slug}
                 className={`grid lg:grid-cols-12 gap-8 items-center ${index % 2 === 1 ? "lg:text-right" : ""}`}
               >
                 <div className={`lg:col-span-7 ${index % 2 === 1 ? "lg:col-start-6" : ""}`}>
                   <div className="relative group">
-                    <img
+                    <Image
                       src={project.thumbnail || "/placeholder.svg"}
                       alt={project.title}
+                      width={800}
+                      height={400}
                       className="w-full h-64 object-cover rounded-lg"
+                      priority={index < 2}
                     />
                     <div className="absolute inset-0 bg-accent/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
@@ -84,11 +91,11 @@ export function ProjectsSection() {
         )}
 
         {/* Other Projects */}
-        {config.projects.items && config.projects.items.filter(p => !p.isFeatured).length > 0 && (
+        {otherProjects.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Other Noteworthy Projects</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {config.projects.items.filter(p => !p.isFeatured).map((project) => (
+              {otherProjects.map((project) => (
                 <Card
                   key={project.slug}
                   className="p-6 bg-card border-border hover:border-accent/50 transition-colors duration-300 group"
