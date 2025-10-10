@@ -25,12 +25,11 @@ export function HeroSection() {
 						</span>
 					</h1>
 					<h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground mb-8">
-						<span className="text-balance">{config.personal.tagline}</span>
 					</h2>
 				</div>
 
 				<p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
-					{config.personal.description}
+					{config.personal.tagline}
 				</p>
 
 				<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">

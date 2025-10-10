@@ -8,6 +8,7 @@ export interface PersonalInfo {
     location: string;
     tagline: string;
     description: string;
+    avatar: string;
 }
 
 export interface SocialLinks {
