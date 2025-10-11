@@ -37,18 +37,29 @@ export const portfolioConfig: PortfolioConfig = {
 	// About Section
 	about: {
 		title: "About Me",
-		content: `Hello! My name is Rhyan and I enjoy creating things that live on the internet. My interest in web development started back in 2018 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!
+		content: `Hey there! I’m Rhyan, a builder, tinkerer, and all-around fan of creating things that live on the web — and now, in mixed reality. My journey into development started back in 2016 when I taught myself how to customize Wordpress themes. A few freelance websites later, I realized how much I enjoyed turning ideas into interactive experiences — and I’ve been hooked ever since.
 
-Fast-forward to today, and I've had the privilege of working at an advertising agency, a start-up, a huge corporation, and a student-led design studio. My main focus these days is building accessible, inclusive products and digital experiences at Upstatement for a variety of clients.
+Fast-forward to today, I’ve had the privilege of building across startups, agencies, and enterprise environments — leading projects that bridge AI, design, and web development. My current focus is crafting human-centered, AI-driven applications that blend frontend precision with intelligent systems — from GenAI-powered dashboards to immersive XR learning tools.
 
-Here are a few technologies I've been working with recently:`,
+I’m passionate about using technology to empower creativity and learning, especially through ethical, accessible, and impactful digital products.
+`,
 		technologies: [
-			"JavaScript (ES6+)",
 			"TypeScript",
-			"React",
-			"Node.js",
+			"AI SDK (Vercel)",
+			"Drizzle ORM",
+			"JavaScript (ES6+)",
+			"HTML/CSS",
 			"Next.js",
-			"Python",
+			"Tailwind CSS",
+			"PostgreSQL",
+			"AWS Amplify",
+			"AWS Bedrock",
+			"Git",
+			"GitHub",
+			"CI/CD",
+			"Agile/Scrum",
+			"Motion (Animation lib)"
+
 		],
 	},
 

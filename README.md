@@ -26,26 +26,29 @@ pnpm dev
 
 ## ✨ Features
 
-- **🎨 Modern Design** — Professional dark theme with animations
+- **🎨 Modern Design** — Professional dark theme with enhanced visual indicators
 - **📱 Fully Responsive** — Mobile-first design for all devices
 - **🎯 Type-Safe** — Full TypeScript with Zod schema validation
 - **⚡ Performance** — Optimized with Next.js 15 and Vercel
-- **🎯 Live Portfolio Sections** — Hero, About, and Projects now displaying
+- **🎯 Live Portfolio Sections** — Hero, About, and Projects with improved tech display
 - **🔧 Configuration-Driven** — Enhanced project schema with metrics and evidence
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15 with App Router
-- **Language:** TypeScript 5
+- **Language:** TypeScript 5 + JavaScript (ES6+)
+- **Frontend:** React 18 + React Native
 - **Styling:** Tailwind CSS 4 + shadcn/ui
+- **Database:** PostgreSQL + Prisma ORM
+- **Cloud:** AWS + Vercel deployment
+- **Tools:** Git, GitHub, Jira, Confluence, Agile workflows
 - **Validation:** Zod schemas with enhanced project metadata
-- **Deployment:** Vercel
 
 ## 🚧 Current Status
 
-**Live:** Hero, About, and Projects sections now active  
+**Live:** Hero, About, and Projects sections with enhanced UI  
 **In Development:** Experience, Contact, and Navigation sections  
-**Milestone:** Transitioned from coming soon page to live portfolio content
+**Recent:** Improved tech stack visual presentation with arrow indicators
 
 ## 📖 Documentation
 
