@@ -10,6 +10,7 @@ import { ProjectsSection } from "@/components/projects-section"
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* <ComingSoon /> */}
       {/* <Navigation /> */}
       <HeroSection />
       <AboutSection />
@@ -17,7 +18,6 @@ export default function Home() {
       <ProjectsSection />
       {/* <ContactSection /> */}
       {/* <Footer /> */}
-      {/* <ComingSoon /> */}
     </main>
   )
 }

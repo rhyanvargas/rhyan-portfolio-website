@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { portfolioConfig } from "@/config/portfolio";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
+import { Badge } from "./ui/badge";
 
 function BuildingProgress() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -68,13 +69,12 @@ function BuildingProgress() {
 					>
 						<div
 							ref={stage.ref}
-							className={`relative z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 flex items-center justify-center transition-all duration-200 backdrop-blur-3xl   ${
-								stage.status === "completed"
-									? "bg-green-500/60 border-green-500 shadow-sm shadow-green-500/50"
-									: stage.status === "active"
+							className={`relative z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 flex items-center justify-center transition-all duration-200 backdrop-blur-3xl   ${stage.status === "completed"
+								? "bg-green-500/60 border-green-500 shadow-sm shadow-green-500/50"
+								: stage.status === "active"
 									? "bg-purple-500/60 border-purple-500 animate-pulse shadow-lg shadow-purple-500/30 "
 									: "bg-muted border-muted-foreground/30"
-							}`}
+								}`}
 						>
 							<stage.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${stage.color}`} />
 						</div>
@@ -145,14 +145,14 @@ export function ComingSoon() {
 					{/* Hero Section */}
 					<div className="space-y-4 sm:space-y-6">
 						{/* Coming Soon Badge */}
-						<div className="flex justify-center">
-							<div className="inline-flex items-center justify-center p-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm shadow-lg shadow-purple-500/50">
-								<div className="px-3 py-1.5 rounded-full bg-background/80 text-xs sm:text-sm font-medium">
-									🚀 Coming Soon
-								</div>
-							</div>
-						</div>
+						<Badge
+							variant="default"
+							className="inline-flex items-center justify-center py-1 px-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm shadow-xs shadow-purple-500/50"
+						>
 
+							🚀 Coming Soon
+
+						</Badge>
 						{/* Name and Title */}
 						<div className="space-y-3 sm:space-y-4">
 							<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent leading-tight">

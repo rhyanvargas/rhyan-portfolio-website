@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { getPortfolioConfig } from "@/lib/config"
 import { getFeaturedProjects, getOtherProjects } from "@/lib/project-utils"
+import { Badge } from "./ui/badge"
 
 export function ProjectsSection() {
   const config = getPortfolioConfig()
@@ -54,10 +55,7 @@ export function ProjectsSection() {
 
                     <div className={`flex flex-wrap gap-2 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                       {project.tech.map((tech) => (
-
-                        <span key={tech} className="text-sm font-mono text-muted-foreground">
-                          {tech} &middot;  {/* if last item in list, don't show seperator */}
-                        </span>
+                        <Badge variant="skill" className="">{tech}</Badge>
                       ))}
                     </div>
 
@@ -146,14 +144,14 @@ export function ProjectsSection() {
           </div>
         )}
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Button
             variant="outline"
             className="border-accent text-accent hover:bg-accent hover:text-accent-foreground bg-transparent"
           >
             Show More
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   )
