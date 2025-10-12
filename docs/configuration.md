@@ -65,6 +65,35 @@ experience: Array<{
 
 ### Projects
 
+The projects section supports both enhanced and legacy formats:
+
+#### Enhanced Format (Recommended)
+
+```typescript
+projects: {
+  items: Array<{
+    slug: string;          // Unique project identifier
+    title: string;         // Project name
+    role: string;          // Your role in the project
+    summary: string;       // Brief project summary
+    highlights: string[];  // Key achievements/features
+    tech: string[];        // Technologies used
+    links: {
+      demo?: string;       // Demo URL
+      repo?: string;       // Repository URL
+      evidence?: string;   // Evidence/case study path
+    };
+    metrics?: Array<{
+      label: string;       // Metric name (e.g., "Performance")
+      value: string;       // Metric value (e.g., "40% faster")
+    }>;
+    thumbnail: string;     // Image path (in /public)
+  }>;
+}
+```
+
+#### Legacy Format (Backward Compatible)
+
 ```typescript
 projects: {
   featured: Array<{
@@ -73,7 +102,7 @@ projects: {
     image: string;         // Image path (in /public)
     technologies: string[]; // Tech stack used
     github: string;        // GitHub repo URL
-    external: string;      // Live demo URL
+    external: string;      // Demo URL
   }>;
   other: Array<{
     title: string;         // Project name
@@ -190,6 +219,36 @@ For other platforms:
 1. Build the site: `pnpm build`
 2. Serve the `out/` directory
 3. Configure your server for SPA routing
+
+## Schema Validation
+
+The portfolio configuration uses Zod schemas for runtime validation and type safety:
+
+### Validation Features
+
+- **Type Safety**: Full TypeScript support with inferred types
+- **Runtime Validation**: Validates data structure at build time
+- **Error Messages**: Descriptive validation error messages
+- **Backward Compatibility**: Supports both new and legacy project formats
+
+### Schema Location
+
+All schemas are defined in `schemas/portfolio.ts` and exported as:
+
+```typescript
+import { portfolioSchema, type PortfolioConfig } from '@/schemas/portfolio';
+
+// Validate configuration
+const result = portfolioSchema.parse(portfolioConfig);
+```
+
+### Adding Custom Validation
+
+To add new fields with validation:
+
+1. Update the schema in `schemas/portfolio.ts`
+2. Add the field to your configuration in `config/portfolio.ts`
+3. TypeScript will enforce the new structure
 
 ## Advanced Configuration
 

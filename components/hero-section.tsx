@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail } from "lucide-react";
 import { getPortfolioConfig } from "@/lib/config";
+import { motion } from "motion/react";
 
 export function HeroSection() {
 	const config = getPortfolioConfig();
@@ -15,7 +16,7 @@ export function HeroSection() {
 	};
 
 	return (
-		<section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+		<section className="bg-[url(/design-element-pixel-white.svg)] bg-center bg-no-repeat min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
 			<div className="max-w-4xl mx-auto text-center">
 				<div className="mb-8">
 					<p className="text-accent font-mono text-sm mb-4">Hi, my name is</p>
@@ -25,12 +26,11 @@ export function HeroSection() {
 						</span>
 					</h1>
 					<h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground mb-8">
-						<span className="text-balance">{config.personal.tagline}</span>
 					</h2>
 				</div>
 
 				<p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
-					{config.personal.description}
+					{config.personal.tagline}
 				</p>
 
 				<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -81,5 +81,6 @@ export function HeroSection() {
 				</Button>
 			</div>
 		</section>
+
 	);
 }

@@ -25,3 +25,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# misc
+.DS_Store
+*.swp
+*.log
+*.tmp
+*.zip
+*.map
+*.d.ts
+*.lock

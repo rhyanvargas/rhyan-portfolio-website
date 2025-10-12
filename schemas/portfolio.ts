@@ -9,6 +9,7 @@ export const personalInfoSchema = z.object({
     location: z.string().min(1, 'Location is required'),
     tagline: z.string().min(1, 'Tagline is required'),
     description: z.string().min(1, 'Description is required'),
+    avatar: z.string().min(1, 'Avatar is required'),
 })
 
 // Social links schema
@@ -42,29 +43,38 @@ export const experienceItemSchema = z.object({
     description: z.array(z.string().min(1, 'Description item cannot be empty')).min(1, 'At least one description item is required'),
 })
 
-// Featured project schema
-export const featuredProjectSchema = z.object({
-    title: z.string().min(1, 'Project title is required'),
-    description: z.string().min(1, 'Project description is required'),
-    image: z.string().min(1, 'Project image is required'),
-    technologies: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
-    github: z.string().url('Invalid GitHub URL'),
-    external: z.string().url('Invalid external URL'),
+// Project metric schema
+export const projectMetricSchema = z.object({
+    label: z.string().min(1, 'Metric label is required'),
+    value: z.string().min(1, 'Metric value is required'),
 })
 
-// Other project schema (with optional links)
-export const otherProjectSchema = z.object({
-    title: z.string().min(1, 'Project title is required'),
-    description: z.string().min(1, 'Project description is required'),
-    technologies: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
-    github: z.string().url('Invalid GitHub URL').optional(),
-    external: z.string().url('Invalid external URL').optional(),
+// Project links schema
+export const projectLinksSchema = z.object({
+    demo: z.string().url('Invalid demo URL').optional(),
+    repo: z.string().url('Invalid repository URL').optional(),
+    evidence: z.string().min(1, 'Evidence path is required').optional(),
 })
 
-// Projects schema
+// Main project schema
+export const projectSchema = z.object({
+    id: z.number().int().min(1, 'Project ID must be a positive integer'),
+    slug: z.string().min(1, 'Project slug is required'),
+    title: z.string().min(1, 'Project title is required'),
+    role: z.string().min(1, 'Project role is required'),
+    summary: z.string().min(1, 'Project summary is required'),
+    highlights: z.array(z.string().min(1, 'Highlight cannot be empty')).min(1, 'At least one highlight is required'),
+    tech: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
+    links: projectLinksSchema,
+    metrics: z.array(projectMetricSchema).optional(),
+    thumbnail: z.string().min(1, 'Thumbnail path is required'),
+    isFeatured: z.boolean().optional(),
+})
+
+
+// Projects schema 
 export const projectsSchema = z.object({
-    featured: z.array(featuredProjectSchema).min(1, 'At least one featured project is required'),
-    other: z.array(otherProjectSchema),
+    items: z.array(projectSchema).optional(),
 })
 
 // Contact section schema
@@ -100,8 +110,9 @@ export type SocialLinks = z.infer<typeof socialLinksSchema>
 export type NavigationItem = z.infer<typeof navigationItemSchema>
 export type About = z.infer<typeof aboutSchema>
 export type ExperienceItem = z.infer<typeof experienceItemSchema>
-export type FeaturedProject = z.infer<typeof featuredProjectSchema>
-export type OtherProject = z.infer<typeof otherProjectSchema>
+export type Project = z.infer<typeof projectSchema>
+export type ProjectMetric = z.infer<typeof projectMetricSchema>
+export type ProjectLinks = z.infer<typeof projectLinksSchema>
 export type Projects = z.infer<typeof projectsSchema>
 export type Contact = z.infer<typeof contactSchema>
 export type Footer = z.infer<typeof footerSchema>

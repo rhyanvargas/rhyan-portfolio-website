@@ -11,9 +11,10 @@ export const portfolioConfig: PortfolioConfig = {
 		phone: "Contact me for more information",
 		location: "Sacramento, CA",
 		tagline:
-			"🚀 From idea to MVP — I build high-impact web and AI applications with Next.js, React, AWS, and modern cloud stacks.",
+			"AI Engineer who loves bringing ideas to life using well-architected systems and tools.",
 		description:
 			"A Full Stack Software Engineer specializing in Next.js, React, and AWS. I excel at going from idea to MVP quickly, building secure and scalable applications that bridge enterprise reliability with innovative features in AI and XR.",
+		avatar: "/rhyan_vargas_portfolio_nextjs_frontend_engineer_propic_pastel.jpg"
 	},
 
 	// Social Links
@@ -36,18 +37,29 @@ export const portfolioConfig: PortfolioConfig = {
 	// About Section
 	about: {
 		title: "About Me",
-		content: `Hello! My name is Rhyan and I enjoy creating things that live on the internet. My interest in web development started back in 2018 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!
+		content: `Hey there! I’m Rhyan, a builder, musician, traveler and all-around fan of creating and appreciating all things creative. My journey into development started back in 2016 when I taught myself how to customize Wordpress themes. A few freelance websites later, I realized how much I enjoyed turning ideas into interactive experiences — and I’ve been hooked ever since.
 
-Fast-forward to today, and I've had the privilege of working at an advertising agency, a start-up, a huge corporation, and a student-led design studio. My main focus these days is building accessible, inclusive products and digital experiences at Upstatement for a variety of clients.
+Fast-forward to today, I’ve had the privilege of building across startups, agencies, and enterprise environments — leading projects that bridge AI, design, and web development. My current focus is crafting human-centered, AI-driven applications that blend frontend precision with intelligent systems — from GenAI-powered dashboards to immersive XR learning tools.
 
-Here are a few technologies I've been working with recently:`,
+I’m passionate about using technology to empower creativity and learning, especially through ethical, accessible, and impactful digital products.
+`,
 		technologies: [
-			"JavaScript (ES6+)",
 			"TypeScript",
-			"React",
-			"Node.js",
+			"AI SDK (Vercel)",
+			"Drizzle ORM",
+			"JavaScript (ES6+)",
+			"HTML/CSS",
 			"Next.js",
-			"Python",
+			"Tailwind CSS",
+			"PostgreSQL",
+			"AWS Amplify",
+			"AWS Bedrock",
+			"Git",
+			"GitHub",
+			"CI/CD",
+			"Agile/Scrum",
+			"Motion (Animation lib)"
+
 		],
 	},
 
@@ -88,63 +100,339 @@ Here are a few technologies I've been working with recently:`,
 		},
 	],
 
-	// Featured Projects
+	// Projects
 	projects: {
-		featured: [
+		items: [
 			{
-				title: "Spotify Profile",
-				description:
-					"A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.",
-				image: "/spotify-music-app-dashboard.jpg",
-				technologies: ["React", "Express", "Spotify API", "Styled Components"],
-				github: "https://github.com/rhyanvargas/spotify-profile",
-				external: "https://spotify-profile.rhyanvargas.dev",
+				id: 1,
+				slug: "shadcn-interactive-transcript",
+				title: "Interactive Video Transcript",
+				role: "AI",
+				summary: "Interactive video player with bidirectional transcript sync and semantic search powered by OpenAI embeddings. Navigate and highlight video content in real time for accessibility and fast retrieval.",
+				highlights: [
+					"OpenAI embeddings for semantic transcript search",
+					"shadcn/ui and Tailwind for accessible UI",
+					"Supabase vector store for fast retrieval"
+				],
+				tech: [
+					"React",
+					"TypeScript",
+					"shadcn/ui",
+					"TailwindCSS",
+					"MUX API",
+					"WCAG 2.1 AAA"
+				],
+				links: {
+					demo: "https://drive.google.com/file/d/1cNlgZtOMk6t_bK0dMjB6c2NJKi-GEQk4/view?usp=sharing",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Latency (p95)", value: "180ms" },
+					{ label: "First-response accuracy", value: "94%" },
+					{ label: "CSAT", value: "4.8/5" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_react_ui_interactive_transcript.png",
+				isFeatured: true
 			},
 			{
-				title: "Halcyon Theme",
-				description:
-					"A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.",
-				image: "/dark-code-editor.png",
-				technologies: ["VS Code", "Sublime Text", "Atom", "iTerm2"],
-				github: "https://github.com/rhyanvargas/halcyon-theme",
-				external:
-					"https://marketplace.visualstudio.com/items?itemName=rhyanvargas.halcyon-vscode",
+				id: 2,
+				slug: "8p3p-lms-nextjs",
+				title: "Full Stack LMS Platform",
+				role: "Frontend",
+				summary: "A modern, full-stack Learning Management System (LMS) built with Next.js 15, TypeScript, and AWS Amplify. Features include an App Router architecture, typed schema validation, course management, video content, and a11y-first UI components. Designed for scale, rapid iteration, and evidence-backed frontend engineering",
+				highlights: [
+					"Next.js 15 App Router architecture with nested layouts and server components",
+					"AWS Amplify integration for authentication, storage, and backend logic",
+					"MUX Player for scalable, secure video streaming in lessons",
+					"Radix UI and shadcn/ui for accessible, composable UI primitives",
+					"TypeScript + Zod for type safety and runtime validation",
+					"Responsive, themeable design with Tailwind CSS and dark mode support"
+				],
+				tech: [
+					"Next.js 15",
+					"TypeScript",
+					"AWS Amplify",
+					"MUX Player",
+					"Radix UI",
+					"shadcn/ui",
+					"TailwindCSS",
+					"Zod",
+					"React Hook Form",
+					"Lucide React",
+					"Sonner",
+					"Vaul"
+				],
+				links: {
+					demo: "https://drive.google.com/file/d/1K9q8Gg7ztcc7yxPBy4wI9ApmKj7Kvx0J/view?usp=drive_link",
+					// repo: "https://github.com/rhyanvargas/8p3p-lms-nextjs",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Users", value: "100+" },
+					{ label: "Courses Created", value: "20+" },
+					{ label: "Uptime", value: "99.9%" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_fullstack_lms_app.png",
+				isFeatured: true
 			},
 			{
-				title: "Build a Spotify Connected App",
-				description:
-					"Having struggled with understanding how the Spotify Web API works, I decided to create a comprehensive course that covers everything you need to know to get started with the Spotify Web API and build your own connected app.",
-				image: "/online-course-platform.jpg",
-				technologies: ["Node.js", "Express", "React", "Spotify API"],
-				github: "https://github.com/rhyanvargas/spotify-course",
-				external: "https://course.rhyanvargas.dev",
+				id: 3,
+				slug: "ai-utility-bill-analyzer",
+				title: "AI Utility Bill Analyzer",
+				role: "AI",
+				summary: "AI-powered assistant that analyzes electric bills to identify savings and offers personalized recommendations. Integrates chat UI and real-time cost optimization.",
+				highlights: [
+					"AI-powered utility bill analysis and cost optimization",
+					"Interactive chat assistant with PickAxe.co integration",
+					"Personalized savings recommendations and program enrollment",
+					"Mobile-responsive design with shadcn/ui components"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Tailwind CSS",
+					"shadcn/ui",
+					"PickAxe API",
+					"Vercel"
+				],
+				links: {
+					demo: "https://drive.google.com/file/d/1ta17rv68xulyc0m_YVqe5QqAOwqSzQ6Q/view?usp=drive_link",
+					repo: "https://github.com/rhyanvargas/ai-utility-bill-analyzer",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Bill Analysis", value: "AI-Powered" },
+					{ label: "Savings Tracking", value: "Real-time" },
+					{ label: "User Experience", value: "Mobile-first" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_ai_integration_chatbot_website_app.png",
+				isFeatured: true
 			},
-		],
-
-		// Other Notable Projects
-		other: [
 			{
-				title: "Integrating Algolia Search with WordPress Multisite",
-				description:
-					"Building a custom multisite compatible WordPress plugin to build global search with Algolia",
-				technologies: ["Algolia", "WordPress", "PHP"],
-				github: "https://github.com/rhyanvargas/wp-algolia",
+				id: 4,
+				slug: "upload-git-issues",
+				title: "Upload Git Issues",
+				role: "DevTools",
+				summary: "Zero-config CLI for bulk uploading CSV data to GitHub Issues. Designed for migrations and automating issue creation from CSV exports.",
+				highlights: [
+					"One-command CSV to GitHub Issues conversion with intelligent parsing",
+					"Interactive prompts for GitHub authentication and repo selection",
+					"Beautiful progress indicators with real-time status updates",
+					"Built-in security audits and compliance for enterprise use"
+				],
+				tech: [
+					"TypeScript",
+					"Node.js",
+					"GitHub API",
+					"CLI",
+					"CSV Parser",
+					"npm"
+				],
+				links: {
+					demo: "https://www.npmjs.com/package/upload-git-issues",
+					repo: "https://github.com/rhyanvargas/upload-git-issues",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "npm Package", value: "Published" },
+					{ label: "CSV Support", value: "Universal" },
+					{ label: "Setup Time", value: "2 minutes" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_tool_cli_github_bulk_issues_uploader.png",
+				isFeatured: true
 			},
 			{
-				title: "Google Keep Clone",
-				description:
-					"A simple Google Keep clone built with React and Firebase for learning purposes",
-				technologies: ["React", "Firebase", "CSS Grid"],
-				github: "https://github.com/rhyanvargas/google-keep-clone",
+				id: 5,
+				slug: "rhyglot-ai-translator",
+				title: "RhyGlot AI Translator",
+				role: "AI",
+				summary: "LLM-powered translation app with prompt controls, semantic reranking, and real-time evaluation dashboard for multilingual content.",
+				highlights: [
+					"Prompt orchestration with retries and semantic reranking",
+					"Streaming translation UI with real-time feedback",
+					"4.8/5 user CSAT and 25% faster translation latency"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"OpenAI",
+					"Supabase",
+					"Vercel"
+				],
+				links: {
+					demo: "https://drive.google.com/file/d/1ZK6jGG7LK1QcgrqC04SiFP9yoOtyAuBv/view?usp=drive_link",
+					repo: "https://github.com/rhyanvargas/rhyglot-ai-translator",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Requests", value: "5k+" },
+					{ label: "User CSAT", value: "4.8/5" },
+					{ label: "Latency (p95)", value: "320ms" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_ai_integration_text-translator_website_app.png",
+				isFeatured: false
 			},
 			{
-				title: "Airbnb Clone",
-				description:
-					"A full-stack Airbnb clone with user authentication, property listings, and booking functionality",
-				technologies: ["React", "Node.js", "MongoDB", "Express"],
-				github: "https://github.com/rhyanvargas/airbnb-clone",
+				id: 6,
+				slug: "pomoburn-app",
+				title: "Pomoburn Productivity App",
+				role: "Frontend",
+				summary: "Focus timer app combining Pomodoro technique with analytics and habit tracking, built using Next.js and modern state management.",
+				highlights: [
+					"Zustand and TanStack Query for state and data management",
+					"Detailed session analytics and progress tracking",
+					"Accessible, mobile-friendly UI"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Zustand",
+					"TanStack Query",
+					"TailwindCSS"
+				],
+				links: {
+					demo: "https://drive.google.com/file/d/1OwsartbUmD2ZvTKkENpMCIERgR3AMBF_/view?usp=drive_link",
+					repo: "https://github.com/rhyanvargas/pomoburn-app",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Sessions Tracked", value: "2k+" },
+					{ label: "Retention", value: "68%" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_pomoburn.png",
+				isFeatured: false
 			},
-		],
+			{
+				id: 7,
+				slug: "ai-generated-captions",
+				title: "AI Generated Captions",
+				role: "AI",
+				summary: "Next.js application that auto-generates video captions in TXT and WebVTT formats using AI transcription, supporting multi-language and planned translation.",
+				highlights: [
+					"Drag & drop video upload with smooth progress UI",
+					"OpenAI GPT-4 powered transcription and caption cleanup",
+					"Dual format output: plain text (.txt) and WebVTT (.vtt)",
+					"Planned multi-language translation to 50+ languages"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"OpenAI",
+					"AI SDK",
+					"shadcn/ui",
+					"TailwindCSS",
+					"Vitest",
+					"Zod"
+				],
+				links: {
+					demo: "https://drive.google.com/file/d/1nvJuqUYjQOLyJmydkipH_x5sb_ckMgrS/view?usp=drive_link",
+					repo: "https://github.com/rhyanvargas/ai-generated-captions",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Format Support", value: "2" },
+					{ label: "Planned Languages", value: "50+" },
+					{ label: "Processing Speed", value: "Fast" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_ai_captions_generator.png",
+				isFeatured: false
+			},
+			{
+				id: 8,
+				slug: "ai-portfolio-generator",
+				title: "AI Portfolio Generator",
+				role: "AI",
+				summary: "Automated portfolio builder that syncs and generates project case studies from GitHub metadata and evidence packs.",
+				highlights: [
+					"GitHub Action for auto-sync and PR creation",
+					"Kiro-style specs and evidence packs auto-generation",
+					"Configurable data model and full Next.js integration"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Supabase",
+					"GitHub Actions",
+					"Vercel"
+				],
+				links: {
+					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Projects Synced", value: "10+" },
+					{ label: "PRs Opened", value: "5+" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_ai_portfolio_generator.png",
+				isFeatured: false
+			},
+			{
+				id: 9,
+				slug: "fluix-ui",
+				title: "Fluix UI",
+				role: "Frontend",
+				summary: "AI-first component registry on shadcn/ui, with unique interaction patterns, transparency, and enterprise governance for advanced AI apps.",
+				highlights: [
+					"10+ unique AI-specific components (ConfidenceScore, ReasoningSteps, SourceAttribution)",
+					"Enterprise-ready with audit trails, cost tracking, and compliance features",
+					"Copy-paste friendly components with full TypeScript support",
+					"Fills ecosystem gaps missing from AI SDK UI and other libraries"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Tailwind CSS",
+					"shadcn/ui",
+					"React",
+					"WCAG 2.1"
+				],
+				links: {
+					// demo: "https://fluix-ui-demo-url",
+					repo: "https://github.com/rhyanvargas/fluix-ui",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Components", value: "10+" },
+					{ label: "Accessibility", value: "WCAG 2.1 AA" },
+					{ label: "Type Safety", value: "100%" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_ui_components_fluix.png",
+				isFeatured: false
+			},
+			{
+				id: 10,
+				slug: "techsaints-website",
+				title: "Tech Saints Website",
+				role: "Frontend",
+				summary: "Awareness page built with v0.app and Brevo integration, featuring automatic deployment sync with Vercel for seamless lead capture.",
+				highlights: [
+					"Built with v0.app for rapid prototyping and deployment",
+					"Automatic sync between v0.app and GitHub repository",
+					"Brevo email marketing integration for lead capture",
+					"Seamless Vercel deployment with continuous integration"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"v0.app",
+					"Brevo",
+					"Vercel",
+					"shadcn/ui"
+				],
+				links: {
+					// demo: "https://vercel.com/rhyanvargas1s-projects/v0-awareness-page-with-brevo",
+					repo: "https://github.com/rhyanvargas/techsaints-website",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Build Tool", value: "v0.app" },
+					{ label: "Deployment", value: "Auto-sync" },
+					{ label: "Integration", value: "Brevo" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_marketing_website_tech_saints_nextjs.png",
+				isFeatured: false
+			}
+		]
 	},
 
 	// Contact

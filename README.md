@@ -26,30 +26,34 @@ pnpm dev
 
 ## ✨ Features
 
-- **🎨 Modern Design** — Professional dark theme with animations
+- **🎨 Modern Design** — Professional dark theme with enhanced visual indicators
 - **📱 Fully Responsive** — Mobile-first design for all devices
-- **🎯 Type-Safe** — Full TypeScript with runtime validation
+- **🎯 Type-Safe** — Full TypeScript with Zod schema validation
 - **⚡ Performance** — Optimized with Next.js 15 and Vercel
-- **🚧 Coming Soon Page** — Animated development progress
-- **🔧 Configuration-Driven** — Single-file content management
+- **🎯 Live Portfolio Sections** — Hero, About, and Projects with improved tech display
+- **🔧 Configuration-Driven** — Enhanced project schema with metrics and evidence
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15 with App Router
-- **Language:** TypeScript 5
+- **Language:** TypeScript 5 + JavaScript (ES6+)
+- **Frontend:** React 18 + React Native
 - **Styling:** Tailwind CSS 4 + shadcn/ui
-- **Validation:** Zod schemas
-- **Deployment:** Vercel
+- **Database:** PostgreSQL + Prisma ORM
+- **Cloud:** AWS + Vercel deployment
+- **Tools:** Git, GitHub, Jira, Confluence, Agile workflows
+- **Validation:** Zod schemas with enhanced project metadata
 
 ## 🚧 Current Status
 
-**Live:** Coming soon page with animated development progress  
-**Ready:** Full portfolio sections implemented and ready to activate
+**Live:** Hero, About, and Projects sections with enhanced UI  
+**In Development:** Experience, Contact, and Navigation sections  
+**Recent:** Improved tech stack visual presentation with arrow indicators
 
 ## 📖 Documentation
 
 - [Setup Guide](docs/setup.md) - Detailed installation and configuration
-- [Configuration Reference](docs/configuration.md) - Complete config options
+- [Configuration Reference](docs/configuration.md) - Portfolio config and new project schema
 - [Architecture Overview](docs/architecture.md) - System design and component structure
 - [Contributing Guidelines](CONTRIBUTING.md) - How to contribute
 
