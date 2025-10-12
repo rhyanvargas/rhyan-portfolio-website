@@ -17,7 +17,7 @@ export function ProjectsSection() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            <span className="text-accent font-mono text-lg">03.</span> Some Things I've Built
+            <span className="text-accent font-mono text-lg">03.</span> Projects
           </h2>
           <div className="w-20 h-px bg-accent"></div>
         </div>
@@ -108,7 +108,7 @@ export function ProjectsSection() {
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <div className="flex flex-wrap items-center gap-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex flex-wrap items-center gap-3 text-sm md:opacity-0 md:group-hover:opacity-100 transition-opacity ">
                       {project.links.repo ? (
                         <a
                           href={project.links.repo}
