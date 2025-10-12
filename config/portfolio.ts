@@ -260,7 +260,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Vercel"
 				],
 				links: {
-					demo: "https://rhyglot-demo-url",
+					demo: "https://drive.google.com/file/d/1ZK6jGG7LK1QcgrqC04SiFP9yoOtyAuBv/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/rhyglot-ai-translator",
 					evidence: "docs/evidence-pack.md"
 				},
@@ -291,7 +291,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Vercel"
 				],
 				links: {
-					demo: "https://google.com",
+
 					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
 					evidence: "docs/evidence-pack.md"
 				},
@@ -321,7 +321,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"TailwindCSS"
 				],
 				links: {
-					demo: "https://pomoburn.com",
+					demo: "https://drive.google.com/file/d/1OwsartbUmD2ZvTKkENpMCIERgR3AMBF_/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/pomoburn-app",
 					evidence: "docs/evidence-pack.md"
 				},

@@ -108,7 +108,7 @@ export function ProjectsSection() {
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <div className="flex flex-wrap gap-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex flex-wrap items-center gap-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                       {project.links.repo ? (
                         <a
                           href={project.links.repo}
@@ -126,7 +126,7 @@ export function ProjectsSection() {
                         🚀 Coming Soon
 
                       </Badge>}
-                      {project.links.demo && (
+                      {project.links.demo ? (
                         <a
                           href={project.links.demo}
                           target="_blank"
@@ -135,7 +135,14 @@ export function ProjectsSection() {
                         >
                           Demo
                         </a>
-                      )}
+                      ) : <Badge
+                        variant="outline"
+                        className="inline-flex items-center justify-center py-1 px-2 rounded-full  backdrop-blur-sm shadow-xs shadow-accent/50"
+                      >
+
+                        🚀 Coming Soon
+
+                      </Badge>}
                     </div>
                   </div>
 
