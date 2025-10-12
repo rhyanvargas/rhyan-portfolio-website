@@ -274,36 +274,6 @@ I’m passionate about using technology to empower creativity and learning, espe
 			},
 			{
 				id: 6,
-				slug: "ai-portfolio-generator",
-				title: "AI Portfolio Generator",
-				role: "AI",
-				summary: "Automated portfolio builder that syncs and generates project case studies from GitHub metadata and evidence packs.",
-				highlights: [
-					"GitHub Action for auto-sync and PR creation",
-					"Kiro-style specs and evidence packs auto-generation",
-					"Configurable data model and full Next.js integration"
-				],
-				tech: [
-					"Next.js",
-					"TypeScript",
-					"Supabase",
-					"GitHub Actions",
-					"Vercel"
-				],
-				links: {
-
-					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
-					evidence: "docs/evidence-pack.md"
-				},
-				metrics: [
-					{ label: "Projects Synced", value: "10+" },
-					{ label: "PRs Opened", value: "5+" }
-				],
-				thumbnail: "/rhyan_vargas_portfolio_nextjs_ai_portfolio_generator.png",
-				isFeatured: false
-			},
-			{
-				id: 7,
 				slug: "pomoburn-app",
 				title: "Pomoburn Productivity App",
 				role: "Frontend",
@@ -333,7 +303,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 				isFeatured: false
 			},
 			{
-				id: 8,
+				id: 7,
 				slug: "ai-generated-captions",
 				title: "AI Generated Captions",
 				role: "AI",
@@ -368,6 +338,35 @@ I’m passionate about using technology to empower creativity and learning, espe
 				isFeatured: false
 			},
 			{
+				id: 8,
+				slug: "ai-portfolio-generator",
+				title: "AI Portfolio Generator",
+				role: "AI",
+				summary: "Automated portfolio builder that syncs and generates project case studies from GitHub metadata and evidence packs.",
+				highlights: [
+					"GitHub Action for auto-sync and PR creation",
+					"Kiro-style specs and evidence packs auto-generation",
+					"Configurable data model and full Next.js integration"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Supabase",
+					"GitHub Actions",
+					"Vercel"
+				],
+				links: {
+					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Projects Synced", value: "10+" },
+					{ label: "PRs Opened", value: "5+" }
+				],
+				thumbnail: "/rhyan_vargas_portfolio_nextjs_ai_portfolio_generator.png",
+				isFeatured: false
+			},
+			{
 				id: 9,
 				slug: "fluix-ui",
 				title: "Fluix UI",
@@ -388,7 +387,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"WCAG 2.1"
 				],
 				links: {
-					demo: "https://fluix-ui-demo-url",
+					// demo: "https://fluix-ui-demo-url",
 					repo: "https://github.com/rhyanvargas/fluix-ui",
 					evidence: "docs/evidence-pack.md"
 				},
@@ -403,7 +402,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 			{
 				id: 10,
 				slug: "techsaints-website",
-				title: "TechSaints Website",
+				title: "Tech Saints Website",
 				role: "Frontend",
 				summary: "Awareness page built with v0.app and Brevo integration, featuring automatic deployment sync with Vercel for seamless lead capture.",
 				highlights: [
@@ -421,7 +420,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"shadcn/ui"
 				],
 				links: {
-					demo: "https://vercel.com/rhyanvargas1s-projects/v0-awareness-page-with-brevo",
+					// demo: "https://vercel.com/rhyanvargas1s-projects/v0-awareness-page-with-brevo",
 					repo: "https://github.com/rhyanvargas/techsaints-website",
 					evidence: "docs/evidence-pack.md"
 				},
