@@ -41,7 +41,7 @@ Brief, clear description of what the project does and its value proposition.
 - Version
 - License
 - Main technology
-- Live demo link
+- Demo link
 - Coverage (if applicable)
 
 ### 3. Quick Start Section

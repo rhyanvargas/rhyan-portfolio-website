@@ -79,7 +79,7 @@ projects: {
     highlights: string[];  // Key achievements/features
     tech: string[];        // Technologies used
     links: {
-      demo?: string;       // Live demo URL
+      demo?: string;       // Demo URL
       repo?: string;       // Repository URL
       evidence?: string;   // Evidence/case study path
     };
@@ -102,7 +102,7 @@ projects: {
     image: string;         // Image path (in /public)
     technologies: string[]; // Tech stack used
     github: string;        // GitHub repo URL
-    external: string;      // Live demo URL
+    external: string;      // Demo URL
   }>;
   other: Array<{
     title: string;         // Project name

@@ -31,7 +31,7 @@ export function ProjectsSection() {
                 className={`grid lg:grid-cols-12 gap-8 items-center ${index % 2 === 1 ? "lg:text-right" : ""}`}
               >
                 <div className={`lg:col-span-7 ${index % 2 === 1 ? "lg:col-start-6" : ""}`}>
-                  <div className="relative group">
+                  <div className="relative">
                     <Image
                       src={project.thumbnail || "/placeholder.svg"}
                       alt={project.title}
@@ -40,7 +40,7 @@ export function ProjectsSection() {
                       className="w-full h-64 object-cover rounded-lg"
                       priority={index < 2}
                     />
-                    <div className="absolute inset-0 bg-accent/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
                   </div>
                 </div>
 
@@ -55,12 +55,12 @@ export function ProjectsSection() {
 
                     <div className={`flex flex-wrap gap-2 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                       {project.tech.map((tech) => (
-                        <Badge variant="skill" className="">{tech}</Badge>
+                        <Badge key={tech} variant="skill" className="">{tech}</Badge>
                       ))}
                     </div>
 
-                    <div className={`flex flex-wrap gap-4 text-sm ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
-                      {project.links.repo && (
+                    <div className={` items-center flex flex-wrap gap-4 text-sm ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                      {project.links.repo ? (
                         <a
                           href={project.links.repo}
                           target="_blank"
@@ -69,7 +69,14 @@ export function ProjectsSection() {
                         >
                           Code
                         </a>
-                      )}
+                      ) : <Badge
+                        variant="outline"
+                        className="inline-flex items-center justify-center py-1 px-2 rounded-full  backdrop-blur-sm shadow-xs shadow-accent/50"
+                      >
+
+                        🚀 Coming Soon
+
+                      </Badge>}
                       {project.links.demo && (
                         <a
                           href={project.links.demo}
@@ -77,7 +84,7 @@ export function ProjectsSection() {
                           rel="noopener noreferrer"
                           className="text-muted-foreground hover:text-accent underline transition-colors"
                         >
-                          Live Demo
+                          Demo
                         </a>
                       )}
                     </div>
@@ -93,7 +100,7 @@ export function ProjectsSection() {
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Other Noteworthy Projects</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherProjects.map((project) => (
+              {otherProjects.map((project, index) => (
                 <Card
                   key={project.slug}
                   className="p-6 bg-card border-border hover:border-accent/50 transition-colors duration-300 group"
@@ -105,7 +112,7 @@ export function ProjectsSection() {
                       </svg>
                     </div>
                     <div className="flex flex-wrap gap-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                      {project.links.repo && (
+                      {project.links.repo ? (
                         <a
                           href={project.links.repo}
                           target="_blank"
@@ -114,7 +121,14 @@ export function ProjectsSection() {
                         >
                           Code
                         </a>
-                      )}
+                      ) : <Badge
+                        variant="outline"
+                        className="inline-flex items-center justify-center py-1 px-2 rounded-full  backdrop-blur-sm shadow-xs shadow-accent/50"
+                      >
+
+                        🚀 Coming Soon
+
+                      </Badge>}
                       {project.links.demo && (
                         <a
                           href={project.links.demo}
@@ -122,19 +136,28 @@ export function ProjectsSection() {
                           rel="noopener noreferrer"
                           className="text-muted-foreground hover:text-accent underline transition-colors"
                         >
-                          Live Demo
+                          Demo
                         </a>
                       )}
                     </div>
                   </div>
 
+                  <Image
+                    src={project.thumbnail || "/placeholder.svg"}
+                    alt={project.title}
+                    className="rounded-l h-48 w-full object-cover "
+                    width={600}
+                    height={350}
+                    priority={index < 2}
+
+                  />
                   <h4 className="text-lg font-semibold text-foreground mb-2">{project.title}</h4>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{project.summary}</p>
 
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span key={tech} className="text-xs font-mono text-muted-foreground">
-                        {tech}
+                        <Badge variant="skill">{tech}</Badge>
                       </span>
                     ))}
                   </div>
