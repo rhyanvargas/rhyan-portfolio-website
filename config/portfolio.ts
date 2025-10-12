@@ -108,16 +108,22 @@ I’m passionate about using technology to empower creativity and learning, espe
 				slug: "shadcn-interactive-transcript",
 				title: "Interactive Video Transcript",
 				role: "AI",
-				summary: "Interactive video player that provides bidirectional video-transcript synchronization. Navigate video content by clicking transcript segments and see real-time highlighting as the video plays.",
+				summary: "Interactive video player with bidirectional transcript sync and semantic search powered by OpenAI embeddings. Navigate and highlight video content in real time for accessibility and fast retrieval.",
 				highlights: [
 					"OpenAI embeddings for semantic transcript search",
 					"shadcn/ui and Tailwind for accessible UI",
 					"Supabase vector store for fast retrieval"
 				],
-				tech: ["React", "TypeScript", "shadcn/ui", "TailwindCSS", "MUX API", "WCAG 2.1 AAA "],
+				tech: [
+					"React",
+					"TypeScript",
+					"shadcn/ui",
+					"TailwindCSS",
+					"MUX API",
+					"WCAG 2.1 AAA"
+				],
 				links: {
 					demo: "https://drive.google.com/file/d/1cNlgZtOMk6t_bK0dMjB6c2NJKi-GEQk4/view?usp=sharing",
-
 					evidence: "docs/evidence-pack.md"
 				},
 				metrics: [
@@ -126,9 +132,8 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "CSAT", value: "4.8/5" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_nextjs_react_ui_interactive_transcript.png",
-				isFeatured: true,
+				isFeatured: true
 			},
-
 			{
 				id: 2,
 				slug: "8p3p-lms-nextjs",
@@ -143,7 +148,8 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"TypeScript + Zod for type safety and runtime validation",
 					"Responsive, themeable design with Tailwind CSS and dark mode support"
 				],
-				tech: ["Next.js 15",
+				tech: [
+					"Next.js 15",
 					"TypeScript",
 					"AWS Amplify",
 					"MUX Player",
@@ -154,7 +160,8 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"React Hook Form",
 					"Lucide React",
 					"Sonner",
-					"Vaul"],
+					"Vaul"
+				],
 				links: {
 					demo: "https://drive.google.com/file/d/1K9q8Gg7ztcc7yxPBy4wI9ApmKj7Kvx0J/view?usp=drive_link",
 					// repo: "https://github.com/rhyanvargas/8p3p-lms-nextjs",
@@ -166,21 +173,28 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Uptime", value: "99.9%" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_nextjs_fullstack_lms_app.png",
-				isFeatured: true,
+				isFeatured: true
 			},
 			{
 				id: 3,
 				slug: "ai-utility-bill-analyzer",
 				title: "AI Utility Bill Analyzer",
 				role: "AI",
-				summary: "M.I.A. - Your utility bill AI assistant that analyzes electric bills to identify savings opportunities and provides personalized recommendations.",
+				summary: "AI-powered assistant that analyzes electric bills to identify savings and offers personalized recommendations. Integrates chat UI and real-time cost optimization.",
 				highlights: [
 					"AI-powered utility bill analysis and cost optimization",
 					"Interactive chat assistant with PickAxe.co integration",
 					"Personalized savings recommendations and program enrollment",
 					"Mobile-responsive design with shadcn/ui components"
 				],
-				tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "PickAxe.co", "Vercel"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Tailwind CSS",
+					"shadcn/ui",
+					"PickAxe API",
+					"Vercel"
+				],
 				links: {
 					demo: "https://drive.google.com/file/d/1ta17rv68xulyc0m_YVqe5QqAOwqSzQ6Q/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/ai-utility-bill-analyzer",
@@ -192,21 +206,28 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "User Experience", value: "Mobile-first" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_ai_integration_chatbot_website_app.png",
-				isFeatured: true,
+				isFeatured: true
 			},
 			{
 				id: 4,
 				slug: "upload-git-issues",
 				title: "Upload Git Issues",
 				role: "DevTools",
-				summary: "Zero-config CLI tool to bulk upload CSV data to GitHub Issues. Perfect for platform migrations and creating GitHub Issues from CSV exports.",
+				summary: "Zero-config CLI for bulk uploading CSV data to GitHub Issues. Designed for migrations and automating issue creation from CSV exports.",
 				highlights: [
 					"One-command CSV to GitHub Issues conversion with intelligent parsing",
 					"Interactive prompts for GitHub authentication and repo selection",
 					"Beautiful progress indicators with real-time status updates",
 					"Built-in security audits and compliance for enterprise use"
 				],
-				tech: ["TypeScript", "Node.js", "GitHub API", "CLI", "CSV Parser", "npm"],
+				tech: [
+					"TypeScript",
+					"Node.js",
+					"GitHub API",
+					"CLI",
+					"CSV Parser",
+					"npm"
+				],
 				links: {
 					demo: "https://www.npmjs.com/package/upload-git-issues",
 					repo: "https://github.com/rhyanvargas/upload-git-issues",
@@ -218,20 +239,26 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Setup Time", value: "2 minutes" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_tool_cli_github_bulk_issues_uploader.png",
-				isFeatured: true,
+				isFeatured: true
 			},
 			{
 				id: 5,
 				slug: "rhyglot-ai-translator",
 				title: "RhyGlot AI Translator",
 				role: "AI",
-				summary: "LLM-powered translation app with prompt controls, semantic reranking, and evaluation dashboard for multilingual content.",
+				summary: "LLM-powered translation app with prompt controls, semantic reranking, and real-time evaluation dashboard for multilingual content.",
 				highlights: [
 					"Prompt orchestration with retries and semantic reranking",
 					"Streaming translation UI with real-time feedback",
 					"4.8/5 user CSAT and 25% faster translation latency"
 				],
-				tech: ["Next.js", "TypeScript", "OpenAI", "Supabase", "Vercel"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"OpenAI",
+					"Supabase",
+					"Vercel"
+				],
 				links: {
 					demo: "https://rhyglot-demo-url",
 					repo: "https://github.com/rhyanvargas/rhyglot-ai-translator",
@@ -243,7 +270,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Latency (p95)", value: "320ms" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_ai_integration_text-translator_website_app.png",
-				isFeatured: false,
+				isFeatured: false
 			},
 			{
 				id: 6,
@@ -256,7 +283,13 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Kiro-style specs and evidence packs auto-generation",
 					"Configurable data model and full Next.js integration"
 				],
-				tech: ["Next.js", "TypeScript", "Supabase", "GitHub Actions", "Vercel"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Supabase",
+					"GitHub Actions",
+					"Vercel"
+				],
 				links: {
 					demo: "https://google.com",
 					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
@@ -267,21 +300,26 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "PRs Opened", value: "5+" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_nextjs_ai_portfolio_generator.png",
-				isFeatured: false,
+				isFeatured: false
 			},
-
 			{
 				id: 7,
 				slug: "pomoburn-app",
 				title: "Pomoburn Productivity App",
 				role: "Frontend",
-				summary: "Focus timer app combining Pomodoro technique with analytics and habit tracking, built with Next.js and modern state management.",
+				summary: "Focus timer app combining Pomodoro technique with analytics and habit tracking, built using Next.js and modern state management.",
 				highlights: [
 					"Zustand and TanStack Query for state and data management",
 					"Detailed session analytics and progress tracking",
 					"Accessible, mobile-friendly UI"
 				],
-				tech: ["Next.js", "TypeScript", "Zustand", "TanStack Query", "TailwindCSS"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Zustand",
+					"TanStack Query",
+					"TailwindCSS"
+				],
 				links: {
 					demo: "https://pomoburn.com",
 					repo: "https://github.com/rhyanvargas/pomoburn-app",
@@ -292,21 +330,30 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Retention", value: "68%" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_nextjs_pomoburn.png",
-				isFeatured: false,
+				isFeatured: false
 			},
 			{
 				id: 8,
 				slug: "ai-generated-captions",
 				title: "AI Generated Captions",
 				role: "AI",
-				summary: "Next.js application that automatically generates video captions in TXT and WebVTT formats using AI transcription with multi-language support.",
+				summary: "Next.js application that auto-generates video captions in TXT and WebVTT formats using AI transcription, supporting multi-language and planned translation.",
 				highlights: [
 					"Drag & drop video upload with smooth progress UI",
 					"OpenAI GPT-4 powered transcription and caption cleanup",
 					"Dual format output: plain text (.txt) and WebVTT (.vtt)",
 					"Planned multi-language translation to 50+ languages"
 				],
-				tech: ["Next.js", "TypeScript", "OpenAI", "AI SDK", "shadcn/ui", "TailwindCSS", "Vitest", "Zod"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"OpenAI",
+					"AI SDK",
+					"shadcn/ui",
+					"TailwindCSS",
+					"Vitest",
+					"Zod"
+				],
 				links: {
 					demo: "https://drive.google.com/file/d/1nvJuqUYjQOLyJmydkipH_x5sb_ckMgrS/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/ai-generated-captions",
@@ -318,22 +365,28 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Processing Speed", value: "Fast" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_ai_captions_generator.png",
-				isFeatured: false,
+				isFeatured: false
 			},
-
 			{
 				id: 9,
 				slug: "fluix-ui",
 				title: "Fluix UI",
 				role: "Frontend",
-				summary: "Advanced AI-first component registry built on shadcn/ui, providing unique AI interaction patterns, transparency features, and enterprise governance components.",
+				summary: "AI-first component registry on shadcn/ui, with unique interaction patterns, transparency, and enterprise governance for advanced AI apps.",
 				highlights: [
 					"10+ unique AI-specific components (ConfidenceScore, ReasoningSteps, SourceAttribution)",
 					"Enterprise-ready with audit trails, cost tracking, and compliance features",
 					"Copy-paste friendly components with full TypeScript support",
 					"Fills ecosystem gaps missing from AI SDK UI and other libraries"
 				],
-				tech: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "React", "WCAG 2.1"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Tailwind CSS",
+					"shadcn/ui",
+					"React",
+					"WCAG 2.1"
+				],
 				links: {
 					demo: "https://fluix-ui-demo-url",
 					repo: "https://github.com/rhyanvargas/fluix-ui",
@@ -345,21 +398,28 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Type Safety", value: "100%" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_ui_components_fluix.png",
-				isFeatured: false,
+				isFeatured: false
 			},
 			{
 				id: 10,
 				slug: "techsaints-website",
 				title: "TechSaints Website",
 				role: "Frontend",
-				summary: "Awareness page with Brevo integration built using v0.app. Automatically synced deployment pipeline with Vercel integration.",
+				summary: "Awareness page built with v0.app and Brevo integration, featuring automatic deployment sync with Vercel for seamless lead capture.",
 				highlights: [
 					"Built with v0.app for rapid prototyping and deployment",
 					"Automatic sync between v0.app and GitHub repository",
 					"Brevo email marketing integration for lead capture",
 					"Seamless Vercel deployment with continuous integration"
 				],
-				tech: ["Next.js", "TypeScript", "v0.app", "Brevo", "Vercel", "shadcn/ui"],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"v0.app",
+					"Brevo",
+					"Vercel",
+					"shadcn/ui"
+				],
 				links: {
 					demo: "https://vercel.com/rhyanvargas1s-projects/v0-awareness-page-with-brevo",
 					repo: "https://github.com/rhyanvargas/techsaints-website",
@@ -371,10 +431,9 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Integration", value: "Brevo" }
 				],
 				thumbnail: "/rhyan_vargas_portfolio_nextjs_marketing_website_tech_saints_nextjs.png",
-				isFeatured: false,
+				isFeatured: false
 			}
-		],
-
+		]
 	},
 
 	// Contact
