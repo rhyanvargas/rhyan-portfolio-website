@@ -45,21 +45,18 @@ export function ProjectsSection() {
                 </div>
 
                 <div className={`lg:col-span-5 ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-                  <div className="space-y-4">
+                  <div className="flex flex-col space-y-4">
                     <p className="text-accent font-mono text-sm">Featured Project</p>
                     <h3 className="text-2xl font-bold text-foreground">{project.title}</h3>
-
                     <Card className="p-6 bg-card border-border">
                       <p className="text-muted-foreground leading-relaxed">{project.summary}</p>
                     </Card>
-
-                    <div className={`flex flex-wrap gap-2 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                    <div className={`flex flex-wrap gap-2 mb-8 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                       {project.tech.map((tech) => (
                         <Badge key={tech} variant="skill" className="">{tech}</Badge>
                       ))}
                     </div>
-
-                    <div className={` items-center flex flex-wrap gap-4 text-sm ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
+                    <div className={`items-center flex flex-wrap gap-4 text-sm ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                       {project.links.repo ? (
                         <a
                           href={project.links.repo}
