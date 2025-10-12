@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { getPortfolioConfig } from "@/lib/config"
 import Image from "next/image"
+import { Badge } from "./ui/badge"
 
 export function AboutSection() {
   const config = getPortfolioConfig()
@@ -28,8 +29,7 @@ export function AboutSection() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {config.about.technologies.map((skill) => (
                   <div key={skill} className="flex items-center space-x-2">
-                    <span className="text-accent">▹</span>
-                    <span className="text-sm font-mono text-muted-foreground">{skill}</span>
+                    <Badge variant="skill">{skill}</Badge>
                   </div>
                 ))}
               </div>
