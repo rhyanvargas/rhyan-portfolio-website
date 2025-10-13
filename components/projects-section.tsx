@@ -13,7 +13,7 @@ export function ProjectsSection() {
   const otherProjects = config.projects.items ? getOtherProjects(config.projects.items) : []
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="work" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -24,7 +24,7 @@ export function ProjectsSection() {
 
         {/* Featured Projects */}
         {featuredProjects.length > 0 && (
-          <div className="space-y-20 mb-20">
+          <div className="space-y-20 mb-20  ">
             {featuredProjects.map((project, index) => (
               <div
                 key={project.slug}
@@ -53,7 +53,7 @@ export function ProjectsSection() {
                     </Card>
                     <div className={`flex flex-wrap gap-2 mb-8 ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
                       {project.tech.map((tech) => (
-                        <Badge key={tech} variant="skill" className="">{tech}</Badge>
+                        <Badge key={tech} variant="outline" className="">{tech}</Badge>
                       ))}
                     </div>
                     <div className={`items-center flex flex-wrap gap-4 text-sm ${index % 2 === 1 ? "lg:justify-end" : ""}`}>
@@ -67,8 +67,8 @@ export function ProjectsSection() {
                           Code
                         </a>
                       ) : <Badge
-                        variant="outline"
-                        className="inline-flex items-center justify-center py-1 px-2 rounded-full  backdrop-blur-sm shadow-xs shadow-accent/50"
+                        variant="shadow"
+                      // className="inline-flex items-center justify-center py-1 px-2 rounded-full  backdrop-blur-sm shadow-xs shadow-accent/50"
                       >
 
                         🚀 Coming Soon
@@ -161,7 +161,7 @@ export function ProjectsSection() {
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span key={tech} className="text-xs font-mono text-muted-foreground">
-                        <Badge variant="skill">{tech}</Badge>
+                        <Badge variant="outline">{tech}</Badge>
                       </span>
                     ))}
                   </div>

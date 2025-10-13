@@ -10,6 +10,7 @@ export const personalInfoSchema = z.object({
     tagline: z.string().min(1, 'Tagline is required'),
     description: z.string().min(1, 'Description is required'),
     avatar: z.string().min(1, 'Avatar is required'),
+    logo: z.string().min(1, 'Logo path is required').optional(),
 })
 
 // Social links schema

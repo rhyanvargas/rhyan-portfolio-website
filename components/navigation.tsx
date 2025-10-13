@@ -5,16 +5,20 @@ import { Button } from "@/components/ui/button"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import { getPortfolioConfig } from "@/lib/config"
+import Image from "next/image"
+
+import { useActiveSection } from "@/hooks/useActiveSection"
+import { portfolioConfig } from "@/config/portfolio"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const config = getPortfolioConfig()
+  const sectionIds = portfolioConfig.navigation.map(item => item.href.replace('#', ''))
+  const activeID = useActiveSection(sectionIds)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
@@ -24,11 +28,22 @@ export function Navigation() {
     setIsOpen(false)
   }
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="font-mono text-lg font-semibold text-accent">{"<dev />"}</div>
+          <div className="font-mono text-lg font-semibold text-accent">
+            <Image
+              src={config.personal.logo || "/placeholder-logo.svg"}
+              alt="Logo"
+              width={32}
+              height={32}
+            />
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -36,7 +51,7 @@ export function Navigation() {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-accent transition-colors duration-200 font-mono text-sm"
+                className={`transition-colors duration-200 font-mono text-sm ${activeID === item.href.replace('#', '') ? 'text-accent' : 'text-muted-foreground hover:text-accent'}`}
               >
                 {item.name}
               </button>
@@ -46,7 +61,7 @@ export function Navigation() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="text-muted-foreground hover:text-accent"
+                className=""
               >
                 {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
@@ -60,7 +75,7 @@ export function Navigation() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="text-muted-foreground hover:text-accent"
+                className=""
               >
                 {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
@@ -69,7 +84,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-muted-foreground hover:text-accent"
+              className=""
             >
               {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </Button>

@@ -14,7 +14,8 @@ export const portfolioConfig: PortfolioConfig = {
 			"AI Engineer who loves bringing ideas to life using well-architected systems and tools.",
 		description:
 			"A Full Stack Software Engineer specializing in Next.js, React, and AWS. I excel at going from idea to MVP quickly, building secure and scalable applications that bridge enterprise reliability with innovative features in AI and XR.",
-		avatar: "/rhyan-vargas-portfolio-nextjs-frontend-engineer-propic-pastel.jpg"
+		avatar: "/rhyan-vargas-portfolio-nextjs-frontend-engineer-propic-pastel.jpg",
+		logo: "/favicon.svg"
 	},
 
 	// Social Links
@@ -30,7 +31,7 @@ export const portfolioConfig: PortfolioConfig = {
 	navigation: [
 		{ name: "About", href: "#about" },
 		{ name: "Experience", href: "#experience" },
-		{ name: "Work", href: "#projects" },
+		{ name: "Work", href: "#work" },
 		{ name: "Contact", href: "#contact" },
 	],
 
@@ -164,7 +165,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1K9q8Gg7ztcc7yxPBy4wI9ApmKj7Kvx0J/view?usp=drive_link",
-					// repo: "https://github.com/rhyanvargas/8p3p-lms-nextjs",
+					repo: "https://github.com/rhyanvargas/8p3p-lms-nextjs",
 					evidence: "docs/evidence-pack.md"
 				},
 				metrics: [
@@ -387,7 +388,6 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"WCAG 2.1"
 				],
 				links: {
-					// demo: "https://fluix-ui-demo-url",
 					repo: "https://github.com/rhyanvargas/fluix-ui",
 					evidence: "docs/evidence-pack.md"
 				},
@@ -431,6 +431,35 @@ I’m passionate about using technology to empower creativity and learning, espe
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-marketing-website-tech-saints-nextjs.png",
 				isFeatured: false
+			},
+			{
+				id: 11,
+				"slug": "anana-landing",
+				"title": "Anana Landing Page",
+				"role": "Frontend",
+				"summary": "Designed and built the landing page for Anana, focusing on modern UI/UX, accessibility, and responsive layout using Next.js and TypeScript.",
+				"highlights": [
+					"Implemented accessible, mobile-first layout with Next.js App Router",
+					"Custom interactive sections and call-to-action for user onboarding",
+					"Optimized for fast load times, SEO, and maintainable code structure"
+				],
+				"tech": [
+					"Next.js",
+					"TypeScript",
+					"React",
+					"TailwindCSS"
+				],
+				"links": {
+					"repo": "https://github.com/acostahf/anana",
+					"demo": "https://cookwithanana.com",
+					"evidence": "docs/evidence-pack.md"
+				},
+				"metrics": [
+					{ "label": "Lighthouse a11y score", "value": "98+" },
+					{ "label": "TTI (demo)", "value": "<1s" }
+				],
+				"thumbnail": "/rhyan-vargas-portfolio-nexjts-anana-landing-page-website.png",
+				"isFeatured": true
 			}
 		]
 	},
