@@ -14,7 +14,7 @@ export const portfolioConfig: PortfolioConfig = {
 			"AI Engineer who loves bringing ideas to life using well-architected systems and tools.",
 		description:
 			"A Full Stack Software Engineer specializing in Next.js, React, and AWS. I excel at going from idea to MVP quickly, building secure and scalable applications that bridge enterprise reliability with innovative features in AI and XR.",
-		avatar: "/rhyan_vargas_portfolio_nextjs_frontend_engineer_propic_pastel.jpg"
+		avatar: "/rhyan-vargas-portfolio-nextjs-frontend-engineer-propic-pastel.jpg"
 	},
 
 	// Social Links
@@ -131,7 +131,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "First-response accuracy", value: "94%" },
 					{ label: "CSAT", value: "4.8/5" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_nextjs_react_ui_interactive_transcript.png",
+				thumbnail: "/rhyan-vargas-portfolio-nextjs-react-ui-interactive-transcript.png",
 				isFeatured: true
 			},
 			{
@@ -172,7 +172,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Courses Created", value: "20+" },
 					{ label: "Uptime", value: "99.9%" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_nextjs_fullstack_lms_app.png",
+				thumbnail: "/rhyan-vargas-portfolio-nextjs-fullstack-lms-app.png",
 				isFeatured: true
 			},
 			{
@@ -205,7 +205,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Savings Tracking", value: "Real-time" },
 					{ label: "User Experience", value: "Mobile-first" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_ai_integration_chatbot_website_app.png",
+				thumbnail: "/rhyan-vargas-portfolio-ai-integration-chatbot-website-app.png",
 				isFeatured: true
 			},
 			{
@@ -238,7 +238,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "CSV Support", value: "Universal" },
 					{ label: "Setup Time", value: "2 minutes" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_tool_cli_github_bulk_issues_uploader.png",
+				thumbnail: "/rhyan-vargas-portfolio-tool-cli-github-bulk-issues-uploader.png",
 				isFeatured: true
 			},
 			{
@@ -269,7 +269,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "User CSAT", value: "4.8/5" },
 					{ label: "Latency (p95)", value: "320ms" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_ai_integration_text-translator_website_app.png",
+				thumbnail: "/rhyan-vargas-portfolio-ai-integration-text-translator-website-app.png",
 				isFeatured: false
 			},
 			{
@@ -299,7 +299,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Sessions Tracked", value: "2k+" },
 					{ label: "Retention", value: "68%" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_nextjs_pomoburn.png",
+				thumbnail: "/rhyan-vargas-portfolio-nextjs-pomoburn.png",
 				isFeatured: false
 			},
 			{
@@ -334,7 +334,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Planned Languages", value: "50+" },
 					{ label: "Processing Speed", value: "Fast" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_ai_captions_generator.png",
+				thumbnail: "/rhyan-vargas-portfolio-ai-captions-generator.png",
 				isFeatured: false
 			},
 			{
@@ -363,7 +363,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Projects Synced", value: "10+" },
 					{ label: "PRs Opened", value: "5+" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_nextjs_ai_portfolio_generator.png",
+				thumbnail: "/rhyan-vargas-portfolio-nextjs-ai-portfolio-generator.png",
 				isFeatured: false
 			},
 			{
@@ -396,7 +396,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Accessibility", value: "WCAG 2.1 AA" },
 					{ label: "Type Safety", value: "100%" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_ui_components_fluix.png",
+				thumbnail: "/rhyan-vargas-portfolio-ui-components-fluix.png",
 				isFeatured: false
 			},
 			{
@@ -404,7 +404,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 				slug: "techsaints-website",
 				title: "Tech Saints Website",
 				role: "Frontend",
-				summary: "Awareness page built with v0.app and Brevo integration, featuring automatic deployment sync with Vercel for seamless lead capture.",
+				summary: "Awareness page built with v0.app, featuring automatic deployment sync with Vercel for seamless lead capture.",
 				highlights: [
 					"Built with v0.app for rapid prototyping and deployment",
 					"Automatic sync between v0.app and GitHub repository",
@@ -420,7 +420,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"shadcn/ui"
 				],
 				links: {
-					// demo: "https://vercel.com/rhyanvargas1s-projects/v0-awareness-page-with-brevo",
+					demo: "https://drive.google.com/file/d/1Nb4qcUZ03JZ581OSb13BJ9CHusjrWmrm/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/techsaints-website",
 					evidence: "docs/evidence-pack.md"
 				},
@@ -429,7 +429,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					{ label: "Deployment", value: "Auto-sync" },
 					{ label: "Integration", value: "Brevo" }
 				],
-				thumbnail: "/rhyan_vargas_portfolio_nextjs_marketing_website_tech_saints_nextjs.png",
+				thumbnail: "/rhyan-vargas-portfolio-nextjs-marketing-website-tech-saints-nextjs.png",
 				isFeatured: false
 			}
 		]
