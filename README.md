@@ -33,7 +33,7 @@ pnpm dev
 
 ## Current Status
 
-Currently displaying Hero, About, and Projects sections. Experience, Contact, and Navigation sections are implemented but temporarily disabled while under development.
+Currently displaying Hero, About, and Projects sections with active navigation. Experience and Contact sections are implemented but temporarily disabled in navigation while under development.
 
 ## Documentation
 

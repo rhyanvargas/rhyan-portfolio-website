@@ -30,9 +30,9 @@ export const portfolioConfig: PortfolioConfig = {
 	// Navigation
 	navigation: [
 		{ name: "About", href: "#about" },
-		{ name: "Experience", href: "#experience" },
+		// { name: "Experience", href: "#experience" },
 		{ name: "Work", href: "#work" },
-		{ name: "Contact", href: "#contact" },
+		// { name: "Contact", href: "#contact" },
 	],
 
 	// About Section
