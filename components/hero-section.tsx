@@ -1,9 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { getPortfolioConfig } from "@/lib/config";
-import { motion } from "motion/react";
 
 export function HeroSection() {
 	const config = getPortfolioConfig();
@@ -75,7 +74,7 @@ export function HeroSection() {
 					variant="ghost"
 					size="icon"
 					onClick={scrollToAbout}
-					className="text-muted-foreground hover:text-accent animate-bounce"
+					className="animate-bounce"
 				>
 					<ArrowDown className="h-5 w-5" />
 				</Button>

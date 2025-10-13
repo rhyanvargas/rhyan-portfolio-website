@@ -29,7 +29,7 @@ export function AboutSection() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {config.about.technologies.map((skill) => (
                   <div key={skill} className="flex items-center space-x-2">
-                    <Badge variant="skill">{skill}</Badge>
+                    <Badge variant="outline">{skill}</Badge>
                   </div>
                 ))}
               </div>
