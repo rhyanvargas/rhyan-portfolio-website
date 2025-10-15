@@ -7,15 +7,15 @@ import { getPortfolioConfig } from "@/lib/config";
 export function HeroSection() {
 	const config = getPortfolioConfig();
 
-	const scrollToAbout = () => {
-		const element = document.querySelector("#about");
+	const scrollToSection = (sectionId: string) => {
+		const element = document.querySelector(sectionId);
 		if (element) {
 			element.scrollIntoView({ behavior: "smooth" });
 		}
 	};
 
 	return (
-		<section className="bg-[url(/design-element-pixel-white.svg)] bg-center bg-no-repeat min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+		<section id="home" className="bg-[url(/design-element-pixel-white.svg)] bg-center bg-no-repeat min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
 			<div className="max-w-4xl mx-auto text-center">
 				<div className="mb-8">
 					<p className="text-accent font-mono text-sm mb-4">Hi, my name is</p>
@@ -36,11 +36,7 @@ export function HeroSection() {
 					<Button
 						size="lg"
 						className="bg-accent hover:bg-accent/90 text-accent-foreground font-mono"
-						onClick={() =>
-							document
-								.querySelector("#projects")
-								?.scrollIntoView({ behavior: "smooth" })
-						}
+						onClick={() => scrollToSection("#work")}
 					>
 						Check out my work
 					</Button>
@@ -73,7 +69,7 @@ export function HeroSection() {
 				<Button
 					variant="ghost"
 					size="icon"
-					onClick={scrollToAbout}
+					onClick={() => scrollToSection("#about")}
 					className="animate-bounce"
 				>
 					<ArrowDown className="h-5 w-5" />

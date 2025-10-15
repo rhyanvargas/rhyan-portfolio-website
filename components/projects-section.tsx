@@ -17,7 +17,7 @@ export function ProjectsSection() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            <span className="text-accent font-mono text-lg">03.</span> Projects
+            <span className="text-accent font-mono text-lg">03.</span> My Work
           </h2>
           <div className="w-20 h-px bg-accent"></div>
         </div>

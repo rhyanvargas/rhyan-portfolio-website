@@ -17,11 +17,12 @@ pnpm dev
 
 ## Features
 
-- Configuration-driven content management
-- Animated development pipeline components
-- Dark theme with responsive design
-- TypeScript + Zod schema validation
-- Performance optimized with Next.js 15
+- **Configuration-driven content**: Single source of truth in `config/portfolio.ts`
+- **Active section navigation**: Real-time scroll-based navigation highlighting
+- **Responsive project showcase**: Featured and grid layouts for different project types
+- **Enhanced accessibility**: Improved scroll behavior and section identification
+- **TypeScript + Zod validation**: Runtime schema validation for portfolio data
+- **Dark theme optimized**: Professional design with gradient accents
 
 ## Tech Stack
 
@@ -33,7 +34,11 @@ pnpm dev
 
 ## Current Status
 
-Currently displaying Hero, About, and Projects sections with active navigation. Experience and Contact sections are implemented but temporarily disabled in navigation while under development.
+Full portfolio sections are now active with enhanced navigation:
+- **Hero Section**: Added section ID and improved scroll navigation
+- **About Section**: Personal info and technology showcase
+- **Projects Section**: Renamed to "My Work" with featured/other project layouts
+- **Navigation**: Active section highlighting with improved intersection observer
 
 ## Documentation
 

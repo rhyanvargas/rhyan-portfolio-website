@@ -1,38 +1,42 @@
 import { useState, useEffect } from 'react';
 
 export const useActiveSection = (sectionIds: string[]) => {
-    const [activeId, setActiveId] = useState('');
+    const [activeId, setActiveId] = useState<string>('');
 
     useEffect(() => {
+        if (sectionIds.length === 0) return;
+
         const observer = new IntersectionObserver(
             (entries) => {
-                // Find the entry with the highest intersection ratio
-                const visibleEntries = entries.filter(entry => entry.isIntersecting);
-                if (visibleEntries.length > 0) {
-                    const mostVisible = visibleEntries.reduce((prev, current) =>
-                        current.intersectionRatio > prev.intersectionRatio ? current : prev
-                    );
-                    setActiveId(mostVisible.target.id);
-                } else {
-                    // If no sections are intersecting, check scroll position
-                    const scrollY = window.scrollY;
-                    if (scrollY < 100) {
-                        // Near top of page, clear active section
-                        setActiveId('');
-                    }
+                // Find the most visible section
+                const visibleSections = entries
+                    .filter(entry => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                if (visibleSections.length > 0) {
+                    setActiveId(visibleSections[0].target.id);
                 }
             },
             {
-                root: null, // relative to the viewport
-                rootMargin: '-80px 0px -80px 0px', // Smaller offset
-                threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0], // Fewer thresholds for better performance
+                root: null,
+                rootMargin: '-20% 0px -20% 0px',
+                threshold: [0, 0.25, 0.5, 0.75, 1.0]
             }
         );
 
-        const elements = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as Element[];
-        elements.forEach((el) => observer.observe(el));
+        // Wait for DOM to be ready, then observe sections
+        const timeoutId = setTimeout(() => {
+            const elements = sectionIds
+                .map(id => document.getElementById(id))
+                .filter((el): el is HTMLElement => el !== null);
 
-        return () => elements.forEach((el) => observer.unobserve(el));
+            elements.forEach(el => observer.observe(el));
+        }, 100);
+
+        return () => {
+            clearTimeout(timeoutId);
+            observer.disconnect();
+        };
     }, [sectionIds]);
 
     return activeId;
