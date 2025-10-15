@@ -45,5 +45,4 @@ export interface ThemeContextType {
 export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequiredFields<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
-// Re-export portfolio types for convenience
-export * from './portfolio';
+// Portfolio types are available from '@/schemas/portfolio'

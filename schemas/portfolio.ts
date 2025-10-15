@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { TECHNOLOGIES, SKILL_CATEGORIES, ROLE_TYPES, DOMAIN_CATEGORIES } from '@/lib/constants'
 
 // Personal information schema
 export const personalInfoSchema = z.object({
@@ -57,7 +58,36 @@ export const projectLinksSchema = z.object({
     evidence: z.string().min(1, 'Evidence path is required').optional(),
 })
 
-// Main project schema
+/**
+ * Enhanced project schema with multi-dimensional filtering capabilities
+ * Extends the original project schema with new categorization fields while maintaining backward compatibility
+ */
+export const enhancedProjectSchema = z.object({
+    // Existing fields remain unchanged for backward compatibility
+    id: z.number().int().min(1, 'Project ID must be a positive integer'),
+    slug: z.string().min(1, 'Project slug is required'),
+    title: z.string().min(1, 'Project title is required'),
+    summary: z.string().min(1, 'Project summary is required'),
+    highlights: z.array(z.string().min(1, 'Highlight cannot be empty')).min(1, 'At least one highlight is required'),
+    tech: z.array(z.string().min(1, 'Technology name cannot be empty')).min(1, 'At least one technology is required'),
+    links: projectLinksSchema,
+    metrics: z.array(projectMetricSchema).optional(),
+    thumbnail: z.string().min(1, 'Thumbnail path is required'),
+    isFeatured: z.boolean().optional(),
+
+    // Enhanced categorization fields
+    roles: z.array(z.enum(ROLE_TYPES)).min(1, 'At least one role is required'),
+    skillCategories: z.array(z.enum(SKILL_CATEGORIES)).min(1, 'At least one skill category is required'),
+    domains: z.array(z.enum(DOMAIN_CATEGORIES)).optional(),
+
+    // Backward compatibility - deprecated but maintained
+    role: z.string().min(1, 'Project role is required'),
+})
+
+/**
+ * Legacy project schema for backward compatibility
+ * This schema maintains the original structure for existing projects
+ */
 export const projectSchema = z.object({
     id: z.number().int().min(1, 'Project ID must be a positive integer'),
     slug: z.string().min(1, 'Project slug is required'),
@@ -112,6 +142,7 @@ export type NavigationItem = z.infer<typeof navigationItemSchema>
 export type About = z.infer<typeof aboutSchema>
 export type ExperienceItem = z.infer<typeof experienceItemSchema>
 export type Project = z.infer<typeof projectSchema>
+export type EnhancedProject = z.infer<typeof enhancedProjectSchema>
 export type ProjectMetric = z.infer<typeof projectMetricSchema>
 export type ProjectLinks = z.infer<typeof projectLinksSchema>
 export type Projects = z.infer<typeof projectsSchema>
