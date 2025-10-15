@@ -460,7 +460,38 @@ I’m passionate about using technology to empower creativity and learning, espe
 				],
 				"thumbnail": "/rhyan-vargas-portfolio-nexjts-anana-landing-page-website.png",
 				"isFeatured": true
-			}
+			},
+			{
+				id: 12,
+				slug: "simpleverse-metaverse",
+				title: "SimpleVerse: Learn-to-Earn Metaverse",
+				role: "Frontend",
+				summary: "Immersive open-world metaverse blending adventure, learning, and rewards—featuring dynamic NPC dialogue, interactive quests, and Unity + Spatial.io integration.",
+				highlights: [
+					"Unity/SpatialSDK–powered world with quest, dialogue, and gamified learning systems",
+					"Modular React-style C# component architecture for NPCs, quizzes, and interactive billboards",
+					"Evidence-driven design: measurable engagement, reward loops, and real-time feedback"
+				],
+				tech: [
+					"Unity",
+					"C#",
+					"Spatial.io SDK",
+					"TextMeshPro",
+					"ScriptableObject Architecture"
+				],
+				links: {
+					demo: "https://www.spatial.io/s/SimpleVerse-660e2073db3c6d3118a3d448?share=2886587569504159907",
+					repo: "https://github.com/voxbox-dev/SimpleVerseV1",
+					evidence: "https://github.com/voxbox-dev/SimpleVerseV1/blob/main/README.md"
+				},
+				metrics: [
+					{ label: "Player Sessions", value: "2,000+" },
+					{ label: "Quests Completed", value: "1,200+" },
+					{ label: "Engagement Time", value: "15m avg/session" }
+				],
+				thumbnail: "/rhyan-vargas-portfolio-unity-csharp-simpleversev1.png",
+				isFeatured: true
+			},
 		]
 	},
 

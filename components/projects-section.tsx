@@ -46,8 +46,9 @@ export function ProjectsSection() {
 
                 <div className={`lg:col-span-5 ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
                   <div className="flex flex-col space-y-4">
-                    <p className="text-accent font-mono text-sm">Featured Project</p>
+                    <p className="text-accent font-mono text-sm">{project.role}</p>
                     <h3 className="text-2xl font-bold text-foreground">{project.title}</h3>
+
                     <Card className="p-6 bg-card border-border">
                       <p className="text-muted-foreground leading-relaxed">{project.summary}</p>
                     </Card>
@@ -156,6 +157,7 @@ export function ProjectsSection() {
 
                   />
                   <h4 className="text-lg font-semibold text-foreground mb-2">{project.title}</h4>
+                  <p className="text-accent font-mono text-sm">{project.role}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{project.summary}</p>
 
                   <div className="flex flex-wrap gap-2">
