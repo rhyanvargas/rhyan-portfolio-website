@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { TECHNOLOGIES, SKILL_CATEGORIES, ROLE_TYPES, DOMAIN_CATEGORIES } from '@/lib/constants'
+import { SKILL_CATEGORIES, ROLE_TYPES, DOMAIN_CATEGORIES } from '@/lib/constants'
 
 // Personal information schema
 export const personalInfoSchema = z.object({

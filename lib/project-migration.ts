@@ -1,5 +1,5 @@
 import { Project, EnhancedProject } from '@/schemas/portfolio'
-import { TECHNOLOGIES, SKILL_CATEGORIES, ROLE_TYPES, DOMAIN_CATEGORIES, Technology, SkillCategory, RoleType, DomainCategory } from '@/lib/constants'
+import { TECHNOLOGIES, Technology, SkillCategory, RoleType, DomainCategory } from '@/lib/constants'
 
 /**
  * Migration utility for converting existing projects to enhanced schema

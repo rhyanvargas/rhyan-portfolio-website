@@ -22,6 +22,7 @@ pnpm dev
 - **Responsive project showcase**: Featured and grid layouts for different project types
 - **Enhanced accessibility**: Improved scroll behavior and section identification
 - **TypeScript + Zod validation**: Runtime schema validation for portfolio data
+- **Project filtering foundation**: Multi-dimensional categorization system (in development)
 - **Dark theme optimized**: Professional design with gradient accents
 
 ## Tech Stack
@@ -45,6 +46,7 @@ Full portfolio sections are now active with enhanced navigation:
 - [Setup Guide](docs/setup.md) - Installation and configuration
 - [Configuration Reference](docs/configuration.md) - Portfolio config schema
 - [Architecture Overview](docs/architecture.md) - System design
+- [Project Filtering System](docs/filtering-system.md) - Multi-dimensional project categorization
 - [Contributing Guidelines](CONTRIBUTING.md) - Contribution workflow
 
 ## Scripts

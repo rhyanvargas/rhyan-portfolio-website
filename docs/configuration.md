@@ -65,7 +65,7 @@ experience: Array<{
 
 ### Projects
 
-The projects section supports both enhanced and legacy formats:
+The projects section supports both enhanced and legacy formats. The enhanced format includes multi-dimensional filtering capabilities:
 
 #### Enhanced Format (Recommended)
 
@@ -74,10 +74,16 @@ projects: {
   items: Array<{
     slug: string;          // Unique project identifier
     title: string;         // Project name
-    role: string;          // Your role in the project
+    role: string;          // Your role in the project (legacy)
     summary: string;       // Brief project summary
     highlights: string[];  // Key achievements/features
-    tech: string[];        // Technologies used
+    tech: string[];        // Technologies used (normalized to predefined list)
+    
+    // Enhanced filtering fields
+    roles: RoleType[];     // Multiple roles (e.g., ['Frontend', 'Full Stack'])
+    skillCategories: SkillCategory[]; // Skills (e.g., ['Frontend Development'])
+    domains?: DomainCategory[];       // Domains (e.g., ['E-commerce', 'Education'])
+    
     links: {
       demo?: string;       // Demo URL
       repo?: string;       // Repository URL
@@ -88,6 +94,7 @@ projects: {
       value: string;       // Metric value (e.g., "40% faster")
     }>;
     thumbnail: string;     // Image path (in /public)
+    isFeatured?: boolean;  // Whether to feature this project
   }>;
 }
 ```
@@ -249,6 +256,62 @@ To add new fields with validation:
 1. Update the schema in `schemas/portfolio.ts`
 2. Add the field to your configuration in `config/portfolio.ts`
 3. TypeScript will enforce the new structure
+
+## Project Filtering System
+
+### Predefined Categories
+
+The filtering system uses predefined categories defined in `lib/constants.ts`:
+
+```typescript
+// Technologies - Normalized list for consistency
+export const TECHNOLOGIES = [
+  'React', 'Next.js', 'TypeScript', 'Node.js', 'AWS', 
+  // ... full list in constants.ts
+] as const;
+
+// Skill Categories
+export const SKILL_CATEGORIES = [
+  'Frontend Development', 'Backend Development', 'Full Stack Development',
+  'AI/Machine Learning', 'DevOps/Infrastructure', 'Mobile Development',
+  // ... more categories
+] as const;
+
+// Role Types
+export const ROLE_TYPES = [
+  'Frontend', 'Backend', 'Full Stack', 'AI Engineer', 'DevOps',
+  // ... more roles
+] as const;
+
+// Domain Categories
+export const DOMAIN_CATEGORIES = [
+  'E-commerce', 'Education', 'Healthcare', 'Finance', 'Entertainment',
+  // ... more domains
+] as const;
+```
+
+### Migration Utilities
+
+Use the migration utilities to convert existing projects to the enhanced schema:
+
+```typescript
+import { migrateProject, migrateProjects } from '@/lib/project-migration';
+
+// Migrate single project
+const enhancedProject = migrateProject(legacyProject);
+
+// Migrate all projects
+const enhancedProjects = migrateProjects(legacyProjects);
+```
+
+### Automatic Categorization
+
+The migration system automatically infers categories based on:
+
+- **Role mapping**: Maps legacy role strings to predefined role types
+- **Technology analysis**: Infers skill categories from technologies used
+- **Content analysis**: Extracts domain categories from project descriptions
+- **Technology normalization**: Standardizes technology names
 
 ## Advanced Configuration
 
