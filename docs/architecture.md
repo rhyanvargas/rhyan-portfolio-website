@@ -64,7 +64,10 @@ rhyan-portfolio-website/
 │   ├── utils.ts         # Common utilities (cn function)
 │   ├── config.ts        # Configuration utilities
 │   ├── constants.ts     # Predefined categories for filtering
+│   ├── filter-utils.ts  # Project filtering logic and utilities
 │   └── project-migration.ts # Project schema migration utilities
+├── contexts/             # React context providers
+│   └── filter-context.tsx # Filter state management
 ├── docs/                 # Documentation
 ├── public/              # Static assets
 └── styles/              # Additional stylesheets
@@ -119,8 +122,9 @@ App Layout
 
 - **Configuration State**: Static data from `portfolio.ts`
 - **Theme State**: Managed by `ThemeProvider` context
+- **Filter State**: Managed by `FilterProvider` context for project filtering
 - **Component State**: Local state using React hooks
-- **No Global State**: Simple architecture without Redux/Zustand
+- **Minimal Global State**: Only theme and filtering state use context
 
 ## Data Flow
 

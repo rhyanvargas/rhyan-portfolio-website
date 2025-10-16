@@ -38,6 +38,17 @@ pnpm install      # Install dependencies
 pnpm add <pkg>    # Add new dependency
 ```
 
+## Implementation Validation
+- **Always validate implementations** before marking tasks complete
+- Run linting, type checking, and build verification for every task
+- Use these commands to validate:
+  ```bash
+  pnpm lint         # Check for linting errors
+  pnpm build        # Verify TypeScript compilation and build
+  ```
+- Fix any errors before considering a task complete
+- Ensure all new code follows TypeScript strict mode requirements
+
 ## Configuration Notes
 - TypeScript path aliases configured with `@/*` pointing to root
 - ESLint and TypeScript errors ignored during builds (configured in next.config.mjs)
