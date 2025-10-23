@@ -44,8 +44,18 @@ All content is managed in `config/portfolio.ts`. Update this file to customize:
 - Social links  
 - About section content
 - Experience history
-- Project showcases
+- Project showcases with enhanced filtering categories
 - Contact information
+
+### Project Filtering System
+The portfolio includes an advanced filtering system for projects:
+
+- **Enhanced Project Schema**: Projects support multiple roles, skill categories, and domains
+- **Predefined Categories**: Consistent technology, skill, and domain classifications
+- **Backward Compatibility**: Existing projects are automatically migrated
+- **Filter State Management**: React Context-based filtering with real-time updates
+
+See [Project Filtering System](filtering-system.md) for detailed documentation.
 
 ### Switching from Coming Soon to Full Portfolio
 

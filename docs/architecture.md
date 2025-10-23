@@ -58,9 +58,16 @@ rhyan-portfolio-website/
 │   └── theme-provider.tsx # Theme context provider
 ├── config/               # Configuration files
 │   └── portfolio.ts      # Main portfolio data and types
+├── schemas/              # Data validation schemas
+│   └── portfolio.ts      # Zod schemas for type safety
 ├── lib/                  # Utility functions
 │   ├── utils.ts         # Common utilities (cn function)
-│   └── config.ts        # Configuration utilities
+│   ├── config.ts        # Configuration utilities
+│   ├── constants.ts     # Predefined categories for filtering
+│   ├── filter-utils.ts  # Project filtering logic and utilities
+│   └── project-migration.ts # Project schema migration utilities
+├── contexts/             # React context providers
+│   └── filter-context.tsx # Filter state management
 ├── docs/                 # Documentation
 ├── public/              # Static assets
 └── styles/              # Additional stylesheets
@@ -70,10 +77,11 @@ rhyan-portfolio-website/
 
 ### Configuration-Driven Design
 
-All content is managed through a single configuration file:
+All content is managed through a single configuration file with enhanced schema validation:
 
 ```typescript
-// config/portfolio.ts
+// config/portfolio.ts - Configuration data
+// schemas/portfolio.ts - Zod validation schemas
 export interface PortfolioConfig {
   personal: PersonalInfo;
   social: SocialLinks;
@@ -83,6 +91,13 @@ export interface PortfolioConfig {
   projects: ProjectsSection;
   contact: ContactSection;
   footer: FooterConfig;
+}
+
+// Enhanced project schema with filtering capabilities
+export interface EnhancedProject extends Project {
+  roles: RoleType[];           // Multiple role categorization
+  skillCategories: SkillCategory[]; // Skill-based filtering
+  domains?: DomainCategory[];  // Domain/industry categorization
 }
 ```
 
@@ -107,8 +122,9 @@ App Layout
 
 - **Configuration State**: Static data from `portfolio.ts`
 - **Theme State**: Managed by `ThemeProvider` context
+- **Filter State**: Managed by `FilterProvider` context for project filtering
 - **Component State**: Local state using React hooks
-- **No Global State**: Simple architecture without Redux/Zustand
+- **Minimal Global State**: Only theme and filtering state use context
 
 ## Data Flow
 
