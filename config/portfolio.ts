@@ -492,6 +492,38 @@ I’m passionate about using technology to empower creativity and learning, espe
 				thumbnail: "/rhyan-vargas-portfolio-unity-csharp-simpleversev1.png",
 				isFeatured: true
 			},
+			{
+				id: 13,
+				slug: "3bears-nft-landing",
+				title: "3 Bears NFT Landing Page",
+				role: "Frontend",
+				summary: "High-performance NFT drop landing page built from Figma designs with Ethereum blockchain integration, wallet connectivity, and custom animations—delivered in 2 weeks.",
+				highlights: [
+					"Pixel-perfect implementation from Figma designs with custom slider animations",
+					"Ethereum blockchain integration with wallet connect functionality using Ethers.js/Web3.js",
+					"Moralis API integration for NFT metadata and blockchain interactions",
+					"Responsive design with custom design elements and optimized performance"
+				],
+				tech: [
+					"Next.js",
+					"TypeScript",
+					"Ethers.js",
+					"Web3.js",
+					"Moralis API",
+					"Tailwind CSS"
+				],
+				links: {
+					demo: "https://3bears.seva.love/",
+					evidence: "docs/evidence-pack.md"
+				},
+				metrics: [
+					{ label: "Delivery Time", value: "2 weeks" },
+					{ label: "Blockchain", value: "Ethereum" },
+					{ label: "Wallet Support", value: "Multi-wallet" }
+				],
+				thumbnail: "/rhyan-vargas-portfolio-nextjs-landing-page-3bears.png",
+				isFeatured: false
+			},
 		]
 	},
 

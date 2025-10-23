@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Predefined categories for technologies, skills, roles, and domains
   - Migration utilities for backward compatibility
   - Zod schema validation for type safety
+- **3 Bears NFT Landing Page project**
+  - Ethereum blockchain integration showcase
+  - Web3.js/Ethers.js wallet connectivity example
+  - Moralis API integration demonstration
 
 ### Technical
 - Next.js 15 with App Router
