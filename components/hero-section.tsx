@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { getPortfolioConfig } from "@/lib/config";
+import { InquiryCtaButton } from "@/components/inquiry-cta-button";
 
 export function HeroSection() {
 	const config = getPortfolioConfig();
@@ -33,14 +34,16 @@ export function HeroSection() {
 				</p>
 
 				<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+					<InquiryCtaButton />
 					<Button
 						size="lg"
-						className="bg-accent hover:bg-accent/90 text-accent-foreground font-mono"
+						variant="outline"
+						className="border-border font-mono bg-transparent"
 						onClick={() => scrollToSection("#work")}
 					>
 						Check out my work
 					</Button>
-					<div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+					<div className="flex flex-wrap items-center justify-center gap-6 text-sm sm:basis-full">
 						<a
 							href={config.social.github}
 							target="_blank"

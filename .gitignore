@@ -18,6 +18,11 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
+
+# payload local sqlite (spike)
+/payload.db
+/payload.db-*
 
 # vercel
 .vercel
