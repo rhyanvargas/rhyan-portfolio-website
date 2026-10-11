@@ -10,10 +10,12 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap"
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "seed:projects": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed-projects.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@payloadcms/db-postgres": "3.90.2",
     "@payloadcms/db-sqlite": "3.90.2",
     "@payloadcms/next": "3.90.2",
     "@payloadcms/richtext-lexical": "3.90.2",
@@ -53,6 +55,7 @@
     "cmdk": "1.0.4",
     "cross-env": "^7.0.3",
     "date-fns": "4.1.0",
+    "dotenv": "^18.0.7",
     "embla-carousel-react": "8.5.1",
     "fs": "0.0.1-security",
     "geist": "latest",
@@ -88,6 +91,7 @@
     "eslint-config-next": "15.2.9",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
+    "tsx": "^4.23.15",
     "tw-animate-css": "1.3.3",
     "typescript": "^5.7.3"
   },

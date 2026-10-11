@@ -1,4 +1,5 @@
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -12,11 +13,37 @@ import { Projects } from './collections/Projects'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const databaseUrl = process.env.DATABASE_URL || `file:${path.resolve(dirname, 'payload.db')}`
+
 /**
- * Foundation spike config.
- * Local/dev: SQLite (no Docker required).
- * Production target: swap to @payloadcms/db-postgres + DATABASE_URL (Neon/etc.).
+ * Local/dev default: SQLite (no Docker).
+ * Deploy: set DATABASE_URL to a postgres:// or postgresql:// connection string
+ * (Neon / Supabase / Vercel Postgres). Optional PAYLOAD_DB=postgres forces Postgres.
  */
+function createDbAdapter() {
+  const forcePostgres = process.env.PAYLOAD_DB === 'postgres'
+  const isPostgres =
+    forcePostgres ||
+    databaseUrl.startsWith('postgres://') ||
+    databaseUrl.startsWith('postgresql://')
+
+  if (isPostgres) {
+    return postgresAdapter({
+      pool: {
+        connectionString: databaseUrl,
+      },
+    })
+  }
+
+  return sqliteAdapter({
+    client: {
+      url: databaseUrl.startsWith('file:')
+        ? databaseUrl
+        : `file:${path.resolve(dirname, 'payload.db')}`,
+    },
+  })
+}
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -30,10 +57,6 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URL || `file:${path.resolve(dirname, 'payload.db')}`,
-    },
-  }),
+  db: createDbAdapter(),
   sharp,
 })
