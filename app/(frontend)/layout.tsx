@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Suspense } from "react";
 import "./globals.css";
 
+// Frontend root layout — Payload admin uses app/(payload)/layout.tsx
+
 export const metadata: Metadata = {
 	title: "Rhyan Vargas - AI-First Full Stack Engineer",
 	description:
