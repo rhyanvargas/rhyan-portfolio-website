@@ -32,7 +32,7 @@ export const portfolioConfig: PortfolioConfig = {
 		{ name: "About", href: "#about" },
 		// { name: "Experience", href: "#experience" },
 		{ name: "Work", href: "#work" },
-		// { name: "Contact", href: "#contact" },
+		{ name: "Contact", href: "#contact" },
 	],
 
 	// About Section
@@ -437,7 +437,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 				"slug": "anana-landing",
 				"title": "Anana Landing Page",
 				"role": "Frontend",
-				"summary": "Designed and built the landing page for Anana, focusing on modern UI/UX, accessibility, and responsive layout using Next.js and TypeScript.",
+				"summary": "Assisted in designing animated UI components for the Anana landing page, using Next.js and TypeScript.",
 				"highlights": [
 					"Implemented accessible, mobile-first layout with Next.js App Router",
 					"Custom interactive sections and call-to-action for user onboarding",

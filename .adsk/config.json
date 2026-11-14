@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "profile": "delivery",
+  "cursor": "commands",
+  "rules": "none",
+  "scope": "project",
+  "kitRef": "rhyanvargas/agentic-development-starter-kit@e739e447221150084aa8c263ad487501d0defbad",
+  "optionalPacks": [
+    "product-value-loop",
+    "engineering-methods"
+  ]
+}

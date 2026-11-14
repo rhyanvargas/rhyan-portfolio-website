@@ -7,11 +7,11 @@ export function ContactSection() {
   const config = getPortfolioConfig()
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="scroll-mt-20 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto text-center">
         <div className="mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            <span className="text-accent font-mono text-lg">04.</span> {config.contact.title}
+            <span className="text-accent font-mono text-lg">03.</span> {config.contact.title}
           </h2>
         </div>
 

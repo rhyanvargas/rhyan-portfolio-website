@@ -1,0 +1,50 @@
+{
+  "skill_name": "devops-strategy-facilitator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Help us design a DevOps strategy for a B2B SaaS API on GitHub Actions deploying to Kubernetes. We have dev and prod. Prefer build-once promote. Keep it to about two pages with a decision log.",
+      "expected_output": "A concise, decision-first strategy (tables/checklists, ~1–2 pages) with build-once promote default, Decision Log, explicit non-goals/assumptions — not a long essay.",
+      "assertions": [
+        "Primary structure is decision-first (tables/checklists/decision log), not a long prose essay",
+        "Defaults to or explicitly adopts build-once promote for the stated preference",
+        "Includes an explicit Decision Log table (or equivalent labeled decision log)",
+        "States explicit non-goals or out-of-scope items",
+        "Marks assumptions or open questions",
+        "Does not hand the session off to release-automation or supply-chain-gate as the primary deliverable"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We need a DevOps strategy but I don't know our environments yet. Facilitate the session — don't invent a full Azure-specific stack without asking.",
+      "expected_output": "A short set of targeted questions (≤10) covering platform, runtime, envs/approvals, promotion, branching, secrets/compliance — then a provisional draft only with assumptions marked.",
+      "assertions": [
+        "Asks clarifying questions before finalizing platform-specific details",
+        "Limits clarifying questions to ≤10 (or clearly states a small focused set)",
+        "Does not invent a full Azure/ADO-specific stack as settled fact when the platform is unknown",
+        "Any provisional draft clearly marks assumptions where facts are missing"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write our DevOps strategy as a 20-page treatise covering every possible CD pattern in the industry.",
+      "expected_output": "Pushes back toward a short, decision-first 1–2 page strategy with explicit non-goals instead of an encyclopedic document.",
+      "assertions": [
+        "Explicitly pushes back on a 20-page / encyclopedic deliverable",
+        "Targets a short decision-first strategy (~1–2 pages or equivalent)",
+        "States non-goals rather than cataloging every industry CD pattern as the primary content"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Just write the GitHub Actions YAML for lint+test on PRs — we already agreed our promotion model last quarter.",
+      "expected_output": "Treats this as pipeline implementation, not a strategy session; declines to run a full strategy workshop and either redirects or offers a minimal workflow without inventing a new delivery strategy.",
+      "assertions": [
+        "Declines or redirects away from a full multi-topic strategy workshop as the primary response",
+        "Recognizes the ask as implementing a specific CI workflow rather than designing delivery strategy",
+        "Does not invent a new environments/promotion strategy when the user says that is already decided",
+        "Offers workflow YAML or a minimal CI skeleton without reopening strategy decisions"
+      ]
+    }
+  ]
+}

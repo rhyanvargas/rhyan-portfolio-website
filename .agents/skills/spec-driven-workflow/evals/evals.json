@@ -1,0 +1,136 @@
+{
+  "skill_name": "spec-driven-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft a spec for adding email/password login to an existing web app. Include testable requirements and a test strategy. Save it under docs/specs/ (or .cursor/docs/specs/ if that layout exists).",
+      "expected_output": "A structured specification with overview, functional requirements (preferably REQ-XXX), acceptance criteria, constraints, out of scope, and an automated test strategy.",
+      "assertions": [
+        "Surfaces assumptions or asks clarifying questions before treating vague auth details as settled",
+        "Output includes a dedicated requirements section with multiple concrete items",
+        "Requirements use IDs or otherwise uniquely referenceable items",
+        "Acceptance criteria are present in Given/When/Then or equivalent testable form",
+        "A test strategy section maps requirements to automated checks",
+        "Out of scope or constraints are explicitly listed"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We have a messy payments module with no docs. Walk me through the brownfield workflow before we change refund behavior — what do we do first and what artifacts should exist?",
+      "expected_output": "A clear sequence that starts with documenting current behavior (extract/baseline spec), then a change/delta spec, then plan/implement/review sized appropriately — not jumping straight to coding refunds.",
+      "assertions": [
+        "Mentions documenting or extracting current behavior before implementing the change",
+        "Distinguishes baseline/current spec from the desired change spec",
+        "Mentions planning and/or review for non-trivial change",
+        "Does not recommend skipping straight to production code without a spec for this scenario"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "hey can you just rename a typo in a comment in README — do we need the whole spec workflow?",
+      "expected_output": "Recognizes trivial scope and advises skipping the formal SDD workflow; handle in chat / direct edit.",
+      "assertions": [
+        "Recommends skipping formal draft-spec/plan/implement workflow for this trivial change",
+        "Does not require producing a multi-section specification for a comment typo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Create an implementation plan for a medium-sized feature whose spec already lists 6 REQ items touching API + UI + DB. Assume the spec file is at docs/specs/notifications.md.",
+      "expected_output": "An ordered plan with concrete tasks, files to touch, tests per requirement slice, and risks — suitable for medium size (plan before implement). Saved under docs/plans/ because the project already uses docs/specs/.",
+      "assertions": [
+        "Plan is broken into ordered tasks or steps",
+        "Mentions specific areas or files (API, UI, DB or equivalents)",
+        "Includes testing or verification steps tied to requirements",
+        "Flags risks or dependencies",
+        "Uses docs/plans/ (or equivalent portable home) rather than forcing .cursor/plans/ when docs/specs/ is the existing convention"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "We are in Cursor. /plan-impl a medium auth feature whose spec has REQ-001..REQ-009. Save under .cursor/plans/. The Plan UI must show real todos, not zero.",
+      "expected_output": "A .cursor/plans/*.plan.md file with YAML frontmatter containing a non-empty todos array (T1..Tn mapped to REQs), plus a body that may include a requirements→tasks table.",
+      "assertions": [
+        "Plan file includes YAML frontmatter with a todos array",
+        "todos array is non-empty with id and content (and status) per task",
+        "Todo contents or body map tasks to REQ-XXX identifiers",
+        "Does not rely on a body-only requirements table without frontmatter todos"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Draft a spec for password reset in a skills-only app repo that has .agents/skills/ but no .cursor/commands or .cursor/docs tree. Where do you save the spec?",
+      "expected_output": "Spec written under docs/specs/ (portable default), not .cursor/docs/specs/.",
+      "assertions": [
+        "Chooses docs/specs/ as the output home",
+        "Does not require creating .cursor/docs/specs/ for this skills-only layout"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Medium feature: add webhook delivery retries with exponential backoff. Before writing the full requirements body, what should you confirm about how we'll test this? Also — should we install mattpocock to-prd for the product requirements doc?",
+      "expected_output": "Sketches preferred test seams (highest useful existing boundary, e.g. outbound HTTP / queue consumer) and confirms them; rejects installing to-prd/to-spec alongside ADSK — use ADSK SDD for the engineering spec (and product-value-loop if discovery PRDs are needed).",
+      "assertions": [
+        "Mentions test seams or preferred external boundaries before or while drafting",
+        "Prefers existing high-level seams over inventing many new internal doubles",
+        "Does not recommend installing to-prd or to-spec as the ADSK/product PRD solution",
+        "Points to ADSK spec-driven workflow (and optionally product-value-loop for discovery) instead of a parallel SDD pack"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "We have a medium-sized living spec with 8 REQ items for checkout. Before /plan-impl, what pass should you run and what kinds of issues should it catch?",
+      "expected_output": "Runs or describes the cross-requirement analyze pass (conflicts, ambiguity, constraint clashes, missing edges, trace gaps) and updates the living spec from findings — does not jump straight to a stale plan.",
+      "assertions": [
+        "Names an analyze / cross-requirement pass before planning",
+        "Mentions at least two of: conflicts, ambiguity, gaps/edges, constraint clashes",
+        "Does not skip analysis by jumping straight to implementation tasks for this medium case"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Non-obvious race in checkout: sometimes double-charges. Draft the bugfix path — what sections must the artifact include so we do not rewrite unrelated cart behavior?",
+      "expected_output": "A bugfix-oriented artifact with Current (defect), Expected (fix), and Unchanged (regression fence / KEEP) behaviors, plus tests that cover both FIX and KEEP.",
+      "assertions": [
+        "Includes current/defect behavior and expected/correct behavior",
+        "Explicitly documents unchanged / regression-fence / KEEP behaviors",
+        "Ties verification or tests to both the fix and the unchanged fence"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Large greenfield: we are planning a new multi-service billing platform with unclear trust boundaries and a new payment-provider integration. What must the implementation plan require before multi-phase implement?",
+      "expected_output": "Plan requires a sized architecture packet (context + container via solution-architecture /design-architecture, ADRs for irreversible choices) and a tracer bullet (or explicit N/A — architecture proven) before multi-phase implement.",
+      "assertions": [
+        "Requires system context and container (or layered) architecture views, or an explicit N/A — architecture proven justification",
+        "Mentions solution-architecture and/or /design-architecture (or equivalent architecture packet)",
+        "Requires a tracer bullet (thin vertical slice + verify) or explicit N/A justification before multi-phase implement",
+        "Does not treat vendor-icon / draw.io rendering as a substitute for the architecture packet gate"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Medium feature: last session stopped mid-implement after finishing REQ-003. New chat — what do you read before coding, and what do you write before ending this session if REQ-004 is only half done?",
+      "expected_output": "Session start: read living spec + plan + Handoff/Progress (next REQ/T#) before coding; resync plan if REQs changed. Session end: update Handoff/Progress with done/files touched/now/watchouts/git expectation. HITL harness, not an AFK/Ralph product.",
+      "assertions": [
+        "Reads living spec and plan (and progress/handoff) before coding",
+        "Names next REQ or plan task as the bounded continue point",
+        "Updates a handoff/progress note at session end when work is incomplete",
+        "Mentions files touched or equivalent file list in the handoff",
+        "Mentions clean-git or explicit WIP/git expectation",
+        "Does not describe this as an AFK/Ralph automation product"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "We just finished implementing a medium checkout change in this same chat and the tests passed. Can we call it done and merge, or is something else required?",
+      "expected_output": "Refuse to treat implement-session self-grade as done; require a separate refute-minded /review evaluate pass (spec compliance, security-sensitive paths, tests vs REQs, docs/README drift when user-facing surface changed) plus fail-closed verify. Bugfix Unchanged fence if applicable.",
+      "assertions": [
+        "Rejects claiming done from implement self-check alone",
+        "Requires a separate /review or evaluate pass",
+        "Mentions refute-minded or generator≠evaluator / not self-grading",
+        "Mentions spec compliance and/or fail-closed verify"
+      ]
+    }
+  ]
+}

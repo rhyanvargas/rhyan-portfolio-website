@@ -19,13 +19,11 @@ export function HeroSection() {
 			<div className="max-w-4xl mx-auto text-center">
 				<div className="mb-8">
 					<p className="text-accent font-mono text-sm mb-4">Hi, my name is</p>
-					<h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-4">
+					<h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-8">
 						<span className="text-balance">
 							{config.personal.firstName} {config.personal.lastName}
 						</span>
 					</h1>
-					<h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground mb-8">
-					</h2>
 				</div>
 
 				<p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
@@ -71,8 +69,9 @@ export function HeroSection() {
 					size="icon"
 					onClick={() => scrollToSection("#about")}
 					className="animate-bounce"
+					aria-label="Scroll to About section"
 				>
-					<ArrowDown className="h-5 w-5" />
+					<ArrowDown className="h-5 w-5" aria-hidden="true" />
 				</Button>
 			</div>
 		</section>

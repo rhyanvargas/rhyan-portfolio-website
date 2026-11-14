@@ -18,8 +18,6 @@ export function Navigation() {
   const sectionIds = portfolioConfig.navigation.map(item => item.href.replace('#', ''))
   const activeID = useActiveSection(sectionIds)
 
-
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
@@ -33,17 +31,22 @@ export function Navigation() {
   }, [])
 
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
+    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50" aria-label="Primary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="font-mono text-lg font-semibold text-accent">
+          <button
+            type="button"
+            onClick={() => scrollToSection("#home")}
+            className="font-mono text-lg font-semibold text-accent rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label="Go to home"
+          >
             <Image
               src={config.personal.logo || "/placeholder-logo.svg"}
-              alt="Logo"
+              alt=""
               width={32}
               height={32}
             />
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -61,9 +64,9 @@ export function Navigation() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className=""
+                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                {theme === "dark" ? <Sun className="h-4 w-4" aria-hidden="true" /> : <Moon className="h-4 w-4" aria-hidden="true" />}
               </Button>
             )}
           </div>
@@ -75,25 +78,27 @@ export function Navigation() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className=""
+                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                {theme === "dark" ? <Sun className="h-4 w-4" aria-hidden="true" /> : <Moon className="h-4 w-4" aria-hidden="true" />}
               </Button>
             )}
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className=""
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
-              {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {isOpen ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div id="mobile-navigation" className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
               {config.navigation.map((item) => (
                 <button
