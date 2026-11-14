@@ -187,4 +187,4 @@ T1 → T2 → T3 → T4: create a Skill, a Project related to it, and a Post in 
 - **Files:** (prior Now slice) + `lib/payload-access.ts`, `collections/*` access, `payload.config.ts`, `README.md`, `docs/setup.md`, ADR-002, `.env.example`, living spec
 - **Now:** Commit when asked; then T8 only after explicit go. Residual: Medium #5 `tech` field still deferred to Next cutover (documented).
 - **Watchouts:** Create first admin user immediately on fresh deploy; keep `payload.db` / `.env` untracked.
-- **Git:** dirty on `dev` (uncommitted until asked)
+- **Git:** committed on `dev` (4 commits ahead of origin; not pushed)
