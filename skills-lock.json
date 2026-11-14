@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "skills": {
+    "competitive-intelligence": {
+      "source": "anthropics/knowledge-work-plugins",
+      "sourceType": "github",
+      "skillPath": "sales/skills/competitive-intelligence/SKILL.md",
+      "computedHash": "ee846876209be49232326f993ce4659f170748dc43c5ab6d7cb8c60ba3d4dcbc"
+    },
+    "continuous-discovery": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "skillPath": "continuous-discovery/SKILL.md",
+      "computedHash": "a3142ce0cfd6bb095fb351de65c984e82fd0d61217b31c0e10f7f432b3452bd0"
+    },
+    "devops-strategy-facilitator": {
+      "source": "rhyanvargas/agentic-development-starter-kit",
+      "sourceType": "github",
+      "skillPath": "skills/devops-strategy-facilitator/SKILL.md",
+      "computedHash": "6ff6745cce92a5003f8652b632b65ef69d2a9c3f1d13b34e9bfdfa8866571338"
+    },
+    "inspired-product": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "skillPath": "inspired-product/SKILL.md",
+      "computedHash": "e334c58c654e3bd073d79febda635f3d8170c42da047b20e2c3d8b2987d1ab24"
+    },
+    "jobs-to-be-done": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "skillPath": "jobs-to-be-done/SKILL.md",
+      "computedHash": "d4ec70d690ae20b80664066a55964a9834e4d8134f5812ba6b7fb9104ea7c3b7"
+    },
+    "mom-test": {
+      "source": "wondelai/skills",
+      "sourceType": "github",
+      "skillPath": "mom-test/SKILL.md",
+      "computedHash": "36edab4caab6a1ea4370274c7acaa59d14490408c0bac2eb6909916ec265d3c3"
+    },
+    "prioritization-advisor": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/prioritization-advisor/SKILL.md",
+      "computedHash": "4d8b75281e4a78094750dc8bd6bf7ce3a96ef4f2447105648e6f76ebfd4167f5"
+    },
+    "product-strategy-session": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/product-strategy-session/SKILL.md",
+      "computedHash": "647969e52a9098b62da19e767e87ea03454c0387bbead9c4ac299d27293bfe72"
+    },
+    "release-automation": {
+      "source": "rhyanvargas/agentic-development-starter-kit",
+      "sourceType": "github",
+      "skillPath": "skills/release-automation/SKILL.md",
+      "computedHash": "3449692e3bc4efe173fd2845ad01a0a50ebf9601e154a257a8f871a8fdedf8e5"
+    },
+    "roadmap-planning": {
+      "source": "deanpeters/product-manager-skills",
+      "sourceType": "github",
+      "skillPath": "skills/roadmap-planning/SKILL.md",
+      "computedHash": "c63ba89f7baa716dde0a571f953a3b500270501cc689eab67a48400b96620a5c"
+    },
+    "solution-architecture": {
+      "source": "rhyanvargas/agentic-development-starter-kit",
+      "sourceType": "github",
+      "skillPath": "skills/solution-architecture/SKILL.md",
+      "computedHash": "de470c340b36d5fcf7b3e1ffa94e967dd432b725eaf06d5142e93842debf646b"
+    },
+    "spec-driven-workflow": {
+      "source": "rhyanvargas/agentic-development-starter-kit",
+      "sourceType": "github",
+      "skillPath": "skills/spec-driven-workflow/SKILL.md",
+      "computedHash": "7f4b412d7eb7cc61001306db500590e2586a1c5bdca834439e5d2e4242ca753a"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "computedHash": "3589907ee34dc8b1b7223a33fac98ab841a9e42f9960ab4433a832f0c6f00be0"
+    },
+    "test-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/test-driven-development/SKILL.md",
+      "computedHash": "3cfe4ebb6fa7288f668d87880d279c8e48f7a92b63415e296857060f5ce22e05"
+    },
+    "writing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/writing-plans/SKILL.md",
+      "computedHash": "c2647b5bf067be353a893e5a39a632cbbeb7ad81e61fa5ae227ece5490029073"
+    }
+  }
+}
