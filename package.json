@@ -6,7 +6,11 @@
 		"build": "next build",
 		"dev": "next dev",
 		"lint": "next lint",
-		"start": "next start"
+		"start": "next start",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"typecheck": "tsc --noEmit",
+		"verify": "pnpm test && pnpm typecheck && pnpm build"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.10.0",
@@ -68,14 +72,20 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4.3.3",
+		"@testing-library/jest-dom": "^7.0.1",
+		"@testing-library/react": "^16.3.3",
+		"@testing-library/user-event": "^14.6.10",
 		"@types/node": "^22.20.4",
 		"@types/react": "^18.3.31",
 		"@types/react-dom": "^18.3.7",
+		"@vitejs/plugin-react": "^6.3.0",
 		"eslint": "^9.39.5",
 		"eslint-config-next": "15.5.5",
+		"jsdom": "^31.0.1",
 		"postcss": "^8.5.28",
 		"tailwindcss": "^4.3.3",
 		"tw-animate-css": "1.3.3",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"vitest": "^5.1.0"
 	}
 }

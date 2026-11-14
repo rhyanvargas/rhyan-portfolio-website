@@ -1,6 +1,7 @@
 import type { Project, EnhancedProject } from '@/schemas/portfolio'
 import type { FilterState } from '@/contexts/filter-context'
 import type { RoleType, SkillCategory, DomainCategory } from '@/lib/constants'
+import { projectHasTechnology } from '@/lib/tech-normalization'
 
 /**
  * Type guard to check if a project is an enhanced project
@@ -95,12 +96,10 @@ function matchesTechnologyFilter(
     if (technologies.length === 0) return true
 
     if (filterMode === 'AND') {
-        // All selected technologies must be present in the project
-        return technologies.every(tech => project.tech.includes(tech))
-    } else {
-        // At least one selected technology must be present in the project
-        return technologies.some(tech => project.tech.includes(tech))
+        return technologies.every((tech) => projectHasTechnology(project.tech, tech))
     }
+
+    return technologies.some((tech) => projectHasTechnology(project.tech, tech))
 }
 
 /**
