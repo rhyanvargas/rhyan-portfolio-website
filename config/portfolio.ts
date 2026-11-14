@@ -113,27 +113,48 @@ I’m passionate about using technology to empower creativity and learning, espe
 				highlights: [
 					"OpenAI embeddings for semantic transcript search",
 					"shadcn/ui and Tailwind for accessible UI",
-					"Supabase vector store for fast retrieval"
+					"Supabase vector store for fast retrieval",
 				],
 				tech: [
 					"React",
 					"TypeScript",
 					"shadcn/ui",
-					"TailwindCSS",
+					"Tailwind CSS",
 					"MUX API",
-					"WCAG 2.1 AAA"
+					"WCAG 2.1 AAA",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1cNlgZtOMk6t_bK0dMjB6c2NJKi-GEQk4/view?usp=sharing",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Latency (p95)", value: "180ms" },
-					{ label: "First-response accuracy", value: "94%" },
-					{ label: "CSAT", value: "4.8/5" }
+					{
+						label: "Latency (p95)",
+						value: "180ms",
+					},
+					{
+						label: "First-response accuracy",
+						value: "94%",
+					},
+					{
+						label: "CSAT",
+						value: "4.8/5",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-react-ui-interactive-transcript.png",
-				isFeatured: true
+				isFeatured: true,
+				roles: [
+					"AI Engineer",
+				],
+				skillCategories: [
+					"AI/Machine Learning",
+					"Backend Development",
+					"Frontend Development",
+				],
+				domains: [
+					"Education",
+					"Personal",
+				],
 			},
 			{
 				id: 2,
@@ -147,34 +168,52 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"MUX Player for scalable, secure video streaming in lessons",
 					"Radix UI and shadcn/ui for accessible, composable UI primitives",
 					"TypeScript + Zod for type safety and runtime validation",
-					"Responsive, themeable design with Tailwind CSS and dark mode support"
+					"Responsive, themeable design with Tailwind CSS and dark mode support",
 				],
 				tech: [
-					"Next.js 15",
+					"Next.js",
 					"TypeScript",
 					"AWS Amplify",
 					"MUX Player",
 					"Radix UI",
 					"shadcn/ui",
-					"TailwindCSS",
+					"Tailwind CSS",
 					"Zod",
 					"React Hook Form",
 					"Lucide React",
 					"Sonner",
-					"Vaul"
+					"Vaul",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1K9q8Gg7ztcc7yxPBy4wI9ApmKj7Kvx0J/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/8p3p-lms-nextjs",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Users", value: "100+" },
-					{ label: "Courses Created", value: "20+" },
-					{ label: "Uptime", value: "99.9%" }
+					{
+						label: "Users",
+						value: "100+",
+					},
+					{
+						label: "Courses Created",
+						value: "20+",
+					},
+					{
+						label: "Uptime",
+						value: "99.9%",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-fullstack-lms-app.png",
-				isFeatured: true
+				isFeatured: true,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+				],
+				domains: [
+					"Education",
+				],
 			},
 			{
 				id: 3,
@@ -186,7 +225,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"AI-powered utility bill analysis and cost optimization",
 					"Interactive chat assistant with PickAxe.co integration",
 					"Personalized savings recommendations and program enrollment",
-					"Mobile-responsive design with shadcn/ui components"
+					"Mobile-responsive design with shadcn/ui components",
 				],
 				tech: [
 					"Next.js",
@@ -194,20 +233,42 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Tailwind CSS",
 					"shadcn/ui",
 					"PickAxe API",
-					"Vercel"
+					"Vercel",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1ta17rv68xulyc0m_YVqe5QqAOwqSzQ6Q/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/ai-utility-bill-analyzer",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Bill Analysis", value: "AI-Powered" },
-					{ label: "Savings Tracking", value: "Real-time" },
-					{ label: "User Experience", value: "Mobile-first" }
+					{
+						label: "Bill Analysis",
+						value: "AI-Powered",
+					},
+					{
+						label: "Savings Tracking",
+						value: "Real-time",
+					},
+					{
+						label: "User Experience",
+						value: "Mobile-first",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-ai-integration-chatbot-website-app.png",
-				isFeatured: true
+				isFeatured: true,
+				roles: [
+					"AI Engineer",
+				],
+				skillCategories: [
+					"AI/Machine Learning",
+					"Backend Development",
+					"Full Stack Development",
+					"Frontend Development",
+				],
+				domains: [
+					"Productivity",
+					"Finance",
+				],
 			},
 			{
 				id: 4,
@@ -219,28 +280,50 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"One-command CSV to GitHub Issues conversion with intelligent parsing",
 					"Interactive prompts for GitHub authentication and repo selection",
 					"Beautiful progress indicators with real-time status updates",
-					"Built-in security audits and compliance for enterprise use"
+					"Built-in security audits and compliance for enterprise use",
 				],
 				tech: [
 					"TypeScript",
 					"Node.js",
-					"GitHub API",
+					"GitHub",
 					"CLI",
 					"CSV Parser",
-					"npm"
+					"npm",
 				],
 				links: {
 					demo: "https://www.npmjs.com/package/upload-git-issues",
 					repo: "https://github.com/rhyanvargas/upload-git-issues",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "npm Package", value: "Published" },
-					{ label: "CSV Support", value: "Universal" },
-					{ label: "Setup Time", value: "2 minutes" }
+					{
+						label: "npm Package",
+						value: "Published",
+					},
+					{
+						label: "CSV Support",
+						value: "Universal",
+					},
+					{
+						label: "Setup Time",
+						value: "2 minutes",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-tool-cli-github-bulk-issues-uploader.png",
-				isFeatured: true
+				isFeatured: true,
+				roles: [
+					"DevTools",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Backend Development",
+					"API Development",
+				],
+				domains: [
+					"Open Source",
+					"Productivity",
+					"Enterprise",
+				],
 			},
 			{
 				id: 5,
@@ -251,27 +334,48 @@ I’m passionate about using technology to empower creativity and learning, espe
 				highlights: [
 					"Prompt orchestration with retries and semantic reranking",
 					"Streaming translation UI with real-time feedback",
-					"4.8/5 user CSAT and 25% faster translation latency"
+					"4.8/5 user CSAT and 25% faster translation latency",
 				],
 				tech: [
 					"Next.js",
 					"TypeScript",
 					"OpenAI",
 					"Supabase",
-					"Vercel"
+					"Vercel",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1ZK6jGG7LK1QcgrqC04SiFP9yoOtyAuBv/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/rhyglot-ai-translator",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Requests", value: "5k+" },
-					{ label: "User CSAT", value: "4.8/5" },
-					{ label: "Latency (p95)", value: "320ms" }
+					{
+						label: "Requests",
+						value: "5k+",
+					},
+					{
+						label: "User CSAT",
+						value: "4.8/5",
+					},
+					{
+						label: "Latency (p95)",
+						value: "320ms",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-ai-integration-text-translator-website-app.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"AI Engineer",
+				],
+				skillCategories: [
+					"AI/Machine Learning",
+					"Backend Development",
+					"Full Stack Development",
+					"Frontend Development",
+				],
+				domains: [
+					"Productivity",
+				],
 			},
 			{
 				id: 6,
@@ -282,26 +386,42 @@ I’m passionate about using technology to empower creativity and learning, espe
 				highlights: [
 					"Zustand and TanStack Query for state and data management",
 					"Detailed session analytics and progress tracking",
-					"Accessible, mobile-friendly UI"
+					"Accessible, mobile-friendly UI",
 				],
 				tech: [
 					"Next.js",
 					"TypeScript",
 					"Zustand",
 					"TanStack Query",
-					"TailwindCSS"
+					"Tailwind CSS",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1OwsartbUmD2ZvTKkENpMCIERgR3AMBF_/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/pomoburn-app",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Sessions Tracked", value: "2k+" },
-					{ label: "Retention", value: "68%" }
+					{
+						label: "Sessions Tracked",
+						value: "2k+",
+					},
+					{
+						label: "Retention",
+						value: "68%",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-pomoburn.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Full Stack Development",
+				],
+				domains: [
+					"Productivity",
+				],
 			},
 			{
 				id: 7,
@@ -313,7 +433,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Drag & drop video upload with smooth progress UI",
 					"OpenAI GPT-4 powered transcription and caption cleanup",
 					"Dual format output: plain text (.txt) and WebVTT (.vtt)",
-					"Planned multi-language translation to 50+ languages"
+					"Planned multi-language translation to 50+ languages",
 				],
 				tech: [
 					"Next.js",
@@ -321,22 +441,44 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"OpenAI",
 					"AI SDK",
 					"shadcn/ui",
-					"TailwindCSS",
+					"Tailwind CSS",
 					"Vitest",
-					"Zod"
+					"Zod",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1nvJuqUYjQOLyJmydkipH_x5sb_ckMgrS/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/ai-generated-captions",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Format Support", value: "2" },
-					{ label: "Planned Languages", value: "50+" },
-					{ label: "Processing Speed", value: "Fast" }
+					{
+						label: "Format Support",
+						value: "2",
+					},
+					{
+						label: "Planned Languages",
+						value: "50+",
+					},
+					{
+						label: "Processing Speed",
+						value: "Fast",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-ai-captions-generator.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"AI Engineer",
+				],
+				skillCategories: [
+					"AI/Machine Learning",
+					"Backend Development",
+					"Full Stack Development",
+					"Frontend Development",
+				],
+				domains: [
+					"Productivity",
+					"Entertainment",
+				],
 			},
 			{
 				id: 8,
@@ -347,25 +489,44 @@ I’m passionate about using technology to empower creativity and learning, espe
 				highlights: [
 					"GitHub Action for auto-sync and PR creation",
 					"Kiro-style specs and evidence packs auto-generation",
-					"Configurable data model and full Next.js integration"
+					"Configurable data model and full Next.js integration",
 				],
 				tech: [
 					"Next.js",
 					"TypeScript",
 					"Supabase",
 					"GitHub Actions",
-					"Vercel"
+					"Vercel",
 				],
 				links: {
 					repo: "https://github.com/rhyanvargas/ai-portfolio-generator",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Projects Synced", value: "10+" },
-					{ label: "PRs Opened", value: "5+" }
+					{
+						label: "Projects Synced",
+						value: "10+",
+					},
+					{
+						label: "PRs Opened",
+						value: "5+",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-ai-portfolio-generator.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"AI Engineer",
+				],
+				skillCategories: [
+					"AI/Machine Learning",
+					"Backend Development",
+					"Full Stack Development",
+					"Frontend Development",
+				],
+				domains: [
+					"Personal",
+					"Open Source",
+				],
 			},
 			{
 				id: 9,
@@ -377,7 +538,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"10+ unique AI-specific components (ConfidenceScore, ReasoningSteps, SourceAttribution)",
 					"Enterprise-ready with audit trails, cost tracking, and compliance features",
 					"Copy-paste friendly components with full TypeScript support",
-					"Fills ecosystem gaps missing from AI SDK UI and other libraries"
+					"Fills ecosystem gaps missing from AI SDK UI and other libraries",
 				],
 				tech: [
 					"Next.js",
@@ -385,19 +546,39 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Tailwind CSS",
 					"shadcn/ui",
 					"React",
-					"WCAG 2.1"
+					"WCAG 2.1",
 				],
 				links: {
 					repo: "https://github.com/rhyanvargas/fluix-ui",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Components", value: "10+" },
-					{ label: "Accessibility", value: "WCAG 2.1 AA" },
-					{ label: "Type Safety", value: "100%" }
+					{
+						label: "Components",
+						value: "10+",
+					},
+					{
+						label: "Accessibility",
+						value: "WCAG 2.1 AA",
+					},
+					{
+						label: "Type Safety",
+						value: "100%",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-ui-components-fluix.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Full Stack Development",
+				],
+				domains: [
+					"Open Source",
+					"Enterprise",
+				],
 			},
 			{
 				id: 10,
@@ -409,7 +590,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Built with v0.app for rapid prototyping and deployment",
 					"Automatic sync between v0.app and GitHub repository",
 					"Brevo email marketing integration for lead capture",
-					"Seamless Vercel deployment with continuous integration"
+					"Seamless Vercel deployment with continuous integration",
 				],
 				tech: [
 					"Next.js",
@@ -417,49 +598,85 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"v0.app",
 					"Brevo",
 					"Vercel",
-					"shadcn/ui"
+					"shadcn/ui",
 				],
 				links: {
 					demo: "https://drive.google.com/file/d/1Nb4qcUZ03JZ581OSb13BJ9CHusjrWmrm/view?usp=drive_link",
 					repo: "https://github.com/rhyanvargas/techsaints-website",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Build Tool", value: "v0.app" },
-					{ label: "Deployment", value: "Auto-sync" },
-					{ label: "Integration", value: "Brevo" }
+					{
+						label: "Build Tool",
+						value: "v0.app",
+					},
+					{
+						label: "Deployment",
+						value: "Auto-sync",
+					},
+					{
+						label: "Integration",
+						value: "Brevo",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-marketing-website-tech-saints-nextjs.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Full Stack Development",
+				],
+				domains: [
+					"Social",
+					"Personal",
+				],
 			},
 			{
 				id: 11,
-				"slug": "anana-landing",
-				"title": "Anana Landing Page",
-				"role": "Frontend",
-				"summary": "Assisted in designing animated UI components for the Anana landing page, using Next.js and TypeScript.",
-				"highlights": [
+				slug: "anana-landing",
+				title: "Anana Landing Page",
+				role: "Frontend",
+				summary: "Assisted in designing animated UI components for the Anana landing page, using Next.js and TypeScript.",
+				highlights: [
 					"Implemented accessible, mobile-first layout with Next.js App Router",
 					"Custom interactive sections and call-to-action for user onboarding",
-					"Optimized for fast load times, SEO, and maintainable code structure"
+					"Optimized for fast load times, SEO, and maintainable code structure",
 				],
-				"tech": [
+				tech: [
 					"Next.js",
 					"TypeScript",
 					"React",
-					"TailwindCSS"
+					"Tailwind CSS",
 				],
-				"links": {
-					"repo": "https://github.com/acostahf/anana",
-					"demo": "https://cookwithanana.com",
-					"evidence": "docs/evidence-pack.md"
+				links: {
+					repo: "https://github.com/acostahf/anana",
+					demo: "https://cookwithanana.com",
+					evidence: "docs/evidence-pack.md",
 				},
-				"metrics": [
-					{ "label": "Lighthouse a11y score", "value": "98+" },
-					{ "label": "TTI (demo)", "value": "<1s" }
+				metrics: [
+					{
+						label: "Lighthouse a11y score",
+						value: "98+",
+					},
+					{
+						label: "TTI (demo)",
+						value: "<1s",
+					},
 				],
-				"thumbnail": "/rhyan-vargas-portfolio-nexjts-anana-landing-page-website.png",
-				"isFeatured": true
+				thumbnail: "/rhyan-vargas-portfolio-nexjts-anana-landing-page-website.png",
+				isFeatured: true,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Full Stack Development",
+				],
+				domains: [
+					"Personal",
+				],
 			},
 			{
 				id: 12,
@@ -470,27 +687,47 @@ I’m passionate about using technology to empower creativity and learning, espe
 				highlights: [
 					"Unity/SpatialSDK–powered world with quest, dialogue, and gamified learning systems",
 					"Modular React-style C# component architecture for NPCs, quizzes, and interactive billboards",
-					"Evidence-driven design: measurable engagement, reward loops, and real-time feedback"
+					"Evidence-driven design: measurable engagement, reward loops, and real-time feedback",
 				],
 				tech: [
 					"Unity",
 					"C#",
 					"Spatial.io SDK",
 					"TextMeshPro",
-					"ScriptableObject Architecture"
+					"ScriptableObject Architecture",
 				],
 				links: {
 					demo: "https://www.spatial.io/s/SimpleVerse-660e2073db3c6d3118a3d448?share=2886587569504159907",
 					repo: "https://github.com/voxbox-dev/SimpleVerseV1",
-					evidence: "https://github.com/voxbox-dev/SimpleVerseV1/blob/main/README.md"
+					evidence: "https://github.com/voxbox-dev/SimpleVerseV1/blob/main/README.md",
 				},
 				metrics: [
-					{ label: "Player Sessions", value: "2,000+" },
-					{ label: "Quests Completed", value: "1,200+" },
-					{ label: "Engagement Time", value: "15m avg/session" }
+					{
+						label: "Player Sessions",
+						value: "2,000+",
+					},
+					{
+						label: "Quests Completed",
+						value: "1,200+",
+					},
+					{
+						label: "Engagement Time",
+						value: "15m avg/session",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-unity-csharp-simpleversev1.png",
-				isFeatured: true
+				isFeatured: true,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Game Development",
+				],
+				domains: [
+					"Education",
+					"Entertainment",
+				],
 			},
 			{
 				id: 13,
@@ -502,7 +739,7 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Pixel-perfect implementation from Figma designs with custom slider animations",
 					"Ethereum blockchain integration with wallet connect functionality using Ethers.js/Web3.js",
 					"Moralis API integration for NFT metadata and blockchain interactions",
-					"Responsive design with custom design elements and optimized performance"
+					"Responsive design with custom design elements and optimized performance",
 				],
 				tech: [
 					"Next.js",
@@ -510,21 +747,41 @@ I’m passionate about using technology to empower creativity and learning, espe
 					"Ethers.js",
 					"Web3.js",
 					"Moralis API",
-					"Tailwind CSS"
+					"Tailwind CSS",
 				],
 				links: {
 					demo: "https://3bears.seva.love/",
-					evidence: "docs/evidence-pack.md"
+					evidence: "docs/evidence-pack.md",
 				},
 				metrics: [
-					{ label: "Delivery Time", value: "2 weeks" },
-					{ label: "Blockchain", value: "Ethereum" },
-					{ label: "Wallet Support", value: "Multi-wallet" }
+					{
+						label: "Delivery Time",
+						value: "2 weeks",
+					},
+					{
+						label: "Blockchain",
+						value: "Ethereum",
+					},
+					{
+						label: "Wallet Support",
+						value: "Multi-wallet",
+					},
 				],
 				thumbnail: "/rhyan-vargas-portfolio-nextjs-landing-page-3bears.png",
-				isFeatured: false
+				isFeatured: false,
+				roles: [
+					"Frontend",
+				],
+				skillCategories: [
+					"Frontend Development",
+					"Full Stack Development",
+				],
+				domains: [
+					"Entertainment",
+					"Finance",
+				],
 			},
-		]
+		],
 	},
 
 	// Contact

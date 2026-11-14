@@ -103,9 +103,9 @@ export const projectSchema = z.object({
 })
 
 
-// Projects schema 
+// Projects schema — prefer enhanced projects; legacy projects remain valid during migration
 export const projectsSchema = z.object({
-    items: z.array(projectSchema).optional(),
+    items: z.array(z.union([enhancedProjectSchema, projectSchema])).optional(),
 })
 
 // Contact section schema

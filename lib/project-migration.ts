@@ -1,5 +1,6 @@
-import { Project, EnhancedProject } from '@/schemas/portfolio'
-import { TECHNOLOGIES, Technology, SkillCategory, RoleType, DomainCategory } from '@/lib/constants'
+import { Project, EnhancedProject, enhancedProjectSchema } from '@/schemas/portfolio'
+import { SkillCategory, RoleType, DomainCategory } from '@/lib/constants'
+import { normalizeTechnologiesForDisplay } from '@/lib/tech-normalization'
 
 /**
  * Migration utility for converting existing projects to enhanced schema
@@ -11,7 +12,8 @@ export function migrateProject(oldProject: Project): EnhancedProject {
         roles: [mapRoleToRoleType(oldProject.role)], // Convert single role to array
         skillCategories: inferSkillCategories(oldProject.role, oldProject.tech),
         domains: inferDomains(oldProject.summary, oldProject.highlights),
-        tech: normalizeTechnologies(oldProject.tech) // Normalize to predefined list
+        // Alias-normalize for consistency; keep non-canonical labels for display
+        tech: normalizeTechnologiesForDisplay(oldProject.tech),
     }
 }
 
@@ -26,6 +28,7 @@ function mapRoleToRoleType(role: string): RoleType {
         'Full-Stack Developer': 'Full Stack',
         'Fullstack Developer': 'Full Stack',
         'AI Engineer': 'AI Engineer',
+        'AI': 'AI Engineer',
         'DevOps Engineer': 'DevOps',
         'Mobile Developer': 'Mobile',
         'Game Developer': 'Game Developer',
@@ -33,6 +36,7 @@ function mapRoleToRoleType(role: string): RoleType {
         'Designer': 'Designer',
         'Data Engineer': 'Data Engineer',
         'DevTools Engineer': 'DevTools',
+        'DevTools': 'DevTools',
         // Add common variations
         'Frontend': 'Frontend',
         'Backend': 'Backend',
@@ -58,13 +62,18 @@ function inferSkillCategories(role: string, technologies: string[]): SkillCatego
         'Full-Stack Developer': ['Full Stack Development', 'Frontend Development', 'Backend Development'],
         'Fullstack Developer': ['Full Stack Development', 'Frontend Development', 'Backend Development'],
         'AI Engineer': ['AI/Machine Learning', 'Backend Development'],
+        'AI': ['AI/Machine Learning', 'Backend Development'],
         'DevOps Engineer': ['DevOps/Infrastructure'],
         'Mobile Developer': ['Mobile Development'],
         'Game Developer': ['Game Development'],
         'UI/UX Designer': ['UI/UX Design'],
         'Designer': ['UI/UX Design'],
         'Data Engineer': ['Data Engineering', 'Backend Development'],
-        'DevTools Engineer': ['Frontend Development', 'Backend Development']
+        'DevTools Engineer': ['Frontend Development', 'Backend Development', 'API Development'],
+        'DevTools': ['Frontend Development', 'Backend Development', 'API Development'],
+        'Frontend': ['Frontend Development'],
+        'Backend': ['Backend Development'],
+        'Full Stack': ['Full Stack Development', 'Frontend Development', 'Backend Development'],
     }
 
     const roleSkills = roleToSkillMap[role] || ['Full Stack Development']
@@ -118,16 +127,16 @@ function inferDomains(summary: string, highlights: string[]): DomainCategory[] {
     const text = (summary + ' ' + highlights.join(' ')).toLowerCase()
 
     const domainKeywords: Record<DomainCategory, string[]> = {
-        'E-commerce': ['ecommerce', 'e-commerce', 'shop', 'store', 'payment', 'stripe', 'checkout', 'cart'],
-        'Education': ['education', 'learning', 'course', 'tutorial', 'student', 'teacher', 'lms'],
+        'E-commerce': ['ecommerce', 'e-commerce', 'online shop', 'online store', 'payment', 'stripe', 'checkout', 'shopping cart'],
+        'Education': ['education', 'learning', 'course', 'tutorial', 'student', 'teacher', 'lms', 'learn-to-earn'],
         'Healthcare': ['health', 'medical', 'patient', 'doctor', 'clinic', 'hospital'],
-        'Finance': ['finance', 'financial', 'banking', 'investment', 'trading', 'crypto'],
-        'Entertainment': ['game', 'gaming', 'entertainment', 'media', 'video', 'music', 'streaming'],
-        'Productivity': ['productivity', 'task', 'todo', 'project management', 'workflow', 'automation'],
-        'Social': ['social', 'chat', 'messaging', 'community', 'network', 'collaboration'],
-        'Enterprise': ['enterprise', 'business', 'corporate', 'saas', 'b2b', 'crm', 'erp'],
-        'Open Source': ['open source', 'opensource', 'github', 'library', 'framework', 'tool'],
-        'Personal': ['personal', 'portfolio', 'blog', 'resume', 'profile']
+        'Finance': ['finance', 'financial', 'banking', 'investment', 'trading', 'crypto', 'nft', 'blockchain'],
+        'Entertainment': ['gaming', 'entertainment', 'music streaming', 'metaverse'],
+        'Productivity': ['productivity', 'pomodoro', 'task tracker', 'todo', 'project management', 'workflow', 'automation', 'habit'],
+        'Social': ['social network', 'chat assistant', 'messaging', 'community', 'collaboration'],
+        'Enterprise': ['enterprise', 'business', 'corporate', 'saas', 'b2b', 'crm', 'erp', 'compliance'],
+        'Open Source': ['open source', 'opensource', 'npm package', 'component registry'],
+        'Personal': ['personal', 'portfolio', 'blog', 'resume', 'profile', 'landing page']
     }
 
     Object.entries(domainKeywords).forEach(([domain, keywords]) => {
@@ -140,45 +149,10 @@ function inferDomains(summary: string, highlights: string[]): DomainCategory[] {
 }
 
 /**
- * Normalizes technology names to match predefined list
- */
-function normalizeTechnologies(techArray: string[]): string[] {
-    const techMap: Record<string, Technology> = {
-        'NextJS': 'Next.js',
-        'ReactJS': 'React',
-        'TailwindCSS': 'Tailwind CSS',
-        'shadcn': 'shadcn/ui',
-        'OpenAI API': 'OpenAI',
-        'AWS Amplify Gen 2': 'AWS Amplify',
-        'NodeJS': 'Node.js',
-        'ExpressJS': 'Express.js',
-        'MongoDB Atlas': 'MongoDB',
-        'PostgresQL': 'PostgreSQL',
-        'Github': 'GitHub',
-        'Github Actions': 'GitHub Actions',
-        'CSS3': 'HTML/CSS',
-        'HTML5': 'HTML/CSS',
-        'Javascript': 'JavaScript',
-        'Typescript': 'TypeScript'
-    }
-
-    return techArray
-        .map(tech => techMap[tech] || tech)
-        .filter(tech => TECHNOLOGIES.includes(tech as Technology))
-        .filter((tech, index, array) => array.indexOf(tech) === index) // Remove duplicates
-}
-
-/**
  * Validates that a project conforms to the enhanced schema
  */
-export function validateEnhancedProject(project: any): project is EnhancedProject {
-    try {
-        const { enhancedProjectSchema } = require('@/schemas/portfolio')
-        enhancedProjectSchema.parse(project)
-        return true
-    } catch {
-        return false
-    }
+export function validateEnhancedProject(project: unknown): project is EnhancedProject {
+    return enhancedProjectSchema.safeParse(project).success
 }
 
 /**

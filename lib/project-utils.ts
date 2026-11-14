@@ -1,9 +1,11 @@
-import type { Project } from '@/schemas/portfolio'
+import type { EnhancedProject, Project } from '@/schemas/portfolio'
+
+type AnyProject = Project | EnhancedProject
 
 /**
  * Sort projects by ID in ascending order (lowest ID first)
  */
-export function sortProjectsById(projects: Project[], ascending: boolean = true): Project[] {
+export function sortProjectsById<T extends AnyProject>(projects: T[], ascending: boolean = true): T[] {
     return [...projects].sort((a, b) => {
         return ascending ? a.id - b.id : b.id - a.id
     })
@@ -12,21 +14,21 @@ export function sortProjectsById(projects: Project[], ascending: boolean = true)
 /**
  * Get featured projects sorted by ID
  */
-export function getFeaturedProjects(projects: Project[], ascending: boolean = true): Project[] {
+export function getFeaturedProjects<T extends AnyProject>(projects: T[], ascending: boolean = true): T[] {
     return sortProjectsById(projects.filter(project => project.isFeatured), ascending)
 }
 
 /**
  * Get non-featured projects sorted by ID
  */
-export function getOtherProjects(projects: Project[], ascending: boolean = true): Project[] {
+export function getOtherProjects<T extends AnyProject>(projects: T[], ascending: boolean = true): T[] {
     return sortProjectsById(projects.filter(project => !project.isFeatured), ascending)
 }
 
 /**
  * Get all projects sorted by ID, with featured projects first
  */
-export function getAllProjectsSorted(projects: Project[], ascending: boolean = true): Project[] {
+export function getAllProjectsSorted<T extends AnyProject>(projects: T[], ascending: boolean = true): T[] {
     const featured = getFeaturedProjects(projects, ascending)
     const other = getOtherProjects(projects, ascending)
     return [...featured, ...other]
