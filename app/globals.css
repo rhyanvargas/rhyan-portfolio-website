@@ -16,7 +16,7 @@
   --secondary: oklch(0.65 0.15 160); /* Bright green secondary */
   --secondary-foreground: oklch(1 0 0); /* White text on secondary */
   --muted: oklch(0.98 0 0); /* Light gray muted */
-  --muted-foreground: oklch(0.35 0 0); /* Dark gray muted text */
+  --muted-foreground: oklch(0.45 0 0); /* Medium gray muted text for contrast vs foreground */
   --accent: oklch(0.65 0.15 160); /* Bright green accent */
   --accent-foreground: oklch(1 0 0); /* White text on accent */
   --destructive: oklch(0.577 0.245 27.325);
