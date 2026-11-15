@@ -5,6 +5,8 @@ alwaysApply: true
 
 # Git / PR workflow
 
+Canonical playbook: `.agents/skills/cicd-deployment` (CI/CD deployment skill). This rule is the always-on subset for PR base selection.
+
 ## Branching
 
 - **Integration branch:** `dev` — day-to-day work and feature PRs land here.

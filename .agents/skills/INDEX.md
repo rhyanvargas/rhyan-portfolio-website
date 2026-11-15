@@ -6,13 +6,14 @@ Folders stay **flat** under `.agents/skills/<name>/` so `skills-lock.json` and `
 
 | Skill | Use when |
 |-------|----------|
+| `cicd-deployment` | This repo’s feat→dev→main PRs, Vercel deploy, promote to prod |
 | `spec-driven-workflow` | Specs, `/draft-spec`, `/plan-impl`, `/implement-spec`, `/review` |
 | `solution-architecture` | C4 / architecture packets, ADRs |
 | `writing-plans` | Multi-step implementation plans before coding |
 | `systematic-debugging` | Bugs / unexpected failures — root cause first |
 | `test-driven-development` | Feature/bugfix before implementation |
 | `release-automation` | Conventional Commits, changelogs, release please |
-| `devops-strategy-facilitator` | Branching / CI-CD strategy sessions |
+| `devops-strategy-facilitator` | Redesign branching / CI-CD strategy (not day-to-day operate) |
 
 ## Product / discovery (optional packs)
 
