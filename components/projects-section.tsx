@@ -7,12 +7,15 @@ import { Badge } from "@/components/ui/badge"
 import { FilterControls } from "@/components/filters/filter-controls"
 import { FilterEmptyState } from "@/components/filters/filter-empty-state"
 import { FilterProvider, useFilter } from "@/contexts/filter-context"
-import { getPortfolioConfig } from "@/lib/config"
 import { getAvailableFilterOptions } from "@/lib/available-filters"
 import { filterProjects, hasActiveFilters } from "@/lib/filter-utils"
 import { getFeaturedProjects, getOtherProjects } from "@/lib/project-utils"
 import type { EnhancedProject, Project } from "@/schemas/portfolio"
 import { cn } from "@/lib/utils"
+
+type ProjectsSectionProps = {
+  projects: EnhancedProject[]
+}
 
 function ProjectRoleLabel({ project }: { project: Project | EnhancedProject }) {
   if ("roles" in project && project.roles?.length) {
@@ -216,14 +219,10 @@ function OtherProject({
   )
 }
 
-function ProjectsSectionContent() {
-  const config = getPortfolioConfig()
+function ProjectsSectionContent({ projects }: ProjectsSectionProps) {
   const { state } = useFilter()
 
-  const allProjects = useMemo(
-    () => config.projects.items ?? [],
-    [config.projects.items]
-  )
+  const allProjects = useMemo(() => projects, [projects])
 
   const availableFilters = useMemo(
     () => getAvailableFilterOptions(allProjects),
@@ -339,11 +338,11 @@ function ProjectsSectionFallback() {
   )
 }
 
-export function ProjectsSection() {
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <Suspense fallback={<ProjectsSectionFallback />}>
       <FilterProvider>
-        <ProjectsSectionContent />
+        <ProjectsSectionContent projects={projects} />
       </FilterProvider>
     </Suspense>
   )
