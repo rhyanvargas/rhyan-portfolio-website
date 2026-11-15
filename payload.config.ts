@@ -9,6 +9,7 @@ import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
 import { Skills } from './collections/Skills'
 import { Users } from './collections/Users'
+import { getServerURL } from './lib/preview'
 
 loadEnv()
 
@@ -30,10 +31,18 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    livePreview: {
+      breakpoints: [
+        { name: 'mobile', width: 375, height: 667, label: 'Mobile' },
+        { name: 'tablet', width: 768, height: 1024, label: 'Tablet' },
+        { name: 'desktop', width: 1440, height: 900, label: 'Desktop' },
+      ],
+    },
   },
   collections: [Users, Posts, Projects, Skills],
   editor: lexicalEditor(),
   secret: payloadSecret,
+  serverURL: getServerURL(),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
@@ -44,4 +53,26 @@ export default buildConfig({
         : `file:${path.resolve(dirname, 'payload.db')}`,
     },
   }),
+  jobs: {
+    access: {
+      run: ({ req }) => {
+        if (req.user) return true
+        const cronSecret = process.env.CRON_SECRET
+        if (!cronSecret) return false
+        const auth = req.headers.get('authorization')
+        return auth === `Bearer ${cronSecret}`
+      },
+    },
+    // Local / long-running Node: pick up schedulePublish jobs every minute.
+    // On Vercel, disable this and hit /api/payload-jobs/run via Cron instead.
+    autoRun:
+      process.env.PAYLOAD_JOBS_AUTORUN === 'false'
+        ? undefined
+        : [
+            {
+              cron: '* * * * *',
+              queue: 'default',
+            },
+          ],
+  },
 })
