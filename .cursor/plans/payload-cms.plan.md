@@ -25,7 +25,7 @@ todos:
     status: completed
   - id: T8
     content: Next (queued) — live preview, scheduled publish, cut Work/filters over to Projects+Skills
-    status: pending
+    status: in_progress
   - id: T9
     content: Later composition (queued) — theme, widget catalog, section reorder as one epic
     status: pending
@@ -182,9 +182,11 @@ T1 → T2 → T3 → T4: create a Skill, a Project related to it, and a Post in 
 
 ## Handoff / Progress
 
-- **Updated:** 2026-11-14
-- **Done:** T1–T7 (Now slice) + review fixes: fail-fast `PAYLOAD_SECRET`; explicit collection write access; Users first-user create gate; README/`docs/setup` sync; ADR cutover/deploy notes; living-spec React 19 pin.
-- **Files:** (prior Now slice) + `lib/payload-access.ts`, `collections/*` access, `payload.config.ts`, `README.md`, `docs/setup.md`, ADR-002, `.env.example`, living spec
-- **Now:** Commit when asked; then T8 only after explicit go. Residual: Medium #5 `tech` field still deferred to Next cutover (documented).
-- **Watchouts:** Create first admin user immediately on fresh deploy; keep `payload.db` / `.env` untracked.
-- **Git:** committed on `dev` (4 commits ahead of origin; not pushed)
+- **Updated:** 2026-11-15 (`/review`)
+- **Done (committed):** T1–T7 Now slice — REQ-001…009 as scoped; `pnpm verify` was green at Now handoff.
+- **In progress (uncommitted):** T8 — live preview, `schedulePublish` + jobs/cron, homepage Projects via Local API, `/projects/[slug]`, portfolio projects emptied from `config/portfolio.ts`.
+- **Review verdict:** Now = pass (committed). Next = **not done** — fail-closed `pnpm verify` fails typecheck on `scripts/seed-projects-from-portfolio.ts` (links + skills id typing). Residual Medium #5 inverted: WIP added free-text `tech` **and** Skills relationship — author backlog wants Skills-only (see `.agents/backlog/portfolio-cms.md` BL-007).
+- **Do not claim T8 done** until verify green + draft/schedule access fences reviewed + living spec updated for intentional cutover of REQ-005.
+- **Backlog (post-T8 / next sprint):** BL-001…BL-008 in `.agents/backlog/portfolio-cms.md`.
+- **Watchouts:** Create first admin user on fresh deploy; keep `payload.db` / `.env` untracked; Vercel cron needs `CRON_SECRET` + `PAYLOAD_JOBS_AUTORUN=false`.
+- **Git:** Now commits on `dev`; T8 changes dirty working tree (not committed).
