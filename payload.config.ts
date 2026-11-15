@@ -64,7 +64,8 @@ export default buildConfig({
       },
     },
     // Local / long-running Node: pick up schedulePublish jobs every minute.
-    // On Vercel, disable this and hit /api/payload-jobs/run via Cron instead.
+    // On Vercel: PAYLOAD_JOBS_AUTORUN=false and hit /api/payload-jobs/run via Cron
+    // (Hobby allows daily only — see vercel.json `0 0 * * *`).
     autoRun:
       process.env.PAYLOAD_JOBS_AUTORUN === 'false'
         ? undefined
