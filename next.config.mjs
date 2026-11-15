@@ -11,6 +11,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Ensure native libsql resolves on Vercel (Payload db-sqlite).
+  serverExternalPackages: ['libsql', '@libsql/client'],
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],

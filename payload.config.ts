@@ -16,7 +16,6 @@ loadEnv()
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-const databaseUrl = process.env.DATABASE_URL || `file:${path.resolve(dirname, 'payload.db')}`
 const payloadSecret = process.env.PAYLOAD_SECRET
 
 if (!payloadSecret) {
@@ -24,6 +23,22 @@ if (!payloadSecret) {
     'PAYLOAD_SECRET is required. Copy .env.example to .env and set a long random string.',
   )
 }
+
+/** Local file SQLite, or remote Turso/libsql URL for Vercel (file: DBs are ephemeral there). */
+function resolveDatabaseUrl(raw: string | undefined): string {
+  if (!raw) return `file:${path.resolve(dirname, 'payload.db')}`
+  if (
+    raw.startsWith('file:') ||
+    raw.startsWith('libsql:') ||
+    raw.startsWith('http:') ||
+    raw.startsWith('https:')
+  ) {
+    return raw
+  }
+  return `file:${path.resolve(dirname, raw)}`
+}
+
+const databaseUrl = resolveDatabaseUrl(process.env.DATABASE_URL)
 
 export default buildConfig({
   admin: {
@@ -48,9 +63,10 @@ export default buildConfig({
   },
   db: sqliteAdapter({
     client: {
-      url: databaseUrl.startsWith('file:')
-        ? databaseUrl
-        : `file:${path.resolve(dirname, 'payload.db')}`,
+      url: databaseUrl,
+      ...(process.env.DATABASE_AUTH_TOKEN
+        ? { authToken: process.env.DATABASE_AUTH_TOKEN }
+        : {}),
     },
   }),
   jobs: {
