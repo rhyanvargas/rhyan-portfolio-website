@@ -14,7 +14,7 @@ function categorySlug(category: string): string {
     .replace(/^-|-$/g, '')
 }
 
-async function main() {
+export async function seedProjectsFromPortfolio() {
   const payload = await getPayload({ config })
   const skillIdByCategory = new Map<string, number | string>()
 
@@ -129,19 +129,20 @@ async function main() {
     })
   }
 
-  console.log(
-    JSON.stringify(
-      {
-        skills: skillIdByCategory.size,
-        projectsUpserted: upserted,
-      },
-      null,
-      2,
-    ),
-  )
+  return {
+    skills: skillIdByCategory.size,
+    projectsUpserted: upserted,
+  }
 }
 
-main().catch((error) => {
-  console.error(error)
-  process.exit(1)
-})
+const entry = process.argv[1] ?? ''
+if (entry.endsWith('seed-projects-from-portfolio.ts')) {
+  seedProjectsFromPortfolio()
+    .then((result) => {
+      console.log(JSON.stringify(result, null, 2))
+    })
+    .catch((error) => {
+      console.error(error)
+      process.exit(1)
+    })
+}
