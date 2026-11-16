@@ -27,6 +27,9 @@ payload.db-*
 # vercel
 .vercel
 
+# Cursor local IDE settings (plugins, etc.)
+.cursor/settings.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
