@@ -1,4 +1,5 @@
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { config as loadEnv } from 'dotenv'
 import path from 'path'
@@ -24,8 +25,21 @@ if (!payloadSecret) {
   )
 }
 
-/** Local file SQLite, or remote Turso/libsql URL for Vercel (file: DBs are ephemeral there). */
-function resolveDatabaseUrl(raw: string | undefined): string {
+/** Neon / Vercel Marketplace usually injects POSTGRES_URL (and often DATABASE_URL). */
+function resolvePostgresUrl(): string | undefined {
+  if (process.env.POSTGRES_URL) return process.env.POSTGRES_URL
+  const databaseUrl = process.env.DATABASE_URL
+  if (
+    databaseUrl?.startsWith('postgres://') ||
+    databaseUrl?.startsWith('postgresql://')
+  ) {
+    return databaseUrl
+  }
+  return undefined
+}
+
+/** Local file SQLite, or Turso/libsql when not on Postgres. */
+function resolveSqliteUrl(raw: string | undefined): string {
   if (!raw) return `file:${path.resolve(dirname, 'payload.db')}`
   if (
     raw.startsWith('file:') ||
@@ -38,7 +52,27 @@ function resolveDatabaseUrl(raw: string | undefined): string {
   return `file:${path.resolve(dirname, raw)}`
 }
 
-const databaseUrl = resolveDatabaseUrl(process.env.DATABASE_URL)
+function createDatabaseAdapter() {
+  const postgresUrl = resolvePostgresUrl()
+
+  if (postgresUrl) {
+    return vercelPostgresAdapter({
+      pool: {
+        connectionString: postgresUrl,
+      },
+    })
+  }
+
+  const sqliteUrl = resolveSqliteUrl(process.env.DATABASE_URL)
+  return sqliteAdapter({
+    client: {
+      url: sqliteUrl,
+      ...(process.env.DATABASE_AUTH_TOKEN
+        ? { authToken: process.env.DATABASE_AUTH_TOKEN }
+        : {}),
+    },
+  })
+}
 
 export default buildConfig({
   admin: {
@@ -61,14 +95,7 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: databaseUrl,
-      ...(process.env.DATABASE_AUTH_TOKEN
-        ? { authToken: process.env.DATABASE_AUTH_TOKEN }
-        : {}),
-    },
-  }),
+  db: createDatabaseAdapter(),
   jobs: {
     access: {
       run: ({ req }) => {

@@ -63,11 +63,14 @@ async function main() {
     const skillIds = (project.skillCategories ?? [])
       .map((category) => skillIdByCategory.get(category))
       .filter((id): id is number | string => id !== undefined)
+      .map((id) => (typeof id === 'number' ? id : Number(id)))
+      .filter((id) => Number.isFinite(id))
 
     if (skillIds.length === 0) {
       throw new Error(`Project ${project.slug} has no resolvable skills`)
     }
 
+    const links = project.links ?? {}
     const data = {
       title: project.title,
       slug: project.slug,
@@ -75,12 +78,12 @@ async function main() {
       summary: project.summary,
       highlights: project.highlights.map((item) => ({ item })),
       tech: project.tech.map((item) => ({ item })),
-      roles: project.roles,
-      domains: project.domains ?? [],
+      roles: [...project.roles],
+      domains: [...(project.domains ?? [])],
       links: {
-        demo: project.links?.demo,
-        repo: project.links?.repo,
-        evidence: project.links?.evidence,
+        demo: 'demo' in links ? links.demo : undefined,
+        repo: 'repo' in links ? links.repo : undefined,
+        evidence: 'evidence' in links ? links.evidence : undefined,
       },
       metrics: project.metrics?.map((metric) => ({
         label: metric.label,
@@ -113,13 +116,13 @@ async function main() {
     upserted += 1
   }
 
-  // Remove the Now-slice placeholder if present and not in the snapshot.
+  // Remove the Now-slice placeholder if present.
   const seed = await payload.find({
     collection: 'projects',
     where: { slug: { equals: 'seed-project' } },
     limit: 1,
   })
-  if (seed.docs[0] && !portfolioProjectsSnapshot.some((p) => p.slug === 'seed-project')) {
+  if (seed.docs[0]) {
     await payload.delete({
       collection: 'projects',
       id: seed.docs[0].id,
