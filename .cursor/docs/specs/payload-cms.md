@@ -1,10 +1,11 @@
 # Payload CMS — Living Spec
 
-**Status:** Now slice implemented; review fixes applied  
+**Status:** Now slice done (reviewed). Next (T8) in progress — **not verified** (typecheck fail on seed script).  
 **Size:** Medium (brownfield + architecture integration)  
 **Mode:** Design-First (CMS/platform chosen) → testable REQs  
-**Branch context:** `dev` cleaned; Keystatic parked on `archive/keystatic-spike`  
-**Reference spike:** `origin/cursor/payload-foundation-spike-e0fb` (reuse structure; retarget versions)
+**Branch context:** `dev`; Keystatic parked on `archive/keystatic-spike`  
+**Reference spike:** `origin/cursor/payload-foundation-spike-e0fb` (reuse structure; retarget versions)  
+**Backlog:** `.agents/backlog/portfolio-cms.md` (homepage IA, shared status, Skills-only tech, scheduled lock, layout/footer/slug UX)
 
 ## Outcome
 

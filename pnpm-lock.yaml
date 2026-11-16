@@ -11,9 +11,15 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.89.0(@types/react@19.3.0)(react@19.3.1))
+      '@libsql/client':
+        specifier: 0.14.0
+        version: 0.14.0
       '@payloadcms/db-sqlite':
         specifier: 3.93.0
         version: 3.93.0(payload@3.93.0(graphql@16.15.0)(supports-color@7.2.0)(typescript@5.9.3))(supports-color@7.2.0)
+      '@payloadcms/live-preview-react':
+        specifier: 3.93.0
+        version: 3.93.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@payloadcms/next':
         specifier: 3.93.0
         version: 3.93.0(@types/react@19.3.0)(graphql@16.15.0)(monaco-editor@0.57.0)(next@15.4.11(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(supports-color@7.2.0)(typescript@5.9.3))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@7.2.0)(typescript@5.9.3)
@@ -149,6 +155,9 @@ importers:
       js-yaml:
         specifier: 4.1.0
         version: 4.1.0
+      libsql:
+        specifier: 0.4.7
+        version: 0.4.7
       lucide-react:
         specifier: ^0.454.0
         version: 0.454.0(react@19.3.1)
@@ -1683,6 +1692,15 @@ packages:
     peerDependencies:
       graphql: ^16.8.1
       payload: 3.93.0
+
+  '@payloadcms/live-preview-react@3.93.0':
+    resolution: {integrity: sha512-Ealb51CNqkMXg/cTNHLhuKghKeKKRbJoIvpnzyzpEseG0kvtQjrq1zEaZ6mA2ST2rCOjBtsl3CONjhr3smw7vw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.1 || ^19.1.2 || ^19.2.1
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.1 || ^19.1.2 || ^19.2.1
+
+  '@payloadcms/live-preview@3.93.0':
+    resolution: {integrity: sha512-7nOOh0J++hyGxPrQnMMw7r9h/QOQepjChM6G2DumqsahEn/j3dhrJd7By4dyXhSxb2810yPEObIYgGt4BP15QQ==}
 
   '@payloadcms/next@3.93.0':
     resolution: {integrity: sha512-0GY+aXr7m0JoY9Vty7K/qdKjMMQLDBNMp/qT1+tYi+cJhT44Vvtx3DyEPWVtavjsxV18tJ2qd8jBEhocY0hT8w==}
@@ -6976,6 +6994,14 @@ snapshots:
       tsx: 4.23.15
     transitivePeerDependencies:
       - typescript
+
+  '@payloadcms/live-preview-react@3.93.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
+    dependencies:
+      '@payloadcms/live-preview': 3.93.0
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+
+  '@payloadcms/live-preview@3.93.0': {}
 
   '@payloadcms/next@3.93.0(@types/react@19.3.0)(graphql@16.15.0)(monaco-editor@0.57.0)(next@15.4.11(babel-plugin-macros@3.1.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(sass@1.77.4))(payload@3.93.0(graphql@16.15.0)(supports-color@7.2.0)(typescript@5.9.3))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:

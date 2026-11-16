@@ -6,6 +6,27 @@ export const publishedPostsWhere: Where = {
   },
 }
 
+export function postBySlugWhere(slug: string, draft: boolean): Where {
+  if (draft) {
+    return {
+      slug: {
+        equals: slug,
+      },
+    }
+  }
+
+  return {
+    and: [
+      publishedPostsWhere,
+      {
+        slug: {
+          equals: slug,
+        },
+      },
+    ],
+  }
+}
+
 export type PublicPostSummary = {
   id: number | string
   title: string

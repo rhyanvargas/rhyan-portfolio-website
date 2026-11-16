@@ -1,5 +1,6 @@
 import { getPayloadClient } from '@/lib/payload'
 import {
+  postBySlugWhere,
   publishedPostsWhere,
   toPublicPostSummary,
   type PublicPost,
@@ -7,6 +8,7 @@ import {
 } from '@/lib/posts-public'
 
 export {
+  postBySlugWhere,
   publishedPostsWhere,
   toPublicPostSummary,
   type PublicPost,
@@ -29,22 +31,18 @@ export async function getPublishedPosts(): Promise<PublicPostSummary[]> {
     .filter((doc): doc is PublicPostSummary => doc !== null)
 }
 
-export async function getPublishedPostBySlug(slug: string): Promise<PublicPost | null> {
+export async function getPostBySlug(
+  slug: string,
+  options: { draft?: boolean } = {},
+): Promise<PublicPost | null> {
+  const draft = Boolean(options.draft)
   const payload = await getPayloadClient()
   const result = await payload.find({
     collection: 'posts',
-    where: {
-      and: [
-        publishedPostsWhere,
-        {
-          slug: {
-            equals: slug,
-          },
-        },
-      ],
-    },
+    where: postBySlugWhere(slug, draft),
     depth: 0,
     limit: 1,
+    draft,
     overrideAccess: false,
   })
 
@@ -58,4 +56,9 @@ export async function getPublishedPostBySlug(slug: string): Promise<PublicPost |
     updatedAt: doc.updatedAt,
     content: doc.content,
   }
+}
+
+/** @deprecated Prefer getPostBySlug(slug, { draft: false }) */
+export async function getPublishedPostBySlug(slug: string): Promise<PublicPost | null> {
+  return getPostBySlug(slug, { draft: false })
 }

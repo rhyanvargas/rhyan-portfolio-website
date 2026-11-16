@@ -1,6 +1,8 @@
 /**
- * One-shot seed for Now-slice verify: Skill → Project → published Post.
+ * One-shot seed for verify: Skill → Project → published Post.
  * Usage: pnpm exec tsx scripts/seed-payload-now.ts
+ *
+ * Prefer `seed-projects-from-portfolio.ts` for the full Work cutover dataset.
  */
 import { getPayload } from 'payload'
 import config from '../payload.config'
@@ -31,23 +33,31 @@ async function main() {
     limit: 1,
   })
 
-  const project =
-    existingProject.docs[0] ??
-    (await payload.create({
-      collection: 'projects',
-      data: {
-        title: 'Seed Project',
-        slug: 'seed-project',
-        summary: 'Seeded project linked to a Skill for Now-slice verify.',
-        highlights: [{ item: 'Related to Skills collection' }],
-        roles: ['Frontend'],
-        domains: ['Personal'],
-        links: {},
-        thumbnail: '/placeholder.jpg',
-        featured: true,
-        skills: [skill.id],
-      },
-    }))
+  const projectData = {
+    title: 'Seed Project',
+    slug: 'seed-project',
+    displayOrder: 999,
+    summary: 'Seeded project linked to a Skill for verify.',
+    highlights: [{ item: 'Related to Skills collection' }],
+    tech: [{ item: 'React' }, { item: 'TypeScript' }],
+    roles: ['Frontend' as const],
+    domains: ['Personal' as const],
+    links: {},
+    thumbnail: '/placeholder.jpg',
+    featured: true,
+    skills: [skill.id],
+  }
+
+  const project = existingProject.docs[0]
+    ? await payload.update({
+        collection: 'projects',
+        id: existingProject.docs[0].id,
+        data: projectData,
+      })
+    : await payload.create({
+        collection: 'projects',
+        data: projectData,
+      })
 
   const existingPost = await payload.find({
     collection: 'posts',
