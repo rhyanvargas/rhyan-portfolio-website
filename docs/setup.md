@@ -33,9 +33,28 @@ cp .env.example .env
 | Variable | Required | Purpose |
 |----------|----------|---------|
 | `PAYLOAD_SECRET` | Yes | Signs Payload auth/sessions; app fails fast if missing |
-| `DATABASE_URL` | Yes (local default in example) | SQLite file URL, e.g. `file:./payload.db` |
+| `DATABASE_URL` | Local default | SQLite file URL, e.g. `file:./payload.db` |
+| `POSTGRES_URL` | Preview/Production | Neon connection string (Vercel Marketplace injects this) |
+| `NEXT_PUBLIC_SERVER_URL` | Recommended on Vercel | Public origin for Payload live preview links |
+| `PREVIEW_SECRET` | Preview/draft Mode | Shared secret for `/next/preview` |
+| `CRON_SECRET` | Vercel Cron | Bearer token for `/api/payload-jobs/run` |
 
 Local SQLite creates `payload.db` in the repo root (gitignored).
+
+### Neon (Vercel Marketplace) — Preview / Production
+
+1. Vercel project → **Integrations** / **Marketplace** → install **Neon** (Free plan).
+2. Connect it to **v0-rhyan-s-portfolio-website** and enable **Preview** + **Production**.
+3. Confirm env vars appear under **Settings → Environment Variables** (`POSTGRES_URL`, often `DATABASE_URL` / `DATABASE_URL_UNPOOLED`).
+4. Keep local `.env` on `DATABASE_URL=file:./payload.db` (no `POSTGRES_URL` locally unless you want to hit Neon from your laptop).
+5. Redeploy the preview branch after the integration is linked.
+6. In Vercel → **Settings → General → Build & Development Settings**, set **Build Command** to:
+   ```bash
+   pnpm build:vercel
+   ```
+   (`payload migrate && next build` — applies Postgres schema on deploy when `POSTGRES_URL` is present.)
+
+Payload selects adapters in `payload.config.ts`: **Postgres** when `POSTGRES_URL` or a `postgres://` `DATABASE_URL` is set; otherwise **SQLite**.
 
 ### 4. Start Development Server
 ```bash

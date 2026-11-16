@@ -8,6 +8,7 @@
 	},
 	"scripts": {
 		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+		"build:vercel": "cross-env NODE_OPTIONS=--no-deprecation payload migrate && next build",
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"lint": "next lint",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",
@@ -23,6 +24,7 @@
 		"@hookform/resolvers": "^3.10.0",
 		"@libsql/client": "0.14.0",
 		"@payloadcms/db-sqlite": "3.93.0",
+		"@payloadcms/db-vercel-postgres": "3.93.0",
 		"@payloadcms/live-preview-react": "3.93.0",
 		"@payloadcms/next": "3.93.0",
 		"@payloadcms/richtext-lexical": "3.93.0",
