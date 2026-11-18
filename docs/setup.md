@@ -35,6 +35,7 @@ cp .env.example .env
 | `PAYLOAD_SECRET` | Yes | Signs Payload auth/sessions; app fails fast if missing |
 | `DATABASE_URL` | Local default | SQLite file URL, e.g. `file:./payload.db` |
 | `POSTGRES_URL` | Preview/Production | Neon connection string (Vercel Marketplace injects this) |
+| `PAYLOAD_JOBS_AUTORUN` | Vercel | Set `false` so jobs run via cron (`/api/payload-jobs/run`), not on every request |
 | `NEXT_PUBLIC_SERVER_URL` | Recommended on Vercel | Public origin for Payload live preview links |
 | `PREVIEW_SECRET` | Preview/draft Mode | Shared secret for `/next/preview` |
 | `CRON_SECRET` | Vercel Cron | Bearer token for `/api/payload-jobs/run` |
@@ -44,11 +45,12 @@ Local SQLite creates `payload.db` in the repo root (gitignored).
 ### Neon (Vercel Marketplace) — Preview / Production
 
 1. Vercel project → **Integrations** / **Marketplace** → install **Neon** (Free plan).
-2. Connect it to **v0-rhyan-s-portfolio-website** and enable **Preview** + **Production**.
-3. Confirm env vars appear under **Settings → Environment Variables** (`POSTGRES_URL`, often `DATABASE_URL` / `DATABASE_URL_UNPOOLED`).
-4. Keep local `.env` on `DATABASE_URL=file:./payload.db` (no `POSTGRES_URL` locally unless you want to hit Neon from your laptop).
-5. Redeploy the preview branch after the integration is linked.
-6. In Vercel → **Settings → General → Build & Development Settings**, set **Build Command** to:
+2. Connect it to **v0-rhyan-s-portfolio-website** for **Preview** + **Production** (+ Development if you pull env locally).
+3. Leave **Create database branch for deployment** unchecked (solo workflow: Preview and Production share Neon `main` so seeded content is visible on both).
+4. Confirm env vars appear under **Settings → Environment Variables** (`POSTGRES_URL`, often `DATABASE_URL` / `DATABASE_URL_UNPOOLED`, plus `PAYLOAD_JOBS_AUTORUN=false`).
+5. Keep local `.env` on `DATABASE_URL=file:./payload.db` (no `POSTGRES_URL` locally unless you want to hit Neon from your laptop).
+6. Redeploy after the integration is linked so Preview picks up the shared connection string.
+7. In Vercel → **Settings → General → Build & Development Settings**, set **Build Command** to:
    ```bash
    pnpm build:vercel
    ```
