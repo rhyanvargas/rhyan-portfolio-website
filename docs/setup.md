@@ -56,7 +56,7 @@ Local SQLite creates `payload.db` in the repo root (gitignored).
    ```
    (`payload migrate && next build` — applies Postgres schema on deploy when `POSTGRES_URL` is present.)
 
-Payload selects adapters in `payload.config.ts`: **Postgres** when `POSTGRES_URL` or a `postgres://` `DATABASE_URL` is set; otherwise **SQLite**.
+Payload selects adapters in `payload.config.ts`: **Postgres** when `POSTGRES_URL` or a `postgres://` `DATABASE_URL` is set; otherwise **SQLite**. Postgres uses `push: false` so schema changes only land via `payload migrate` (never via local `pnpm dev` against Neon).
 
 ### 4. Start Development Server
 ```bash

@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-		"build:vercel": "cross-env NODE_OPTIONS=--no-deprecation payload migrate && next build",
+		"build:vercel": "cross-env NODE_OPTIONS=--no-deprecation PAYLOAD_MIGRATING=true payload migrate && next build",
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
 		"lint": "next lint",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start",

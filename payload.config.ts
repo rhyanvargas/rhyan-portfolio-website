@@ -57,6 +57,8 @@ function createDatabaseAdapter() {
 
   if (postgresUrl) {
     return vercelPostgresAdapter({
+      // Never schema-push against Neon; CI/Vercel use `payload migrate`.
+      push: false,
       pool: {
         connectionString: postgresUrl,
       },
