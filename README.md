@@ -39,6 +39,7 @@ Requires Node.js `^22.23.5` and pnpm.
 
 ## Documentation
 
+- [Developer Runbook](docs/developer-runbook.md) — test on local SQLite, preview on `dev`, ship `dev` → `main`
 - [Setup Guide](docs/setup.md) — install, env, admin bootstrap
 - [ADR-002 Payload CMS](docs/architecture/adrs/ADR-002-payload-cms.md) — Now / Next / Later roadmap
 - [Configuration Reference](docs/configuration.md) — portfolio config schema

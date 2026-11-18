@@ -1,0 +1,130 @@
+# Developer Runbook: Local Testing, Preview, and Production
+
+How to test a change on your machine, preview it on `dev`, and ship it to production without treating the live database as a sandbox.
+
+## Where each environment writes
+
+| Environment | Git branch | App | Database | Safe for throwaway data? |
+|---|---|---|---|---|
+| Local | any | `pnpm dev` → `http://localhost:3000` | SQLite file `payload.db` (gitignored) | Yes |
+| Preview | feature branches and `dev` | Vercel preview URL | Neon `main` | No |
+| Production | `main` | [rhyan.dev](https://www.rhyan.dev) | Neon `main` | No |
+
+Preview and production share one Neon database and the same content. Preview Branching is off so a preview shows the live projects. CMS creates, edits, deletes, and `payload migrate` on a preview deploy change production data.
+
+Local development stays off Neon only when `POSTGRES_URL` is absent. If that variable is set, Payload uses Postgres and your laptop writes to the shared database.
+
+## Scenario paths
+
+```mermaid
+flowchart TD
+  start["Start a change"] --> kind{"What are you changing?"}
+
+  kind -->|"UI or application code"| local["pnpm dev against SQLite"]
+  kind -->|"CMS content you can throw away"| admin["Edit /admin on localhost only"]
+  kind -->|"Schema"| migration["Add a Payload migration and apply it on SQLite"]
+
+  local --> verify["pnpm verify"]
+  admin --> verify
+  migration --> verify
+
+  verify --> branch["Branch from dev and open a PR into dev"]
+  branch --> preview["Open the Vercel preview"]
+
+  preview --> writes{"Does this preview write CMS rows or run a migration?"}
+  writes -->|"Read-only UI check"| look["Confirm the UI against live content"]
+  writes -->|"Yes"| shared["Those writes hit Neon main, the production database"]
+
+  look --> mergedev["Merge into dev"]
+  shared --> mergedev
+
+  mergedev --> release{"Is dev the release?"}
+  release -->|"Not yet"| stay["Leave it on dev"]
+  release -->|"Yes"| promote["Open a PR from dev into main"]
+  promote --> prod["Production deploy"]
+```
+
+### Feature or UI change
+
+1. Update `dev` and branch from it. Do not branch feature work from `main`.
+   ```bash
+    git fetch origin
+    git checkout dev
+    git pull
+    git checkout -b feat/<short-name>
+   ```
+2. Keep local env on SQLite. Copy `.env.example` to `.env`, set `PAYLOAD_SECRET`, and leave `POSTGRES_URL` unset. `DATABASE_URL` should stay a file URL such as `file:./payload.db`.
+3. Run the app and the gate:
+   ```bash
+    pnpm dev
+    pnpm verify
+   ```
+
+    Site: `http://localhost:3000`. Admin: `http://localhost:3000/admin`. On a fresh SQLite file, create the first user immediately. That account exists only in `payload.db`.
+4. Push the branch and open a pull request with base `dev`. Vercel builds a preview for the branch and, after merge, for `dev`.
+5. On the preview, check layout and behavior. Read the live content. Do not create test projects, test users, or delete live documents on the preview `/admin`.
+6. Merge into `dev`. When `dev` is the release, open a pull request from `dev` into `main`. Merging `main` deploys production. The production build runs `pnpm build:vercel` (`payload migrate && next build`) against the same Neon database the preview already used.
+
+### CMS content experiment
+
+Edit content on localhost. Seed the local database when you need sample rows:
+
+```bash
+pnpm exec tsx scripts/seed-payload-now.ts
+```
+
+Delete `payload.db` and start `pnpm dev` again to reset local data. Do not commit `payload.db` or `.env`.
+
+To change live content, use production `/admin` on rhyan.dev, or accept that the same edit on a preview URL is a production edit.
+
+### Schema change
+
+1. Generate the migration and prove it on local SQLite.
+2. Review the SQL before opening the pull request. The first preview deploy that runs `pnpm build:vercel` applies that migration to Neon `main`.
+3. Postgres is configured with `push: false`. Local `pnpm dev` does not push schema to Neon. Schema still changes in production when the preview build migrates, because preview and production are one database.
+
+### Hotfix
+
+Branch from `main` only for a production-only fix. Open that pull request into `main`, then merge `main` back into `dev` so the integration branch does not drop the fix.
+
+## Accidental live-database paths
+
+```mermaid
+flowchart TD
+  pull["vercel env pull or a copied POSTGRES_URL"] --> check{"Is POSTGRES_URL set in .env or .env.local?"}
+  check -->|"No"| safe["pnpm dev stays on SQLite"]
+  check -->|"Yes"| stop["Stop. Do not start pnpm dev"]
+  stop --> remove["Remove POSTGRES_URL from local env"]
+  remove --> safe
+
+  previewAdmin["Create, edit, or delete on a preview /admin"] --> live["Same rows as production"]
+  migrate["Preview build runs payload migrate"] --> schema["Same schema as production"]
+```
+
+| You were about to… | Do this instead |
+|---|---|
+| Run `pnpm dev` after `vercel env pull` | Remove `POSTGRES_URL` from `.env` and `.env.local`, then start the dev server |
+| Seed or click around in preview `/admin` | Use localhost `/admin` for experiments; use production `/admin` for real content |
+| Point `DATABASE_URL` at a `postgres://` Neon URL | Keep the local URL as `file:./payload.db` |
+| Assume `dev` has its own copy of the data | Treat every preview CMS write as a production write |
+
+## Branch and deploy map
+
+```mermaid
+flowchart LR
+  feat["feat branch"] -->|"PR base dev"| dev["dev"]
+  dev -->|"preview deploy"| neon["Neon main"]
+  dev -->|"PR when release-ready"| main["main"]
+  main -->|"production deploy"| neon
+  laptop["localhost"] -->|"pnpm dev"| sqlite["payload.db"]
+```
+
+- Feature pull requests use `--base dev`.
+- `--base main` is only for promoting `dev` to production, or for an explicit hotfix.
+- Production on Vercel tracks `main`. Every other branch is a preview.
+- Quality gate before merge: `pnpm verify` (test, typecheck, build).
+
+## Related
+
+- [Setup Guide](setup.md) — env vars and the Neon connection
+- [ADR-002 Payload CMS](architecture/adrs/ADR-002-payload-cms.md) — why Postgres is the hosted database

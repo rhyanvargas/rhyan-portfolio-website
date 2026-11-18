@@ -4,6 +4,7 @@ This directory contains detailed documentation for the Rhyan Vargas Portfolio We
 
 ## Documentation Structure
 
+- [Developer Runbook](developer-runbook.md) - Local testing, preview, and production
 - [Setup Guide](setup.md) - Detailed installation and configuration
 - [Architecture](architecture.md) - System design and component structure  
 - [Configuration](configuration.md) - Complete configuration reference
