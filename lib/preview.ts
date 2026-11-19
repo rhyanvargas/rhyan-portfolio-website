@@ -41,5 +41,31 @@ export function buildPreviewRedirectPath(
 }
 
 export function getServerURL(): string {
-  return process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  const fromEnv = process.env.NEXT_PUBLIC_SERVER_URL
+  const vercelEnv = process.env.VERCEL_ENV ?? null
+  const vercelUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : null
+
+  // Preview deployments must use the current deployment host. A static
+  // NEXT_PUBLIC_SERVER_URL (e.g. git-dev alias) makes live-preview iframes
+  // cross-host, which Vercel Authentication cannot load inside an iframe.
+  if (vercelEnv === 'preview' && vercelUrl) {
+    return vercelUrl
+  }
+  if (fromEnv) {
+    return fromEnv
+  }
+  if (vercelUrl) {
+    return vercelUrl
+  }
+  return 'http://localhost:3000'
+}
+
+/** Path-only live preview URL so the admin iframe stays same-origin. */
+export function buildLivePreviewPath(
+  collection: PreviewCollection,
+  slug: string,
+): string | null {
+  return buildPreviewRedirectPath(collection, slug)
 }

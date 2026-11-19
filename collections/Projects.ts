@@ -13,7 +13,8 @@ export const Projects: CollectionConfig = {
       url: ({ data }) => {
         const slug = typeof data?.slug === 'string' ? data.slug : ''
         if (!slug) return null
-        return `${getServerURL()}/projects/${slug}`
+        // Relative path keeps the admin iframe same-origin (required under Vercel SSO).
+        return `/projects/${slug}`
       },
     },
     preview: (doc) => {
@@ -61,6 +62,13 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
+      name: 'content',
+      type: 'richText',
+      admin: {
+        description: 'Optional case study body.',
+      },
+    },
+    {
       name: 'highlights',
       type: 'array',
       required: true,
@@ -74,23 +82,23 @@ export const Projects: CollectionConfig = {
       ],
     },
     {
-      name: 'tech',
-      type: 'array',
+      name: 'technologies',
+      type: 'relationship',
+      relationTo: 'technologies',
+      hasMany: true,
       required: true,
       minRows: 1,
-      labels: {
-        singular: 'Technology',
-        plural: 'Technologies',
-      },
-      fields: [
-        {
-          name: 'item',
-          type: 'text',
-          required: true,
-        },
-      ],
       admin: {
-        description: 'Badge / filter technology labels (free text; filters canonicalize against TECHNOLOGIES).',
+        description: 'Installable tools used to build this project (Built With / Tech Stack).',
+      },
+    },
+    {
+      name: 'skills',
+      type: 'relationship',
+      relationTo: 'skills',
+      hasMany: true,
+      admin: {
+        description: 'Methods and concepts applied (Key Concepts / Skills Applied).',
       },
     },
     {
@@ -119,10 +127,16 @@ export const Projects: CollectionConfig = {
         {
           name: 'demo',
           type: 'text',
+          admin: {
+            description: 'Live / demo URL',
+          },
         },
         {
           name: 'repo',
           type: 'text',
+          admin: {
+            description: 'Repository URL',
+          },
         },
         {
           name: 'evidence',
@@ -158,17 +172,6 @@ export const Projects: CollectionConfig = {
       name: 'featured',
       type: 'checkbox',
       defaultValue: false,
-    },
-    {
-      name: 'skills',
-      type: 'relationship',
-      relationTo: 'skills',
-      hasMany: true,
-      required: true,
-      minRows: 1,
-      admin: {
-        description: 'Skills this project demonstrates. Public filters derive skillCategories from these.',
-      },
     },
   ],
 }

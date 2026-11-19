@@ -69,8 +69,9 @@ export interface Config {
   collections: {
     users: User;
     posts: Post;
-    projects: Project;
+    technologies: Technology;
     skills: Skill;
+    projects: Project;
     'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
@@ -81,8 +82,9 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
-    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    technologies: TechnologiesSelect<false> | TechnologiesSelect<true>;
     skills: SkillsSelect<false> | SkillsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -184,6 +186,39 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "technologies".
+ */
+export interface Technology {
+  id: number;
+  name: string;
+  slug: string;
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'design' | 'other';
+  /**
+   * Optional icon identifier (CSS class, lucide name, or URL).
+   */
+  icon?: string | null;
+  /**
+   * Show on homepage / about stack only when featured.
+   */
+  isFeatured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: number;
+  name: string;
+  slug: string;
+  domain: 'architecture' | 'performance' | 'security' | 'methodology' | 'product' | 'other';
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects".
  */
 export interface Project {
@@ -195,17 +230,36 @@ export interface Project {
    */
   displayOrder: number;
   summary: string;
+  /**
+   * Optional case study body.
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   highlights: {
     item: string;
     id?: string | null;
   }[];
   /**
-   * Badge / filter technology labels (free text; filters canonicalize against TECHNOLOGIES).
+   * Installable tools used to build this project (Built With / Tech Stack).
    */
-  tech: {
-    item: string;
-    id?: string | null;
-  }[];
+  technologies: (number | Technology)[];
+  /**
+   * Methods and concepts applied (Key Concepts / Skills Applied).
+   */
+  skills?: (number | Skill)[] | null;
   roles: (
     | 'Frontend'
     | 'Backend'
@@ -233,7 +287,13 @@ export interface Project {
       )[]
     | null;
   links?: {
+    /**
+     * Live / demo URL
+     */
     demo?: string | null;
+    /**
+     * Repository URL
+     */
     repo?: string | null;
     evidence?: string | null;
   };
@@ -249,32 +309,6 @@ export interface Project {
    */
   thumbnail: string;
   featured?: boolean | null;
-  /**
-   * Skills this project demonstrates. Public filters derive skillCategories from these.
-   */
-  skills: (number | Skill)[];
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "skills".
- */
-export interface Skill {
-  id: number;
-  name: string;
-  slug: string;
-  category:
-    | 'Frontend Development'
-    | 'Backend Development'
-    | 'Full Stack Development'
-    | 'AI/Machine Learning'
-    | 'DevOps/Infrastructure'
-    | 'Mobile Development'
-    | 'Game Development'
-    | 'UI/UX Design'
-    | 'Data Engineering'
-    | 'API Development';
   updatedAt: string;
   createdAt: string;
 }
@@ -403,12 +437,16 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
-        relationTo: 'projects';
-        value: number | Project;
+        relationTo: 'technologies';
+        value: number | Technology;
       } | null)
     | ({
         relationTo: 'skills';
         value: number | Skill;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: number | Project;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -489,6 +527,31 @@ export interface PostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "technologies_select".
+ */
+export interface TechnologiesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  category?: T;
+  icon?: T;
+  isFeatured?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills_select".
+ */
+export interface SkillsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  domain?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects_select".
  */
 export interface ProjectsSelect<T extends boolean = true> {
@@ -496,18 +559,15 @@ export interface ProjectsSelect<T extends boolean = true> {
   slug?: T;
   displayOrder?: T;
   summary?: T;
+  content?: T;
   highlights?:
     | T
     | {
         item?: T;
         id?: T;
       };
-  tech?:
-    | T
-    | {
-        item?: T;
-        id?: T;
-      };
+  technologies?: T;
+  skills?: T;
   roles?: T;
   domains?: T;
   links?:
@@ -526,18 +586,6 @@ export interface ProjectsSelect<T extends boolean = true> {
       };
   thumbnail?: T;
   featured?: T;
-  skills?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "skills_select".
- */
-export interface SkillsSelect<T extends boolean = true> {
-  name?: T;
-  slug?: T;
-  category?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -1,5 +1,5 @@
 /**
- * One-shot seed for verify: Skill → Project → published Post.
+ * One-shot seed for verify: Technology + Skill → Project → published Post.
  * Usage: pnpm exec tsx scripts/seed-payload-now.ts
  *
  * Prefer `seed-projects-from-portfolio.ts` for the full Work cutover dataset.
@@ -10,9 +10,45 @@ import config from '../payload.config'
 async function main() {
   const payload = await getPayload({ config })
 
+  const existingTech = await payload.find({
+    collection: 'technologies',
+    where: { slug: { equals: 'react' } },
+    limit: 1,
+  })
+
+  const technology =
+    existingTech.docs[0] ??
+    (await payload.create({
+      collection: 'technologies',
+      data: {
+        name: 'React',
+        slug: 'react',
+        category: 'frontend',
+        isFeatured: true,
+      },
+    }))
+
+  const existingTypescript = await payload.find({
+    collection: 'technologies',
+    where: { slug: { equals: 'typescript' } },
+    limit: 1,
+  })
+
+  const typescript =
+    existingTypescript.docs[0] ??
+    (await payload.create({
+      collection: 'technologies',
+      data: {
+        name: 'TypeScript',
+        slug: 'typescript',
+        category: 'frontend',
+        isFeatured: false,
+      },
+    }))
+
   const existingSkill = await payload.find({
     collection: 'skills',
-    where: { slug: { equals: 'react' } },
+    where: { slug: { equals: 'state-management' } },
     limit: 1,
   })
 
@@ -21,9 +57,10 @@ async function main() {
     (await payload.create({
       collection: 'skills',
       data: {
-        name: 'React',
-        slug: 'react',
-        category: 'Frontend Development',
+        name: 'State Management',
+        slug: 'state-management',
+        domain: 'methodology',
+        description: 'Client and server state patterns for interactive UIs.',
       },
     }))
 
@@ -37,9 +74,9 @@ async function main() {
     title: 'Seed Project',
     slug: 'seed-project',
     displayOrder: 999,
-    summary: 'Seeded project linked to a Skill for verify.',
-    highlights: [{ item: 'Related to Skills collection' }],
-    tech: [{ item: 'React' }, { item: 'TypeScript' }],
+    summary: 'Seeded project linked to Technologies and Skills for verify.',
+    highlights: [{ item: 'Related to Technologies and Skills collections' }],
+    technologies: [technology.id, typescript.id],
     roles: ['Frontend' as const],
     domains: ['Personal' as const],
     links: {},
@@ -102,6 +139,7 @@ async function main() {
   console.log(
     JSON.stringify(
       {
+        technology: { id: technology.id, slug: technology.slug },
         skill: { id: skill.id, slug: skill.slug },
         project: { id: project.id, slug: project.slug },
         post: { id: post.id, slug: post.slug, status: post._status },

@@ -1,71 +1,151 @@
 /**
- * Upsert Skills + Projects from the pre-cutover portfolio snapshot into Payload.
+ * Upsert Technologies + Skills + Projects from the pre-cutover portfolio snapshot.
+ * Classifies legacy `tech[]` labels into tools vs methods, then overlays the
+ * recruiter skills catalog onto each project.
  * Usage: pnpm exec tsx scripts/seed-projects-from-portfolio.ts
  */
 import { getPayload } from 'payload'
 
+import { classifyLabels } from '../lib/portfolio-cms-classification'
+import {
+  PORTFOLIO_SKILLS_CATALOG,
+  skillsForProjectSlug,
+} from '../lib/portfolio-skills-catalog'
 import config from '../payload.config'
 import { portfolioProjectsSnapshot } from './portfolio-projects.snapshot'
 
-function categorySlug(category: string): string {
-  return category
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-}
-
 export async function seedProjectsFromPortfolio() {
   const payload = await getPayload({ config })
-  const skillIdByCategory = new Map<string, number | string>()
 
-  const categories = new Set<string>()
-  for (const project of portfolioProjectsSnapshot) {
-    for (const category of project.skillCategories ?? []) {
-      categories.add(category)
-    }
-  }
+  const allLabels = portfolioProjectsSnapshot.flatMap((project) => [...project.tech])
+  const { technologies: classifiedTech, skills: classifiedFromTech } =
+    classifyLabels(allLabels)
 
-  for (const category of categories) {
-    const slug = categorySlug(category)
+  const technologyIdBySlug = new Map<string, number>()
+  const skillIdBySlug = new Map<string, number>()
+
+  for (const tech of classifiedTech) {
     const existing = await payload.find({
-      collection: 'skills',
-      where: { slug: { equals: slug } },
+      collection: 'technologies',
+      where: { slug: { equals: tech.slug } },
       limit: 1,
     })
 
-    const skill =
+    const doc =
+      existing.docs[0] ??
+      (await payload.create({
+        collection: 'technologies',
+        data: {
+          name: tech.name,
+          slug: tech.slug,
+          category: tech.category,
+          isFeatured: false,
+        },
+      }))
+
+    if (existing.docs[0]) {
+      await payload.update({
+        collection: 'technologies',
+        id: existing.docs[0].id,
+        data: {
+          name: tech.name,
+          category: tech.category,
+        },
+      })
+    }
+
+    technologyIdBySlug.set(tech.slug, Number(doc.id))
+  }
+
+  const skillsToUpsert = new Map(
+    [...classifiedFromTech, ...PORTFOLIO_SKILLS_CATALOG].map((skill) => [
+      skill.slug,
+      skill,
+    ]),
+  )
+
+  for (const skill of skillsToUpsert.values()) {
+    const existing = await payload.find({
+      collection: 'skills',
+      where: { slug: { equals: skill.slug } },
+      limit: 1,
+    })
+
+    const doc =
       existing.docs[0] ??
       (await payload.create({
         collection: 'skills',
         data: {
-          name: category,
-          slug,
-          category: category as
-            | 'Frontend Development'
-            | 'Backend Development'
-            | 'Full Stack Development'
-            | 'AI/Machine Learning'
-            | 'DevOps/Infrastructure'
-            | 'Mobile Development'
-            | 'Game Development'
-            | 'UI/UX Design'
-            | 'Data Engineering'
-            | 'API Development',
+          name: skill.name,
+          slug: skill.slug,
+          domain: skill.domain,
+          description: skill.description,
         },
       }))
 
-    skillIdByCategory.set(category, skill.id)
+    if (existing.docs[0]) {
+      await payload.update({
+        collection: 'skills',
+        id: existing.docs[0].id,
+        data: {
+          name: skill.name,
+          domain: skill.domain,
+          description: skill.description,
+        },
+      })
+    }
+
+    skillIdBySlug.set(skill.slug, Number(doc.id))
+  }
+
+  // Role-bucket labels previously stored as Skills are not capabilities — remove them.
+  const legacySkillSlugs = [
+    'frontend-development',
+    'backend-development',
+    'full-stack-development',
+    'ai-machine-learning',
+    'devops-infrastructure',
+    'mobile-development',
+    'game-development',
+    'ui-ux-design',
+    'data-engineering',
+    'api-development',
+    'react',
+  ]
+
+  for (const slug of legacySkillSlugs) {
+    const legacy = await payload.find({
+      collection: 'skills',
+      where: { slug: { equals: slug } },
+      limit: 1,
+    })
+    if (legacy.docs[0] && !skillIdBySlug.has(slug)) {
+      await payload.delete({
+        collection: 'skills',
+        id: legacy.docs[0].id,
+      })
+    }
   }
 
   let upserted = 0
 
   for (const project of portfolioProjectsSnapshot) {
-    const skillIds = (project.skillCategories ?? [])
-      .map((category) => skillIdByCategory.get(category))
-      .filter((id): id is number | string => id !== undefined)
-      .map((id) => (typeof id === 'number' ? id : Number(id)))
-      .filter((id) => Number.isFinite(id))
+    const classified = classifyLabels([...project.tech])
+    const technologyIds = classified.technologies
+      .map((tech) => technologyIdBySlug.get(tech.slug))
+      .filter((id): id is number => id !== undefined)
 
+    const skillSlugSet = new Set<string>([
+      ...classified.skills.map((skill) => skill.slug),
+      ...skillsForProjectSlug(project.slug),
+    ])
+    const skillIds = [...skillSlugSet]
+      .map((slug) => skillIdBySlug.get(slug))
+      .filter((id): id is number => id !== undefined)
+
+    if (technologyIds.length === 0) {
+      throw new Error(`Project ${project.slug} has no resolvable technologies`)
+    }
     if (skillIds.length === 0) {
       throw new Error(`Project ${project.slug} has no resolvable skills`)
     }
@@ -77,7 +157,8 @@ export async function seedProjectsFromPortfolio() {
       displayOrder: project.id,
       summary: project.summary,
       highlights: project.highlights.map((item) => ({ item })),
-      tech: project.tech.map((item) => ({ item })),
+      technologies: technologyIds,
+      skills: skillIds,
       roles: [...project.roles],
       domains: [...(project.domains ?? [])],
       links: {
@@ -91,7 +172,6 @@ export async function seedProjectsFromPortfolio() {
       })),
       thumbnail: project.thumbnail,
       featured: Boolean(project.isFeatured),
-      skills: skillIds,
     }
 
     const existing = await payload.find({
@@ -130,7 +210,8 @@ export async function seedProjectsFromPortfolio() {
   }
 
   return {
-    skills: skillIdByCategory.size,
+    technologies: technologyIdBySlug.size,
+    skills: skillIdBySlug.size,
     projectsUpserted: upserted,
   }
 }

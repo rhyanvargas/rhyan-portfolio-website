@@ -7,6 +7,8 @@ Folders stay **flat** under `.agents/skills/<name>/` so `skills-lock.json` and `
 | Skill | Use when |
 |-------|----------|
 | `cicd-deployment` | This repo’s feat→dev→main PRs, Vercel deploy, promote to prod |
+| `troubleshoot-payload-runbook` | Recover from runbook mis-steps: wrong branch, Neon migrate fail, live-db leak, skills taxonomy |
+| `developer-runbook` | Author/regenerate `docs/developer-runbook.md` (ask before writing) |
 | `spec-driven-workflow` | Specs, `/draft-spec`, `/plan-impl`, `/implement-spec`, `/review` |
 | `solution-architecture` | C4 / architecture packets, ADRs |
 | `writing-plans` | Multi-step implementation plans before coding |
