@@ -21,7 +21,7 @@ Use **Payload 3.93.0** inside the Next App Router (`15.4.11`, Node `^22.23.5`) w
 | **Won’t (this roadmap)** | LinkedIn API integration; newsletter product; calendar booking |
 
 Local DB: SQLite (`@payloadcms/db-sqlite`, `DATABASE_URL=file:./payload.db`).  
-Preview/Production: **Neon Free via Vercel Marketplace** with `@payloadcms/db-vercel-postgres` when `POSTGRES_URL` (or `postgres://` `DATABASE_URL`) is set. Turso/libsql remains an optional SQLite-remote path.
+Preview/Production: **Neon Free via Vercel Marketplace** with `@payloadcms/db-vercel-postgres` when `POSTGRES_URL` (or `postgres://` `DATABASE_URL`) is set. Database isolation (preview branch vs production branch) is [ADR-003](ADR-003-neon-preview-branching.md). Turso/libsql remains an optional SQLite-remote path.
 
 React was bumped to **19.x** because `@payloadcms/ui@3.93.0` and `@payloadcms/richtext-lexical@3.93.0` require it (escape hatch exercised).
 

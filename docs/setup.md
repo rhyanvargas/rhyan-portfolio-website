@@ -46,17 +46,17 @@ Local SQLite creates `payload.db` in the repo root (gitignored).
 
 1. Vercel project → **Integrations** / **Marketplace** → install **Neon** (Free plan).
 2. Connect it to **v0-rhyan-s-portfolio-website** for **Preview** + **Production** (+ Development if you pull env locally).
-3. Leave **Create database branch for deployment** unchecked (solo workflow: Preview and Production share Neon `main` so seeded content is visible on both).
-4. Confirm env vars appear under **Settings → Environment Variables** (`POSTGRES_URL`, often `DATABASE_URL` / `DATABASE_URL_UNPOOLED`, plus `PAYLOAD_JOBS_AUTORUN=false`).
-5. Keep local `.env` on `DATABASE_URL=file:./payload.db` (no `POSTGRES_URL` locally unless you want to hit Neon from your laptop).
-6. Redeploy after the integration is linked so Preview picks up the shared connection string.
+3. Under **Create database branch for deployment**, check **Preview** only. Leave **Production** unchecked so production stays on the Neon production branch. Each preview Git branch gets a copy-on-write database (including its own users after the branch is created). See [ADR-003](architecture/adrs/ADR-003-neon-preview-branching.md).
+4. Confirm env vars appear under **Settings → Environment Variables** (`POSTGRES_URL`, often `DATABASE_URL` / `DATABASE_URL_UNPOOLED`, plus `PAYLOAD_JOBS_AUTORUN=false`). Preview deploys receive a branch connection string at deploy time; do not copy that URL into Production.
+5. Keep local `.env` on `DATABASE_URL=file:./payload.db`. Leave `POSTGRES_URL` unset locally so `pnpm dev` does not write to Neon.
+6. Redeploy a preview after enabling branching so Neon creates `preview/<git-branch>` and injects that deployment’s connection string.
 7. In Vercel → **Settings → General → Build & Development Settings**, set **Build Command** to:
    ```bash
    pnpm build:vercel
    ```
-   (`payload migrate && next build` — applies Postgres schema on deploy when `POSTGRES_URL` is present.)
+   (`payload migrate && next build` — applies Postgres schema to the database that deployment’s `POSTGRES_URL` points at: a Neon preview branch on Preview, Neon production on `main`.)
 
-Payload selects adapters in `payload.config.ts`: **Postgres** when `POSTGRES_URL` or a `postgres://` `DATABASE_URL` is set; otherwise **SQLite**. Postgres uses `push: false` so schema changes only land via `payload migrate` (never via local `pnpm dev` against Neon).
+Payload selects adapters in `payload.config.ts`: **Postgres** when `POSTGRES_URL` or a `postgres://` `DATABASE_URL` is set; otherwise **SQLite**. Postgres uses `push: false` so schema changes only land via `payload migrate`.
 
 ### 4. Start Development Server
 ```bash
