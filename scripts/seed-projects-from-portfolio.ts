@@ -1,11 +1,16 @@
 /**
  * Upsert Technologies + Skills + Projects from the pre-cutover portfolio snapshot.
- * Classifies legacy `tech[]` labels into tools vs methods (never drops rows).
+ * Classifies legacy `tech[]` labels into tools vs methods, then overlays the
+ * recruiter skills catalog onto each project.
  * Usage: pnpm exec tsx scripts/seed-projects-from-portfolio.ts
  */
 import { getPayload } from 'payload'
 
 import { classifyLabels } from '../lib/portfolio-cms-classification'
+import {
+  PORTFOLIO_SKILLS_CATALOG,
+  skillsForProjectSlug,
+} from '../lib/portfolio-skills-catalog'
 import config from '../payload.config'
 import { portfolioProjectsSnapshot } from './portfolio-projects.snapshot'
 
@@ -13,7 +18,7 @@ export async function seedProjectsFromPortfolio() {
   const payload = await getPayload({ config })
 
   const allLabels = portfolioProjectsSnapshot.flatMap((project) => [...project.tech])
-  const { technologies: classifiedTech, skills: classifiedSkills } =
+  const { technologies: classifiedTech, skills: classifiedFromTech } =
     classifyLabels(allLabels)
 
   const technologyIdBySlug = new Map<string, number>()
@@ -52,7 +57,14 @@ export async function seedProjectsFromPortfolio() {
     technologyIdBySlug.set(tech.slug, Number(doc.id))
   }
 
-  for (const skill of classifiedSkills) {
+  const skillsToUpsert = new Map(
+    [...classifiedFromTech, ...PORTFOLIO_SKILLS_CATALOG].map((skill) => [
+      skill.slug,
+      skill,
+    ]),
+  )
+
+  for (const skill of skillsToUpsert.values()) {
     const existing = await payload.find({
       collection: 'skills',
       where: { slug: { equals: skill.slug } },
@@ -123,12 +135,19 @@ export async function seedProjectsFromPortfolio() {
       .map((tech) => technologyIdBySlug.get(tech.slug))
       .filter((id): id is number => id !== undefined)
 
-    const skillIds = classified.skills
-      .map((skill) => skillIdBySlug.get(skill.slug))
+    const skillSlugSet = new Set<string>([
+      ...classified.skills.map((skill) => skill.slug),
+      ...skillsForProjectSlug(project.slug),
+    ])
+    const skillIds = [...skillSlugSet]
+      .map((slug) => skillIdBySlug.get(slug))
       .filter((id): id is number => id !== undefined)
 
     if (technologyIds.length === 0) {
       throw new Error(`Project ${project.slug} has no resolvable technologies`)
+    }
+    if (skillIds.length === 0) {
+      throw new Error(`Project ${project.slug} has no resolvable skills`)
     }
 
     const links = project.links ?? {}
