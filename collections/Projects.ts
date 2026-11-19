@@ -13,7 +13,8 @@ export const Projects: CollectionConfig = {
       url: ({ data }) => {
         const slug = typeof data?.slug === 'string' ? data.slug : ''
         if (!slug) return null
-        return `${getServerURL()}/projects/${slug}`
+        // Relative path keeps the admin iframe same-origin (required under Vercel SSO).
+        return `/projects/${slug}`
       },
     },
     preview: (doc) => {
