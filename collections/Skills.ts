@@ -1,13 +1,12 @@
 import type { CollectionConfig } from 'payload'
 
-import { SKILL_CATEGORIES } from '@/lib/constants'
 import { authenticated } from '@/lib/payload-access'
 
 export const Skills: CollectionConfig = {
   slug: 'skills',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'slug', 'category', 'updatedAt'],
+    defaultColumns: ['name', 'slug', 'domain', 'updatedAt'],
   },
   access: {
     read: () => true,
@@ -20,6 +19,7 @@ export const Skills: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
+      unique: true,
     },
     {
       name: 'slug',
@@ -29,13 +29,21 @@ export const Skills: CollectionConfig = {
       index: true,
     },
     {
-      name: 'category',
+      name: 'domain',
       type: 'select',
       required: true,
-      options: SKILL_CATEGORIES.map((category) => ({
-        label: category,
-        value: category,
-      })),
+      options: [
+        { label: 'Architecture', value: 'architecture' },
+        { label: 'Performance', value: 'performance' },
+        { label: 'Security', value: 'security' },
+        { label: 'Methodology', value: 'methodology' },
+        { label: 'Product', value: 'product' },
+        { label: 'Other', value: 'other' },
+      ],
+    },
+    {
+      name: 'description',
+      type: 'textarea',
     },
   ],
 }

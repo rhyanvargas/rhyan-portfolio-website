@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { toEnhancedProject } from '@/lib/projects-public'
 
 describe('toEnhancedProject (T8 Work cutover)', () => {
-  it('maps a Payload project + skills into EnhancedProject shape', () => {
+  it('maps a Payload project + technologies into EnhancedProject shape', () => {
     expect(
       toEnhancedProject({
         id: 999,
@@ -12,7 +12,10 @@ describe('toEnhancedProject (T8 Work cutover)', () => {
         slug: 'shadcn-interactive-transcript',
         summary: 'A transcript player.',
         highlights: [{ item: 'OpenAI embeddings' }, { item: 'Accessible UI' }],
-        tech: [{ item: 'React' }, { item: 'TypeScript' }],
+        technologies: [
+          { id: 1, name: 'React', slug: 'react', category: 'frontend' },
+          { id: 2, name: 'TypeScript', slug: 'typescript', category: 'frontend' },
+        ],
         roles: ['AI Engineer'],
         domains: ['Education', 'Personal'],
         links: {
@@ -26,21 +29,9 @@ describe('toEnhancedProject (T8 Work cutover)', () => {
         skills: [
           {
             id: 1,
-            name: 'React',
-            slug: 'react',
-            category: 'Frontend Development',
-          },
-          {
-            id: 2,
-            name: 'Embeddings',
-            slug: 'embeddings',
-            category: 'AI/Machine Learning',
-          },
-          {
-            id: 3,
-            name: 'API',
-            slug: 'api',
-            category: 'Frontend Development',
+            name: 'Accessibility',
+            slug: 'accessibility',
+            domain: 'methodology',
           },
         ],
       }),
@@ -59,7 +50,7 @@ describe('toEnhancedProject (T8 Work cutover)', () => {
       thumbnail: '/thumb.png',
       isFeatured: true,
       roles: ['AI Engineer'],
-      skillCategories: ['Frontend Development', 'AI/Machine Learning'],
+      skillCategories: ['AI/Machine Learning'],
       domains: ['Education', 'Personal'],
       role: 'AI Engineer',
     })
@@ -73,7 +64,7 @@ describe('toEnhancedProject (T8 Work cutover)', () => {
         slug: null,
         summary: 'x',
         highlights: [{ item: 'a' }],
-        tech: [{ item: 'React' }],
+        technologies: [{ id: 1, name: 'React', slug: 'react' }],
         roles: ['Frontend'],
         thumbnail: '/t.png',
         skills: [],
@@ -87,40 +78,40 @@ describe('toEnhancedProject (T8 Work cutover)', () => {
         slug: 'no-tech',
         summary: 'x',
         highlights: [{ item: 'a' }],
-        tech: [],
+        technologies: [],
         roles: ['Frontend'],
         thumbnail: '/t.png',
-        skills: [{ id: 1, name: 'React', slug: 'react', category: 'Frontend Development' }],
+        skills: [{ id: 1, name: 'Accessibility', slug: 'accessibility', domain: 'methodology' }],
       }),
     ).toBeNull()
 
     expect(
       toEnhancedProject({
         id: 3,
-        title: 'No skills',
-        slug: 'no-skills',
+        title: 'No roles',
+        slug: 'no-roles',
         summary: 'x',
         highlights: [{ item: 'a' }],
-        tech: [{ item: 'React' }],
-        roles: ['Frontend'],
+        technologies: [{ id: 1, name: 'React', slug: 'react' }],
+        roles: [],
         thumbnail: '/t.png',
         skills: [],
       }),
     ).toBeNull()
   })
 
-  it('treats skill ids without depth as empty categories (null)', () => {
+  it('treats unresolved technology ids as missing tech (null)', () => {
     expect(
       toEnhancedProject({
         id: 4,
-        title: 'Unresolved skills',
+        title: 'Unresolved technologies',
         slug: 'unresolved',
         summary: 'x',
         highlights: [{ item: 'a' }],
-        tech: [{ item: 'React' }],
+        technologies: [1, 2],
         roles: ['Frontend'],
         thumbnail: '/t.png',
-        skills: [1, 2],
+        skills: [],
       }),
     ).toBeNull()
   })

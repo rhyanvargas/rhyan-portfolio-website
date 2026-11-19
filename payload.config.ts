@@ -9,8 +9,10 @@ import { fileURLToPath } from 'url'
 import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
 import { Skills } from './collections/Skills'
+import { Technologies } from './collections/Technologies'
 import { Users } from './collections/Users'
 import { getServerURL } from './lib/preview'
+import { migrations } from './migrations'
 
 loadEnv()
 
@@ -59,6 +61,7 @@ function createDatabaseAdapter() {
     return vercelPostgresAdapter({
       // Never schema-push against Neon; CI/Vercel use `payload migrate`.
       push: false,
+      prodMigrations: migrations,
       pool: {
         connectionString: postgresUrl,
       },
@@ -90,7 +93,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Users, Posts, Projects, Skills],
+  collections: [Users, Posts, Technologies, Skills, Projects],
   editor: lexicalEditor(),
   secret: payloadSecret,
   serverURL: getServerURL(),

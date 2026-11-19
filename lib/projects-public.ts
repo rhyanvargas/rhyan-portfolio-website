@@ -3,14 +3,20 @@ import { SKILL_CATEGORIES } from '@/lib/constants'
 import type { EnhancedProject, ProjectMetric } from '@/schemas/portfolio'
 
 type HighlightRow = { item?: string | null } | null
-type TechRow = { item?: string | null } | null
 type MetricRow = { label?: string | null; value?: string | null } | null
+
+type TechnologyDoc = {
+  id?: number | string
+  name?: string | null
+  slug?: string | null
+  category?: string | null
+}
 
 type SkillDoc = {
   id?: number | string
   name?: string | null
   slug?: string | null
-  category?: string | null
+  domain?: string | null
 }
 
 export type PayloadProjectDoc = {
@@ -20,7 +26,7 @@ export type PayloadProjectDoc = {
   slug?: string | null
   summary?: string | null
   highlights?: HighlightRow[] | null
-  tech?: TechRow[] | null
+  technologies?: (number | string | TechnologyDoc)[] | null
   roles?: string[] | null
   domains?: string[] | null
   links?: {
@@ -34,11 +40,38 @@ export type PayloadProjectDoc = {
   skills?: (number | string | SkillDoc)[] | null
 }
 
-function mapStringArray(rows: HighlightRow[] | TechRow[] | null | undefined): string[] {
+const ROLE_TO_SKILL_CATEGORY: Record<string, SkillCategory> = {
+  Frontend: 'Frontend Development',
+  Backend: 'Backend Development',
+  'Full Stack': 'Full Stack Development',
+  'AI Engineer': 'AI/Machine Learning',
+  DevOps: 'DevOps/Infrastructure',
+  Mobile: 'Mobile Development',
+  'Game Developer': 'Game Development',
+  Designer: 'UI/UX Design',
+  'Data Engineer': 'Data Engineering',
+  DevTools: 'API Development',
+}
+
+function mapStringArray(rows: HighlightRow[] | null | undefined): string[] {
   if (!rows?.length) return []
   return rows
     .map((row) => row?.item?.trim())
     .filter((item): item is string => Boolean(item))
+}
+
+function mapTechnologyNames(
+  technologies: PayloadProjectDoc['technologies'],
+): string[] {
+  if (!technologies?.length) return []
+
+  const names: string[] = []
+  for (const tech of technologies) {
+    if (typeof tech === 'number' || typeof tech === 'string') continue
+    const name = tech.name?.trim()
+    if (name) names.push(name)
+  }
+  return names
 }
 
 function mapMetrics(rows: MetricRow[] | null | undefined): ProjectMetric[] | undefined {
@@ -55,25 +88,24 @@ function mapMetrics(rows: MetricRow[] | null | undefined): ProjectMetric[] | und
   return metrics.length > 0 ? metrics : undefined
 }
 
-function mapSkillCategories(
-  skills: PayloadProjectDoc['skills'],
+/**
+ * Public filter chips still use SKILL_CATEGORIES (role-bucket taxonomy).
+ * CMS `skills.domain` is a different contract — do not map domain onto these chips.
+ */
+function mapSkillCategoriesFromRoles(
+  roles: string[] | null | undefined,
 ): SkillCategory[] | null {
-  if (!skills?.length) return null
+  if (!roles?.length) return null
 
   const categories: SkillCategory[] = []
   const seen = new Set<string>()
 
-  for (const skill of skills) {
-    if (typeof skill === 'number' || typeof skill === 'string') {
-      return null
-    }
-    const category = skill.category
-    if (!category || !SKILL_CATEGORIES.includes(category as SkillCategory)) {
-      continue
-    }
+  for (const role of roles) {
+    const category = ROLE_TO_SKILL_CATEGORY[role]
+    if (!category || !SKILL_CATEGORIES.includes(category)) continue
     if (seen.has(category)) continue
     seen.add(category)
-    categories.push(category as SkillCategory)
+    categories.push(category)
   }
 
   return categories.length > 0 ? categories : null
@@ -84,8 +116,8 @@ export function toEnhancedProject(doc: PayloadProjectDoc): EnhancedProject | nul
   if (!doc.roles?.length) return null
 
   const highlights = mapStringArray(doc.highlights)
-  const tech = mapStringArray(doc.tech)
-  const skillCategories = mapSkillCategories(doc.skills)
+  const tech = mapTechnologyNames(doc.technologies)
+  const skillCategories = mapSkillCategoriesFromRoles(doc.roles)
 
   if (highlights.length === 0 || tech.length === 0 || !skillCategories) {
     return null
