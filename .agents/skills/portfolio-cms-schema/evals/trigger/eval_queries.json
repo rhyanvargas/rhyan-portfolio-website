@@ -1,0 +1,22 @@
+[
+  { "query": "Split our project tags into technologies and skills", "should_trigger": true },
+  { "query": "Add a Payload technologies collection related to projects", "should_trigger": true },
+  { "query": "Project cards are showing skills — only show the tech stack", "should_trigger": true },
+  { "query": "Design the portfolio CMS schema for projects", "should_trigger": true },
+  { "query": "Migrate projects.tech free text into a technologies relation", "should_trigger": true },
+  { "query": "The filter bar should group technologies by category", "should_trigger": true },
+  { "query": "Refactor the skills collection so it stops storing React and PostgreSQL", "should_trigger": true },
+  { "query": "Prisma models for portfolio projects, technologies, and skills", "should_trigger": true },
+  { "query": "Where should Figma vs Accessibility live in the CMS?", "should_trigger": true },
+  { "query": "Don't drop existing tag data when we separate tools from capabilities", "should_trigger": true },
+  { "query": "Write the case study for the payments project", "should_trigger": false },
+  { "query": "Redesign the project card layout and typography", "should_trigger": false },
+  { "query": "Add a blog posts collection with draft preview", "should_trigger": false },
+  { "query": "Set up Payload user auth and roles", "should_trigger": false },
+  { "query": "Promote the portfolio deploy from preview to production", "should_trigger": false },
+  { "query": "Draw a C4 diagram of the CMS", "should_trigger": false },
+  { "query": "Debug why the projects query returns empty", "should_trigger": false },
+  { "query": "Rewrite my resume skills bullet points", "should_trigger": false },
+  { "query": "Which projects should be featured on the homepage?", "should_trigger": false },
+  { "query": "Add SEO title and description fields to projects", "should_trigger": false }
+]

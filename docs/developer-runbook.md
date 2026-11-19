@@ -79,9 +79,19 @@ To change live content, use production `/admin` on rhyan.dev, or accept that the
 
 ### Schema change
 
-1. Generate the migration and prove it on local SQLite.
-2. Review the SQL before opening the pull request. The first preview deploy that runs `pnpm build:vercel` applies that migration to Neon `main`.
-3. Postgres is configured with `push: false`. Local `pnpm dev` does not push schema to Neon. Schema still changes in production when the preview build migrates, because preview and production are one database.
+1. Cut a `feat/...` branch from `dev` first. Do not commit schema work on `dev`.
+2. Prefer generating SQL with `pnpm payload migrate:create <name>` ([Payload Migrations](https://payloadcms.com/docs/database/migrations)). Hand-written migrations must be idempotent.
+3. Prove collections locally on SQLite (`pnpm dev` / seed). That does **not** prove the Postgres migration — the first preview `pnpm build:vercel` runs `payload migrate` against Neon `main`.
+4. If a migration uses Local API (`payload.create` / `update` / `delete`), **pass `req`** so it joins the migration transaction; otherwise use `db.execute` only. See Payload docs linked above.
+5. Run preflight before the PR:
+   ```bash
+   pnpm preflight:schema
+   ```
+6. Open a PR with base `dev`. Review the migration SQL. When Vercel is green, skim preview `/admin` read-only, then merge.
+
+**If something goes wrong** (wrong branch, migrate fail, Neon leak, empty Skills): run the project skill **`troubleshoot-payload-runbook`** and follow the matching playbook.
+
+Postgres is configured with `push: false`. Local `pnpm dev` does not push schema to Neon. Schema still changes on Neon when a preview/production build migrates, because preview and production share one database.
 
 ### Hotfix
 
@@ -128,3 +138,4 @@ flowchart LR
 
 - [Setup Guide](setup.md) — env vars and the Neon connection
 - [ADR-002 Payload CMS](architecture/adrs/ADR-002-payload-cms.md) — why Postgres is the hosted database
+- Cursor skill: `.agents/skills/troubleshoot-payload-runbook/` (also via `.cursor/skills` symlink) — recover from runbook mis-steps; enforcement plan in `references/enforcements.md`

@@ -71,3 +71,4 @@ gh pr create --base main --head dev --title "…" --body "…"
 - Always-on reminder: `.cursor/rules/git-workflow/RULE.md`
 - Strategy redesign sessions: `devops-strategy-facilitator`
 - Filled decision log: [references/adopted-strategy.md](references/adopted-strategy.md)
+- Payload/runbook recovery: `troubleshoot-payload-runbook` (wrong branch, Neon migrate fail, live-db leak)
