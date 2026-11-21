@@ -32,13 +32,13 @@ Trigger description includes: preview migrate fail, committed on dev, POSTGRES_U
 
 ## Layer 4 — Platform (already true; keep reminding)
 
-- Preview + production share Neon `main` (no Preview Branching).
+- Preview uses a Neon branch per Git branch; production stays on the production branch ([ADR-003](../../../../docs/architecture/adrs/ADR-003-neon-preview-branching.md)).
 - `push: false` on Postgres adapter; `prodMigrations` registered.
-- Build command runs `payload migrate` — **first preview that migrates already mutates Neon schema**.
+- Build command runs `payload migrate` against **that deployment’s** database.
 
 ## What we will not do (unless asked)
 
-- Separate Neon branch per preview (product/cost decision).
+- A long-lived staging environment beyond preview branches.
 - Block all preview migrates (would strand schema PRs).
 - Global install of Payload CLI.
 

@@ -7,12 +7,12 @@ How to test a change on your machine, preview it on `dev`, and ship it to produc
 | Environment | Git branch | App | Database | Safe for throwaway data? |
 |---|---|---|---|---|
 | Local | any | `pnpm dev` → `http://localhost:3000` | SQLite file `payload.db` (gitignored) | Yes |
-| Preview | feature branches and `dev` | Vercel preview URL | Neon `main` | No |
-| Production | `main` | [rhyan.dev](https://www.rhyan.dev) | Neon `main` | No |
+| Preview | feature branches and `dev` | Vercel preview URL | Neon branch `preview/<git-branch>` | Yes, on that branch only |
+| Production | `main` | [rhyan.dev](https://www.rhyan.dev) | Neon production branch | No |
 
-Preview and production share one Neon database and the same content. Preview Branching is off so a preview shows the live projects. CMS creates, edits, deletes, and `payload migrate` on a preview deploy change production data.
+Preview Branching is on for Vercel Preview only ([ADR-003](architecture/adrs/ADR-003-neon-preview-branching.md)). A preview deploy migrates and edits **that Git branch’s Neon database**, not production. The branch starts as a copy of production at creation time (including users); later preview writes stay on the branch. Production changes only on a `main` deploy or production `/admin`.
 
-Local development stays off Neon only when `POSTGRES_URL` is absent. If that variable is set, Payload uses Postgres and your laptop writes to the shared database.
+Local development stays off Neon only when `POSTGRES_URL` is absent. If that variable is set, Payload uses Postgres and your laptop writes to whichever Neon URL is in the file — often production. Leave it unset.
 
 ## Scenario paths
 
@@ -32,8 +32,8 @@ flowchart TD
   branch --> preview["Open the Vercel preview"]
 
   preview --> writes{"Does this preview write CMS rows or run a migration?"}
-  writes -->|"Read-only UI check"| look["Confirm the UI against live content"]
-  writes -->|"Yes"| shared["Those writes hit Neon main, the production database"]
+  writes -->|"Read-only UI check"| look["Confirm the UI on the preview branch"]
+  writes -->|"Yes"| shared["Those writes hit that Git branch Neon database, not production"]
 
   look --> mergedev["Merge into dev"]
   shared --> mergedev
@@ -62,8 +62,8 @@ flowchart TD
 
     Site: `http://localhost:3000`. Admin: `http://localhost:3000/admin`. On a fresh SQLite file, create the first user immediately. That account exists only in `payload.db`.
 4. Push the branch and open a pull request with base `dev`. Vercel builds a preview for the branch and, after merge, for `dev`.
-5. On the preview, check layout and behavior. Read the live content. Do not create test projects, test users, or delete live documents on the preview `/admin`.
-6. Merge into `dev`. When `dev` is the release, open a pull request from `dev` into `main`. Merging `main` deploys production. The production build runs `pnpm build:vercel` (`payload migrate && next build`) against the same Neon database the preview already used.
+5. On the preview, check layout and behavior. CMS experiments stay on that preview’s Neon branch. Do not assume those rows exist in production.
+6. Merge into `dev`. When `dev` is the release, open a pull request from `dev` into `main`. Merging `main` deploys production. The production build runs `pnpm build:vercel` (`payload migrate && next build`) against the Neon **production** branch only.
 
 ### CMS content experiment
 
@@ -75,13 +75,13 @@ pnpm exec tsx scripts/seed-payload-now.ts
 
 Delete `payload.db` and start `pnpm dev` again to reset local data. Do not commit `payload.db` or `.env`.
 
-To change live content, use production `/admin` on rhyan.dev, or accept that the same edit on a preview URL is a production edit.
+To change live content, use production `/admin` on rhyan.dev. Preview `/admin` edits that Git branch’s Neon database only.
 
 ### Schema change
 
 1. Cut a `feat/...` branch from `dev` first. Do not commit schema work on `dev`.
 2. Prefer generating SQL with `pnpm payload migrate:create <name>` ([Payload Migrations](https://payloadcms.com/docs/database/migrations)). Hand-written migrations must be idempotent.
-3. Prove collections locally on SQLite (`pnpm dev` / seed). That does **not** prove the Postgres migration — the first preview `pnpm build:vercel` runs `payload migrate` against Neon `main`.
+3. Prove collections locally on SQLite (`pnpm dev` / seed). That does **not** prove the Postgres migration — the first preview `pnpm build:vercel` runs `payload migrate` against that Git branch’s Neon database.
 4. If a migration uses Local API (`payload.create` / `update` / `delete`), **pass `req`** so it joins the migration transaction; otherwise use `db.execute` only. See Payload docs linked above.
 5. Run preflight before the PR:
    ```bash
@@ -91,7 +91,7 @@ To change live content, use production `/admin` on rhyan.dev, or accept that the
 
 **If something goes wrong** (wrong branch, migrate fail, Neon leak, empty Skills): run the project skill **`troubleshoot-payload-runbook`** and follow the matching playbook.
 
-Postgres is configured with `push: false`. Local `pnpm dev` does not push schema to Neon. Schema still changes on Neon when a preview/production build migrates, because preview and production share one database.
+Postgres is configured with `push: false`. Local `pnpm dev` does not push schema to Neon. A preview build migrates the preview Neon branch. A production build migrates the production Neon branch.
 
 ### Hotfix
 
@@ -107,25 +107,25 @@ flowchart TD
   stop --> remove["Remove POSTGRES_URL from local env"]
   remove --> safe
 
-  previewAdmin["Create, edit, or delete on a preview /admin"] --> live["Same rows as production"]
-  migrate["Preview build runs payload migrate"] --> schema["Same schema as production"]
+  previewAdmin["Create, edit, or delete on a preview /admin"] --> branchDb["That Git branch Neon database only"]
+  migrate["Preview build runs payload migrate"] --> schema["Schema on that preview branch only"]
 ```
 
 | You were about to… | Do this instead |
 |---|---|
 | Run `pnpm dev` after `vercel env pull` | Remove `POSTGRES_URL` from `.env` and `.env.local`, then start the dev server |
-| Seed or click around in preview `/admin` | Use localhost `/admin` for experiments; use production `/admin` for real content |
+| Seed or click around in preview `/admin` expecting it to update rhyan.dev | Preview writes stay on that branch; use production `/admin` for live content |
 | Point `DATABASE_URL` at a `postgres://` Neon URL | Keep the local URL as `file:./payload.db` |
-| Assume `dev` has its own copy of the data | Treat every preview CMS write as a production write |
+| Assume preview and production share users | They share a copy only at branch creation; later users and sessions diverge |
 
 ## Branch and deploy map
 
 ```mermaid
 flowchart LR
   feat["feat branch"] -->|"PR base dev"| dev["dev"]
-  dev -->|"preview deploy"| neon["Neon main"]
+  dev -->|"preview deploy"| neonPreview["Neon preview branch"]
   dev -->|"PR when release-ready"| main["main"]
-  main -->|"production deploy"| neon
+  main -->|"production deploy"| neonProd["Neon production branch"]
   laptop["localhost"] -->|"pnpm dev"| sqlite["payload.db"]
 ```
 
@@ -138,4 +138,5 @@ flowchart LR
 
 - [Setup Guide](setup.md) — env vars and the Neon connection
 - [ADR-002 Payload CMS](architecture/adrs/ADR-002-payload-cms.md) — why Postgres is the hosted database
+- [ADR-003 Neon preview branching](architecture/adrs/ADR-003-neon-preview-branching.md) — preview DB isolation from production
 - Cursor skill: `.agents/skills/troubleshoot-payload-runbook/` (also via `.cursor/skills` symlink) — recover from runbook mis-steps; enforcement plan in `references/enforcements.md`

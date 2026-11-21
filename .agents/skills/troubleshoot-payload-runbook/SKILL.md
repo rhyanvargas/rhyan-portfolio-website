@@ -21,7 +21,7 @@ Payload citations: [references/payload-citations.md](references/payload-citation
 ## Iron rules (do not skip)
 
 1. **Never** run `pnpm dev`, seeds, or admin experiments while `POSTGRES_URL` is set locally.
-2. **Never** create throwaway CMS rows on a Vercel preview `/admin` (same Neon as production).
+2. **Never** point local `pnpm dev` or seeds at `POSTGRES_URL`. Preview `/admin` writes the Neon branch for that Git branch ([ADR-003](../../../docs/architecture/adrs/ADR-003-neon-preview-branching.md)); they are production writes only if Preview Branching is off.
 3. **Never** leave schema commits on `dev` — feature branch → PR `--base dev`.
 4. In migrations: **pass `req` to Local API**, or use **`db.execute` only** inside the migration transaction ([Payload Migrations](https://payloadcms.com/docs/database/migrations)).
 5. Prefer `pnpm payload migrate:create` for schema SQL; hand-written migrations must be **idempotent** and reviewed before PR.
