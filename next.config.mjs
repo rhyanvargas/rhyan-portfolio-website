@@ -2,9 +2,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // ESLint during builds moved out of next.config in Next 16 — use `pnpm lint` / CI.
   typescript: {
     ignoreBuildErrors: true,
   },
