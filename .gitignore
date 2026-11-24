@@ -18,9 +18,17 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
+
+# Payload local SQLite
+payload.db
+payload.db-*
 
 # vercel
 .vercel
+
+# Cursor local IDE settings (plugins, etc.)
+.cursor/settings.json
 
 # typescript
 *.tsbuildinfo

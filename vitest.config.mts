@@ -16,6 +16,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(rootDir, './'),
+      '@payload-config': path.resolve(rootDir, './payload.config.ts'),
     },
   },
 })

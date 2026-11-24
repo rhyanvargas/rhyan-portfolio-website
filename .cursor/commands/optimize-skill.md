@@ -4,7 +4,9 @@ Optimize an Agent Skill for trigger accuracy, clarity, and token cost.
 
 ## Skill
 
-Read and follow **`.agents/skills/skill-optimizer`** (or `.agents/skills/skill-optimizer` in adopter apps).
+Read and follow **`.agents/skills/skill-optimizer`**.
+
+If that skill is missing in this adopter repo, run `/sync-adsk` (or `npx create-adsk update`) to pull it from the ADSK kit, then retry. Do not invent an optimizer ad hoc.
 
 ## Usage
 

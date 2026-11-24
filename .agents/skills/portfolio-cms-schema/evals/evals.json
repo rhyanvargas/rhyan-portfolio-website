@@ -1,0 +1,48 @@
+{
+  "skill_name": "portfolio-cms-schema",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a tags field on projects that stores both React and Accessibility so the card can show everything in one list.",
+      "expected_output": "Refuses a combined tags list. Puts React on technologies and Accessibility on skills. Projects relate to both. Cards render technologies only.",
+      "assertions": [
+        "Does not add a combined tags (or single skills/tech) field that stores both React and Accessibility",
+        "Assigns React to technologies and Accessibility to skills",
+        "Keeps projects related to both collections",
+        "Project cards render technologies only, not skills"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Show the project's skills as badges on the work-grid cards, and add a skills filter as the main filter bar.",
+      "expected_output": "Cards stay technologies-only (max 3–5). Skills render on the detail page. Primary filters come from technologies.category.",
+      "assertions": [
+        "Does not put skills on project summary cards",
+        "Limits card technologies to at most 5",
+        "Places skills on the project detail view, separate from the tech stack",
+        "Builds the primary filter from technologies grouped by category, not from skills"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "This repo uses Payload. projects.tech is a free-text array and skills.category uses values like Frontend Development. Extend that shape with a few more tech strings and map those categories onto the new skill domain field.",
+      "expected_output": "Does not extend projects.tech. Adds a technologies relation. Does not map SKILL_CATEGORIES onto skills.domain. Migration classifies existing rows instead of dropping them. Registers the collection in payload.config.ts.",
+      "assertions": [
+        "Does not extend projects.tech as the long-term store for tools",
+        "Does not map SKILL_CATEGORIES values such as Frontend Development onto skills.domain",
+        "Classifies existing tech or tag rows in a migration or seed instead of dropping them",
+        "Uses Payload camelCase and registers new collections in payload.config.ts"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add GraphQL to the skills collection. Also add a highlights bullet to the payments project. Do not redesign the schema.",
+      "expected_output": "Treats GraphQL as a technology unless the user means a method such as GraphQL schema design. Does not start a technologies/skills migration when the user said not to redesign the schema. Can still add the highlights bullet.",
+      "assertions": [
+        "Does not file the tool GraphQL under skills",
+        "Does not start a technologies/skills schema migration after the user said not to redesign the schema",
+        "Still allows the highlights bullet on the existing project"
+      ]
+    }
+  ]
+}
