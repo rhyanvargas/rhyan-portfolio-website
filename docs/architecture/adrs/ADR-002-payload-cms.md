@@ -10,7 +10,7 @@ Portfolio content lived only in `config/portfolio.ts`. We evaluated Keystatic, t
 
 ## Decision
 
-Use **Payload 3.93.0** inside the Next App Router (`15.4.11`, Node `^22.23.5`) with:
+Use **Payload 3.94.1** inside the Next App Router (`16.4.6`, Node `^22.23.5`) with:
 
 | Horizon | Outcome |
 |---------|---------|

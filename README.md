@@ -31,7 +31,7 @@ Requires Node.js `^22.23.5` and pnpm.
 
 ## Tech Stack
 
-- **Framework:** Next.js `15.4.11` (App Router)
+- **Framework:** Next.js `16.4.6` (App Router)
 - **CMS:** Payload `3.93.0` + SQLite (local)
 - **UI:** React 19, Tailwind CSS 4, shadcn/ui
 - **Tests:** Vitest
