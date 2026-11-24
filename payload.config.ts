@@ -11,7 +11,7 @@ import { Projects } from './collections/Projects'
 import { Skills } from './collections/Skills'
 import { Technologies } from './collections/Technologies'
 import { Users } from './collections/Users'
-import { getServerURL } from './lib/preview'
+import { getCsrfOrigins, getServerURL } from './lib/preview'
 import { migrations } from './migrations'
 
 loadEnv()
@@ -79,6 +79,8 @@ function createDatabaseAdapter() {
   })
 }
 
+const serverURL = getServerURL()
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -94,9 +96,11 @@ export default buildConfig({
     },
   },
   collections: [Users, Posts, Technologies, Skills, Projects],
+  // Allow both apex and www so cookie auth works on either production host.
+  csrf: getCsrfOrigins(serverURL),
   editor: lexicalEditor(),
   secret: payloadSecret,
-  serverURL: getServerURL(),
+  serverURL,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

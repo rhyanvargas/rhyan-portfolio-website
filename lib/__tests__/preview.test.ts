@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   buildLivePreviewPath,
   buildPreviewRedirectPath,
+  getCsrfOrigins,
   getServerURL,
   isAllowedPreviewPath,
   previewSecretMatches,
@@ -65,5 +66,22 @@ describe('preview helpers (T8 live preview)', () => {
     vi.stubEnv('NEXT_PUBLIC_SERVER_URL', 'https://rhyan.dev')
 
     expect(getServerURL()).toBe('https://rhyan.dev')
+  })
+
+  it('includes www and apex hosts in CSRF origins for cookie auth', () => {
+    expect(getCsrfOrigins('https://rhyan.dev').sort()).toEqual([
+      'https://rhyan.dev',
+      'https://www.rhyan.dev',
+    ])
+    expect(getCsrfOrigins('https://www.rhyan.dev').sort()).toEqual([
+      'https://rhyan.dev',
+      'https://www.rhyan.dev',
+    ])
+    expect(getCsrfOrigins('http://localhost:3000')).toEqual([
+      'http://localhost:3000',
+    ])
+    expect(getCsrfOrigins('https://app-abc123.vercel.app')).toEqual([
+      'https://app-abc123.vercel.app',
+    ])
   })
 })

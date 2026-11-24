@@ -132,11 +132,14 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * All authenticated users can access /admin and manage Users. Change your own password from Account (avatar → Account → Change Password → Save).
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: number;
+  password?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -154,7 +157,6 @@ export interface User {
         expiresAt: string;
       }[]
     | null;
-  password?: string | null;
   collection: 'users';
 }
 /**
@@ -495,6 +497,7 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  password?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

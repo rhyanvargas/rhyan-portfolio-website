@@ -62,6 +62,44 @@ export function getServerURL(): string {
   return 'http://localhost:3000'
 }
 
+/**
+ * Payload cookie auth rejects PATCH/POST when `Origin` is not on `csrf`.
+ * Payload always adds `serverURL`; also allow the www/apex twin so
+ * https://www.rhyan.dev/admin works when NEXT_PUBLIC_SERVER_URL is https://rhyan.dev
+ * (and the reverse). Without this, saves look like collection access Forbidden.
+ */
+export function getCsrfOrigins(serverURL: string): string[] {
+  const origins = new Set<string>()
+  if (!serverURL) return []
+
+  origins.add(serverURL)
+
+  try {
+    const url = new URL(serverURL)
+    const { hostname, port, protocol } = url
+
+    if (hostname === 'localhost' || hostname.endsWith('.localhost')) {
+      return [...origins]
+    }
+
+    // Preview / ephemeral hosts are not www-paired.
+    if (hostname.endsWith('.vercel.app')) {
+      return [...origins]
+    }
+
+    const portSuffix = port ? `:${port}` : ''
+    if (hostname.startsWith('www.')) {
+      origins.add(`${protocol}//${hostname.slice(4)}${portSuffix}`)
+    } else if (hostname.includes('.')) {
+      origins.add(`${protocol}//www.${hostname}${portSuffix}`)
+    }
+  } catch {
+    // Invalid URL — keep whatever we already added.
+  }
+
+  return [...origins]
+}
+
 /** Path-only live preview URL so the admin iframe stays same-origin. */
 export function buildLivePreviewPath(
   collection: PreviewCollection,
