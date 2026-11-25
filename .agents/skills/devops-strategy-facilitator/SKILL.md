@@ -5,12 +5,11 @@ description: >-
   environments, promotion, governance, artifacts, secrets, and rollback.
   Use when designing or refining delivery strategy, environment promotion,
   deployment governance, or when /design-devops-strategy is invoked. Do not
-  use for operating this portfolio's already-adopted feat→dev→main / Vercel
-  flow (use cicd-deployment), wiring release-please/changelog automation
-  (use release-automation), Socket/supply-chain PR triage (use
-  supply-chain-gate), C4/solution architecture packets (use
-  solution-architecture), feature specs, writing Dockerfiles or a single
-  app pipeline, unit tests, or debugging one failed CI run.
+  use for wiring release-please/changelog automation (use release-automation),
+  Socket/supply-chain PR triage (use supply-chain-gate), C4/solution
+  architecture packets (use solution-architecture), feature specs, writing
+  Dockerfiles or a single app pipeline, unit tests, or debugging one failed CI
+  run.
 ---
 
 # DevOps Strategy Facilitator
@@ -56,8 +55,5 @@ Design a DevOps strategy that is **explicit, minimal, and adoptable**.
 | Reference | When to read |
 |-----------|----------------|
 | `references/strategy-template.md` | When drafting or reviewing the strategy document |
-| Sibling skill `cicd-deployment` | This repo already has an adopted strategy — operate it there instead of re-facilitating |
-
-When the session concludes for **this** portfolio, persist decisions into `.agents/skills/cicd-deployment/references/adopted-strategy.md` and keep `cicd-deployment` SKILL.md in sync.
 
 `/design-devops-strategy` is a thin Cursor wrapper that invokes this skill.
