@@ -1,95 +1,110 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "competitive-intelligence": {
       "source": "anthropics/knowledge-work-plugins",
       "sourceType": "github",
       "skillPath": "sales/skills/competitive-intelligence/SKILL.md",
-      "computedHash": "ee846876209be49232326f993ce4659f170748dc43c5ab6d7cb8c60ba3d4dcbc"
+      "computedHash": "daea956bc8392da35561e753144d755d6596e76931787882f7442065561e65a7",
+      "commit": "5e504ae11498f2b8daa30d86b7dab97b2ecd8092"
     },
     "continuous-discovery": {
       "source": "wondelai/skills",
       "sourceType": "github",
       "skillPath": "continuous-discovery/SKILL.md",
-      "computedHash": "a3142ce0cfd6bb095fb351de65c984e82fd0d61217b31c0e10f7f432b3452bd0"
+      "computedHash": "de299e8efddb67d988630fdc6296a881f344dcb14d65c52ace0d4d3876f527b7",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
     },
     "devops-strategy-facilitator": {
       "source": "rhyanvargas/agentic-development-starter-kit",
       "sourceType": "github",
       "skillPath": "skills/devops-strategy-facilitator/SKILL.md",
-      "computedHash": "6ff6745cce92a5003f8652b632b65ef69d2a9c3f1d13b34e9bfdfa8866571338"
+      "computedHash": "74c7fd27d704fe9a244f4531c593161f3773a644649831f147a926d039c9b524",
+      "commit": "54320bcf247f92de6abb5d9ef01b4e093603e8da"
     },
     "inspired-product": {
       "source": "wondelai/skills",
       "sourceType": "github",
       "skillPath": "inspired-product/SKILL.md",
-      "computedHash": "e334c58c654e3bd073d79febda635f3d8170c42da047b20e2c3d8b2987d1ab24"
+      "computedHash": "024c28328e419b8860b28f5fd3677b6d2c749efac08719a8a3edec60fc586486",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
     },
     "jobs-to-be-done": {
       "source": "wondelai/skills",
       "sourceType": "github",
       "skillPath": "jobs-to-be-done/SKILL.md",
-      "computedHash": "d4ec70d690ae20b80664066a55964a9834e4d8134f5812ba6b7fb9104ea7c3b7"
+      "computedHash": "b7a45465507c0da0ebe2ce34229addc1bf6e37a871b4a27c4aee53838c556a33",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
     },
     "mom-test": {
       "source": "wondelai/skills",
       "sourceType": "github",
       "skillPath": "mom-test/SKILL.md",
-      "computedHash": "36edab4caab6a1ea4370274c7acaa59d14490408c0bac2eb6909916ec265d3c3"
+      "computedHash": "ab98b37deb30820d9c8486c7f5fc88db64040ccd90e2a567cca29655514a5bb7",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
     },
     "prioritization-advisor": {
       "source": "deanpeters/product-manager-skills",
       "sourceType": "github",
       "skillPath": "skills/prioritization-advisor/SKILL.md",
-      "computedHash": "4d8b75281e4a78094750dc8bd6bf7ce3a96ef4f2447105648e6f76ebfd4167f5"
+      "computedHash": "26d6266d872ff1be08b37a7f299bfd25be86ba9cc6844273e2e819c7fe35a732",
+      "commit": "476ae12917b8e77609eb956bcc2203a4e4ec857d"
     },
     "product-strategy-session": {
       "source": "deanpeters/product-manager-skills",
       "sourceType": "github",
       "skillPath": "skills/product-strategy-session/SKILL.md",
-      "computedHash": "647969e52a9098b62da19e767e87ea03454c0387bbead9c4ac299d27293bfe72"
+      "computedHash": "c3c4ef778f14196a97e40adfe8096937f13613970f3f74ef36ee93f33b6cd034",
+      "commit": "476ae12917b8e77609eb956bcc2203a4e4ec857d"
     },
     "release-automation": {
       "source": "rhyanvargas/agentic-development-starter-kit",
       "sourceType": "github",
       "skillPath": "skills/release-automation/SKILL.md",
-      "computedHash": "3449692e3bc4efe173fd2845ad01a0a50ebf9601e154a257a8f871a8fdedf8e5"
+      "computedHash": "aedc27109bbf86e37e8fb48d8010f320e4664878d20d50b01a581bc3774b6284",
+      "commit": "54320bcf247f92de6abb5d9ef01b4e093603e8da"
     },
     "roadmap-planning": {
       "source": "deanpeters/product-manager-skills",
       "sourceType": "github",
       "skillPath": "skills/roadmap-planning/SKILL.md",
-      "computedHash": "c63ba89f7baa716dde0a571f953a3b500270501cc689eab67a48400b96620a5c"
+      "computedHash": "1c3e109bc115d4d3ec452a40775f3ee0ec2fceac2caabf58ac9ac6dbd577076e",
+      "commit": "476ae12917b8e77609eb956bcc2203a4e4ec857d"
     },
     "solution-architecture": {
       "source": "rhyanvargas/agentic-development-starter-kit",
       "sourceType": "github",
       "skillPath": "skills/solution-architecture/SKILL.md",
-      "computedHash": "de470c340b36d5fcf7b3e1ffa94e967dd432b725eaf06d5142e93842debf646b"
+      "computedHash": "5b6234c8b5b7e012a50426398602694ded694d005bb0e709185946020e65881e",
+      "commit": "54320bcf247f92de6abb5d9ef01b4e093603e8da"
     },
     "spec-driven-workflow": {
       "source": "rhyanvargas/agentic-development-starter-kit",
       "sourceType": "github",
       "skillPath": "skills/spec-driven-workflow/SKILL.md",
-      "computedHash": "7f4b412d7eb7cc61001306db500590e2586a1c5bdca834439e5d2e4242ca753a"
+      "computedHash": "8278ca64acf6773d8a77802d727a59526d27c33807fc1a6caddd232391224634",
+      "commit": "54320bcf247f92de6abb5d9ef01b4e093603e8da"
     },
     "systematic-debugging": {
       "source": "obra/superpowers",
       "sourceType": "github",
       "skillPath": "skills/systematic-debugging/SKILL.md",
-      "computedHash": "3589907ee34dc8b1b7223a33fac98ab841a9e42f9960ab4433a832f0c6f00be0"
+      "computedHash": "79ff0583175346e39431b0dc713b223edd1bd7a7ea2b6c8b78b2fb9a3fed6782",
+      "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
     },
     "test-driven-development": {
       "source": "obra/superpowers",
       "sourceType": "github",
       "skillPath": "skills/test-driven-development/SKILL.md",
-      "computedHash": "3cfe4ebb6fa7288f668d87880d279c8e48f7a92b63415e296857060f5ce22e05"
+      "computedHash": "2782702b2cf69ace085ed30d067b6f8bfd2d777ad51770fc5bdae9cb5c1b5c04",
+      "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
     },
     "writing-plans": {
       "source": "obra/superpowers",
       "sourceType": "github",
       "skillPath": "skills/writing-plans/SKILL.md",
-      "computedHash": "c2647b5bf067be353a893e5a39a632cbbeb7ad81e61fa5ae227ece5490029073"
+      "computedHash": "ef082ddb5354d736059397133b3682e8a0c85c57906affe47c9da354cbb7c91e",
+      "commit": "22f0b463e7a5e579904dd6211a520321035526f7"
     }
   }
 }
